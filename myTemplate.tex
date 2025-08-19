@@ -141,6 +141,8 @@ OKEWOLE, Dorcas Modupe. A Dummy Variable Regression on Students' Academic Perfor
 
 FERREIRA, Elen Cristina da Silva; OLIVEIRA, Nayara Maria de. EVASÃO ESCOLAR NO ENSINO MÉDIO: causas e consequências . Scientia Generalis, [S. l.], v. 1, n. 2, p. 39–48, 2020. Disponível em: https://scientiageneralis.com.br/index.php/SG/article/view/v1n2a4. Acesso em: 19 ago. 2025.
 
+RADÜNZ, Angela. Regressão logística. 1992.
+
 \section{Fundamentos Teóricos}
 
 \section{Trabalhos Relacionados}
@@ -148,7 +150,7 @@ FERREIRA, Elen Cristina da Silva; OLIVEIRA, Nayara Maria de. EVASÃO ESCOLAR NO 
 \section{Metodologia}
 A Pesquisa Nacional por Amostra de Domicílios (PNAD), realizada pelo Instituto Brasileiro de Geografia e Estatística (IBGE), é um conjunto de informações detalhadas sobre o cenário socioeconômico da sociedade brasileira. A partir dela, é possível extrair dados e informações das características gerais da população. A metodologia deste artigo consiste no processamento desses dados e a utilização de técnicas de aprendizado de máquina que possibilitem a previsão da probabilidade da evasão do aluno dadas as suas características de cunho social e econômico. Para tal, foram utilizadas as linguagens R, Python e a biblioteca Scikit-learn.
 
-A base de dados foi obtida diretamente a partir do website do IBGE na seção PNAD Contínua e lida preliminarmente em R para interpretação dos dados de largura fixa a largura variável com o auxílio da biblioteca PNADcIBGE. Foram filtradas apenas as linhas pertinentes à analise de occorência de pessoas que são de São Paulo, não frequentam mais a escola, frequentavam a rede pública de ensino, frequentaram escola alguma vez, cursaram como grau mais elevado o ensino médio regular ou 2º grau, concluiram o curso que frequentaram e com idade a partir de 14 anos. Com base nesses dados é possível rotular ocorrência de evasão ou conclusão do ensino médio como variável binária exclusiva dependente.
+A base de dados foi obtida diretamente a partir do website do IBGE na seção PNAD Contínua e lida preliminarmente em R para interpretação dos dados de largura fixa a largura variável com o auxílio da biblioteca PNADcIBGE. Foram filtradas apenas os resultados pertinentes, a partir do de ano de 2016, à analise de occorência de pessoas que são de São Paulo, não frequentam mais a escola, frequentavam a rede pública de ensino, frequentaram escola alguma vez, cursaram como grau mais elevado o ensino médio regular ou 2º grau, concluiram o curso que frequentaram e com idade a partir de 14 anos. Com base nesses dados é possível rotular ocorrência de evasão ou conclusão do ensino médio como variável binária exclusiva dependente.
 
 Após o procedimento de filtragem, foi feita uma seleção das características, ou colunas, mais relavantes para explicar o fenômeno da evasão escolar. Características como sexo, cor ou raça, se já trabalhou ou estagiou por pelo menos 1 hora em alguma atividade remunerada em dinheiro, se nos últimos três meses, alguma vez, algum morador com menos de 18 anos de idade, sentiu fome, mas não comeu porque não havia dinheiro para comprar comida, número de componentes do domicílio (exclusive as pessoas cuja condição no domicílio era pensionista, empregado doméstico ou parente do empregado doméstico) e rendimento domiciliar per capita
 (habitual de todos os trabalhos e efetivo de outras fontes), as quais são alguma das características que mais se correlacionam qualitativamente ao abandono e à evasão escolar no ensino médio (FERREIRA; OLIVEIRA, 2020).
@@ -162,6 +164,11 @@ Para simplificação e integridade dos modelos de regressão (OKEWOLE, 2012), as
 Para o treino e teste efetivo dos modelos, 80\% da base de dados foi destinada ao treinamento e o restante, 20\%, a testes para verificação das métricas. 
 
 \subsection{Técnicas de Aprendizado de Máquina}
+Este Trabalho apresenta três técnicas de aprendizado de máquina para efeito de modelagem probabilística, sendo elas Regressão Logística, Redes Neurais e Florestas Aleatórias de Classificação. Tais técnicas foram utilizadas devido a seus retornos baseados em estimativas em valores reais entre 0 e 1, que são consistentes com o modelo de probabilidades. Destaca-se que a escolha de diferentes técnicas reflete unicamente o objetivo de obter o mais acurado desempenho preditivo para o problema de previsão de probabilidades.
+
+A Regressão Logística, conforme Radünz (1992), é um método de regressão compatível com modelagens de variável dependente binária e variáveis independetes numéricas ou categóricas. 
+
+\subsection{Métricas}
 
 
 \section{Manuscript Preparation}
