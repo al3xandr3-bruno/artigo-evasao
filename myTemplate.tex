@@ -23,7 +23,7 @@
 \addbibresource{references.bib}
 
 % Here goes the paper main title
-\title{Predição da Probabilidade de Evasão do Ensino Médio nas Escolas Públicas Estaduais da Cidade de São Paulo}
+\title{Desenvolvimento de Modelo Probabilístico da Evasão do Ensino Médio nas Escolas Públicas Estaduais da Cidade de São Paulo}
 
 % If the manuscript is written in English, then this element must be removed.
 \titleinenglish{<If the Manuscript is in Portuguese or Spanish, then Here Comes the Title in English>}
@@ -122,11 +122,11 @@ A evasão escolar no ensino público brasileiro, caracterizado pelo abandono das
 \section{Introdução}
 A evasão escolar é definida como a ausência de retorno ao sistema de ensino formal do aluno em idade escolar após abandono ou reprovação. Deste modo, enquanto o abandono faz referência à situação do aluno que deixa de frequentar as aulas durante o ano letivo, a evasão refere-se ao aluno que, por qualquer motivo, não regressou à rede de ensino com o reinicio do ano letivo, assim como descrito pelo manual guia do Sistema de Alerta Preventivo  de Evasão e Abandono Escolar (SAP). 
 
-Elucidada sua definição, a evasão se mostra um grande desafio na esfera do ensino brasileiro, em especial ao ensino público. Segundo os indicadadores de taxa de transição e fluxo provenientes do censo escolar, a nível nacional e na etapa do ensino médio, enquanto a educação privada tem taxa de evasão de 2 a 3 por cento na série histórica, escolas públicas estaduais apresentam evasão de 7 a 12 por cento do contingente total de alunos. 
+Elucidada sua definição, a evasão se mostra um grande desafio na esfera do ensino brasileiro, em especial ao ensino público. Segundo os indicadadores de taxa de transição e fluxo provenientes do censo escolar, a nível nacional e na etapa do ensino médio, enquanto a educação privada tem taxa de evasão de 2\% a 3\% na série histórica, escolas públicas estaduais apresentam evasão de 7\% a 12\% do contingente total de alunos. 
 
-Quando analisado a nível municipal em São Paulo com base na série histórica de 2014 a 2021, também no ensino médio, a diferença é levemente superior. A rede privada apresenta taxa de 1 a 2,5 por cento de evasão, ao passo que a rede estadual exibe taxa de 6 a 12 por cento. Com base no último registro mensurado, em 2021, 8,7 por cento de alunos do ensino estadual se evadiram em comparação com 2,6 por cento do ensino privado. Para mais, proporcionalmente há um maior número de matrículas no ensino público em relação ao ensino privado, 340 mil e 81 mil em 2021 respectivamente segundo dados do INEP, o que reforça a gravidade do retorno ao ensino público. 
+Quando analisado a nível municipal em São Paulo com base na série histórica de 2014 a 2021, também no ensino médio, a diferença é levemente superior. A rede privada apresenta taxa de 1\% a 2,5\% de evasão, ao passo que a rede estadual exibe taxa de 6\% a 12\%. Com base no último registro mensurado, em 2021, 8,7\% de alunos do ensino estadual se evadiram em comparação com 2,6 por cento do ensino privado. Para mais, proporcionalmente há um maior número de matrículas no ensino público em relação ao ensino privado, 340 mil e 81 mil em 2021 respectivamente segundo dados do INEP, o que reforça a gravidade do retorno ao ensino público. 
 
-Acerca das causas que levam à evasão, SILVA (2013) ressalta que de modo geral o nível socioeconômico das famílias é um dos principais fatores que impele estudantes a não retomar a vida acadêmica. Um baixo nível socioeconômico, que reflete também a pobreza, induz indivíduos a abandonar os estudos à procura de trabalho para incoporar a renda familiar mensal; da mesma forma destaca-se a dificuldade em conciliar estudo e trabalho, procedente do contexto econômico-social do aluno. SILVA (2013) também aponta que não há um conjunto de técnicas e sistemas governamentais para rastrear e entender o abandono e evasão escolar nas redes brasileiras de ensino, o que poderia ser aspecto-chave para a desinformação e, por conseguinte, à continuidade do problema.
+Acerca das causas que levam à evasão, Silva (2013) ressalta que de modo geral o nível socioeconômico das famílias é um dos principais fatores que impele estudantes a não retomar a vida acadêmica. Um baixo nível socioeconômico, que reflete também a pobreza, induz indivíduos a abandonar os estudos à procura de trabalho para incoporar a renda familiar mensal; da mesma forma destaca-se a dificuldade em conciliar estudo e trabalho, procedente do contexto econômico-social do aluno. Silva (2013) também aponta que não há um conjunto de técnicas e sistemas governamentais para rastrear e entender o abandono e evasão escolar nas redes brasileiras de ensino, o que poderia ser aspecto-chave para a desinformação e, por conseguinte, à continuidade do problema.
 
 Este artigo investiga a problemática da evasão nas escolas estaduais da cidade de São Paulo a partir da Pesquisa Nacional por Amostra de Domicílios (PNAD) com a finalidade de analisar e desenvolver modelos preditivos baseados em aprendizado de máquina para avaliar a probablidade de evasão escolar de alunos com base em suas características socioeconômicas, a fim de proporcionar um método probabilístico para previnir evasão e abandono escolar e compreender como o perfil do estudante impacta seu desenvolvimento acadêmico. 
 
@@ -137,10 +137,31 @@ https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/inep-data/estati
 
 TEODORO, L. de A.; KAPPEL, M. A. A. Aplicação de Técnicas de Aprendizado de Máquina Para Predição de Risco de Evasão Escolar em Instituições Públicas de Ensino Superior no Brasil. Revista Brasileira de Informática na Educação, [S. l.], v. 28, p. 838–863, 2020. DOI: 10.5753/rbie.2020.28.0.838. Disponível em: https://journals-sol.sbc.org.br/index.php/rbie/article/view/3691. Acesso em: 17 ago. 2025.
 
-\section{Introduction}
-To avoid unnecessary errors, you are strongly advised to use the 'spell-check' and 'grammar-check' functions of your word processor. We ask that authors follow the guidelines explained in this template, to achieve the highest quality possible and a standard presentation of the manuscripts of the journal.
+OKEWOLE, Dorcas Modupe. A Dummy Variable Regression on Students' Academic Performance. 2012.
 
-Be advised that manuscripts in a technically unsuitable form may be rejected anytime by the editors or reviewers.
+FERREIRA, Elen Cristina da Silva; OLIVEIRA, Nayara Maria de. EVASÃO ESCOLAR NO ENSINO MÉDIO: causas e consequências . Scientia Generalis, [S. l.], v. 1, n. 2, p. 39–48, 2020. Disponível em: https://scientiageneralis.com.br/index.php/SG/article/view/v1n2a4. Acesso em: 19 ago. 2025.
+
+\section{Fundamentos Teóricos}
+
+\section{Trabalhos Relacionados}
+
+\section{Metodologia}
+A Pesquisa Nacional por Amostra de Domicílios (PNAD), realizada pelo Instituto Brasileiro de Geografia e Estatística (IBGE), é um conjunto de informações detalhadas sobre o cenário socioeconômico da sociedade brasileira. A partir dela, é possível extrair dados e informações das características gerais da população. A metodologia deste artigo consiste no processamento desses dados e a utilização de técnicas de aprendizado de máquina que possibilitem a previsão da probabilidade da evasão do aluno dadas as suas características de cunho social e econômico. Para tal, foram utilizadas as linguagens R, Python e a biblioteca Scikit-learn.
+
+A base de dados foi obtida diretamente a partir do website do IBGE na seção PNAD Contínua e lida preliminarmente em R para interpretação dos dados de largura fixa a largura variável com o auxílio da biblioteca PNADcIBGE. Foram filtradas apenas as linhas pertinentes à analise de occorência de pessoas que são de São Paulo, não frequentam mais a escola, frequentavam a rede pública de ensino, frequentaram escola alguma vez, cursaram como grau mais elevado o ensino médio regular ou 2º grau, concluiram o curso que frequentaram e com idade a partir de 14 anos. Com base nesses dados é possível rotular ocorrência de evasão ou conclusão do ensino médio como variável binária exclusiva dependente.
+
+Após o procedimento de filtragem, foi feita uma seleção das características, ou colunas, mais relavantes para explicar o fenômeno da evasão escolar. Características como sexo, cor ou raça, se já trabalhou ou estagiou por pelo menos 1 hora em alguma atividade remunerada em dinheiro, se nos últimos três meses, alguma vez, algum morador com menos de 18 anos de idade, sentiu fome, mas não comeu porque não havia dinheiro para comprar comida, número de componentes do domicílio (exclusive as pessoas cuja condição no domicílio era pensionista, empregado doméstico ou parente do empregado doméstico) e rendimento domiciliar per capita
+(habitual de todos os trabalhos e efetivo de outras fontes), as quais são alguma das características que mais se correlacionam qualitativamente ao abandono e à evasão escolar no ensino médio (FERREIRA; OLIVEIRA, 2020).
+
+Foi gerado um arquivo CSV com os dados já filtrados e características selecionadas, e posteriormente este foi lido em Python para limpeza de dados faltantes, balanceamento de categorias pela técninca de undersampling, conforme aplicado em Teodoro e Kappel (2020), e verificação dos tipos de variáveis com o objetivo de utilizá-lo como base de treinamento aos modelos de aprendizado de máquina.
+
+
+\subsection{Pré-processamento dos Dados}
+Para simplificação e integridade dos modelos de regressão (OKEWOLE, 2012), as variáveis categóricas foram transformadas em variáveis binárias exclusivas. Variáveis numéricas foram padronizadas de acordo com a média das amostras e seu desvio padrão.
+
+Para o treino e teste efetivo dos modelos, 80\% da base de dados foi destinada ao treinamento e o restante, 20\%, a testes para verificação das métricas. 
+
+\subsection{Técnicas de Aprendizado de Máquina}
 
 
 \section{Manuscript Preparation}
