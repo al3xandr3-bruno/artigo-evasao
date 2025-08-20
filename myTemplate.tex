@@ -23,18 +23,18 @@
 \addbibresource{references.bib}
 
 % Here goes the paper main title
-\title{Desenvolvimento de Modelo Probabilístico da Evasão do Ensino Médio nas Escolas Públicas Estaduais da Cidade de São Paulo}
+\title{Aprendizado de Máquina Aplicado à Predição da Evasão no Ensino Médio da Rede Pública de São Paulo}
 
 % If the manuscript is written in English, then this element must be removed.
-\titleinenglish{<If the Manuscript is in Portuguese or Spanish, then Here Comes the Title in English>}
+\titleinenglish{Machine Learning Applied to Predicting Dropout Rates in Public High Schools in São Paulo}
 
 % If the manuscript is written in English, then this element must be removed.
-\titleinspanish{<If the Manuscript is in Portuguese, then Here Comes the Title in Spanish>}
+\titleinspanish{Aprendizaje automático aplicado a la predicción del abandono escolar en la enseñanza secundaria de la red pública de São Paulo}
 
 % Here goes the paper author information (repeat for two or more authors)
 \author{%
 	\parbox{3.8cm}{%
-		Bruno Alexandre\\
+		Bruno Alexandre Dias da Silva\\
 		Universidade de São Paulo\\
 		ORCID: \href{https://orcid.org/0000-0000-0000-0000}{0000-0000-0000-0000}\\
 		<author1@my-email>
@@ -44,7 +44,7 @@
 		Lucas Gurgel do Amaral\\
 		Universidade de São Paulo\\
 		ORCID: \href{https://orcid.org/0000-0000-0000-0000}{0000-0000-0000-0000}\\
-		<author2@my-email>
+		lucasgurgel@usp.br
 	}
         \hspace{0.3cm}
         \parbox{3.8cm}{%
@@ -89,29 +89,23 @@ Last author’s surname et al. (for more than 2 authors)
 % If the manuscript is written in English, then this element must be removed.
 \begin{otherlanguage}{brazilian}
 \begin{abstract}
-A evasão escolar no ensino público brasileiro, caracterizado pelo abandono das atividades escolares regulares, vem se mostrando como um grande desafio na qualifacação e alfabetização do público infanto-juvenil, principalmente nas camadas menos favorecidas da sociedade brasileira. 
-\end{abstract}
-\end{otherlanguage}
-
-\begin{otherlanguage}{brazilian}
-\begin{abstract}
-<Aqui vem o resumo do artigo em português. O resumo deve resumir o conteúdo do manuscrito e deve conter no mínimo 150 e no máximo 300~palavras e deve ser escrito em itálico, Times~10, justificado, sem recuo especial e sem espaçamento antes ou depois.>
-\keywords <O resumo deve ser seguido de 3 a 10 palavras-chave. As palavras-chave devem ser justificadas com espaçamento simples, sem recuo especial, sem espaçamento antes e espaçamento exato de 24 pontos depois. O texto deve ser configurado com a fonte Times em tamanho de fonte 10 e em estilo de fonte itálico. Use ponto e vírgula como separador. As palavras-chave devem iniciar com letra maiúsculas.>
+A evasão escolar no ensino público brasileiro vem se mostrando como um grande desafio na qualificação e formação educacional do público infanto-juvenil, principalmente nas camadas menos favorecidas da sociedade brasileira. Jovens que não concluem o ensino médio não conseguem especializar-se em cursos superiores e, portanto, submetem-se a empregos com mão de obra barata, perdurando um ciclo de pobreza e baixos indicadores socioeconômicos. Para isso, este trabalho tem como objetivo avaliar e desenvolver modelos probabilísticos de aprendizado de máquina com o intuito de prever a probabilidade de um aluno evadir o ensino médio na rede pública estadual da cidade de São Paulo baseado em técnicas como Floresta Aleatória, Árvores de Decisão e Redes Neurais. Por meio da base de dados da Pesquisa Nacional por Amostra de Domicílios (PNAD) provenientes do Instituto Brasileiro de Geografia e Estatística (IBGE), serão extraídas variáveis que, de acordo com a literatura de estudos acerca de evasão, mais expliquem o abandono escolar contínuo. Os resultados deste artigo podem auxiliar docentes e escolas a rastrearem e prestarem mais apoio àqueles alunos que apresentam alta chance de evasão por motivos socioeconômicos.  
+\keywords\ Evasão escolar; Aprendizado de Máquina; PNAD; Variáveis Socioeconômicas; Ensino médio público.
 \end{abstract}
 \end{otherlanguage}
 
 \begin{otherlanguage}{english}
 \begin{abstract}
-<Here comes the abstract of the paper in English. The abstract should summarize the contents of the manuscript and should contain at least 150 and at most 300~words long and must be written in italics, Times~10, justified, with no special indentation and no spacing before or after.>
-\keywords <Abstract must be followed by 3 to 10 keywords. The keywords should be justified with a line space single, no special indentation, with no spacing before and spacing of exactly 24-points after. The text should be set in Times 10-point font size and in italic font style. Please use semi-colon as a separator. Keywords must be title cased.>
+School dropout rates in Brazilian public education have proven to be a major challenge in the qualification and educational training of children and young people, especially in the less privileged segments of Brazilian society. Young people who do not complete high school are unable to specialize in higher education courses and, therefore, are forced to take low-paying jobs, perpetuating a cycle of poverty and low socioeconomic indicators. To this end, this study aims to evaluate and develop probabilistic machine learning models to predict the probability of a student dropping out of high school in the public school system of the city of São Paulo based on techniques such as Random Forest, Decision Trees, and Neural Networks. Using data from the National Household Sample Survey (PNAD) conducted by the Brazilian Institute of Geography and Statistics (IBGE), variables will be extracted that, according to the literature on dropout rates, best explain continuous school abandonment. The results of this article can help teachers and schools track and provide more support to those students who are at high risk of dropping out for socioeconomic reasons.
+\keywords\ School dropout; Machine learning; PNAD; Socioeconomic variables; Public secondary education.
 \end{abstract}
 \end{otherlanguage}
 
 % If the manuscript is written in English, then this element must be removed.
 \begin{otherlanguage}{spanish}
 \begin{abstract}
-<Aquí viene el resumen del artículo en español. El resumen debe resumir el contenido del manuscrito y debe contener un mínimo de 150 y un máximo de 300~palabras y debe estar escrito en cursiva, Times~10, justificado, sin sangría especial y sin espacio antes o después.>
-\keywords <El resumen debe ir seguido de 3 a 10 palabras clave. Las palabras clave deben estar justificadas con un espacio de línea simple, sin sangría especial, sin espacios antes y con un espacio de exactamente 24 puntos después. El texto debe configurarse fuente Times con tamaño de 10 puntos y en estilo de fuente cursiva. Utilice punto y coma como separador. Las palabras clave deben comenzar con una letra mayúscula.>
+El absentismo escolar en la enseñanza pública brasileña se está revelando como un gran desafío para la cualificación y la formación educativa de los niños y jóvenes, especialmente en los sectores más desfavorecidos de la sociedad brasileña. Los jóvenes que no completan la educación secundaria no pueden especializarse en cursos superiores y, por lo tanto, se ven obligados a aceptar empleos con mano de obra barata, perpetuando un ciclo de pobreza y bajos indicadores socioeconómicos. Por ello, este trabajo tiene como objetivo evaluar y desarrollar modelos probabilísticos de aprendizaje automático con el fin de predecir la probabilidad de que un estudiante abandone la educación secundaria en la red pública estatal de la ciudad de São Paulo, basándose en técnicas como Bosque Aleatorio, Árboles de Decisión y Redes Neuronales. A través de la base de datos de la Encuesta Nacional por Muestra de Hogares (PNAD) del Instituto Brasileño de Geografía y Estadística (IBGE), se extraerán variables que, según la literatura de estudios sobre el abandono escolar, explican mejor el abandono escolar continuo. Los resultados de este artículo pueden ayudar a los docentes y a las escuelas a rastrear y brindar más apoyo a aquellos alumnos que presentan un alto riesgo de deserción por motivos socioeconómicos.
+\keywords\ Absentismo escolar; Aprendizaje automático; PNAD; Variables socioeconómicas; Educación secundaria pública.
 \end{abstract}
 \end{otherlanguage}
 
