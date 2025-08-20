@@ -11,6 +11,9 @@
 % Papers in Portuguese or Spanish may require the following lines:
 \usepackage[utf8]{inputenc} % chooses UTF-8 as the main character set
 \usepackage[T1]{fontenc} % for correct syllable separation in accented words
+% Pacotes para citações/referências ABNT
+%usepackage[alf]{abntex2cite} % citações autor-data
+%\usepackage[num]{abntex2cite} % citações numéricas
 
 % The next two statements are needed for the example table in this document
 % (i.e. you don't necessarily need them in your own paper)
@@ -18,7 +21,8 @@
 \definecolor{gray}{gray}{.8}
 
 % Citations and references (Biblatex)
-\usepackage[style=apa]{biblatex}
+% Citations and references (Biblatex)
+\usepackage[style=abnt]{biblatex}
 \usepackage{csquotes}
 \addbibresource{references.bib}
 
@@ -72,12 +76,15 @@
 \Published{dd/Mmm/yyyy}
 
 % Here goes the page heading information
-\heading{Surname, initials Author 1, Surname, initials Author 2 (for 1 to 2 Authors)	\\
-Last author’s surname et al. (for more than 2 authors)
+\heading{Gurgel et al.
 }{RBIE v.VV – yyyy}
 
 % And finally here goes the citation information
 \citeas{Last name, Initials., \ldots \& Last name, Initials.  (Year). Article title in the original language. Revista Brasileira de Informática na Educação, vol, pp-pp. https://doi.org/10.5753/rbie.yyyy.id}
+
+\citeas{
+SILVA, B. A. D.; GURGEL, L.; FRANÇA, R. D.; NASCIMENTO, R. P. do. Aprendizado de Máquina Aplicado à Predição de Evasão no Ensino Médio da Rede Pública de São Paulo. Revista Brasileira de Informática na Educação, vol , pp-pp, 2025.
+}
 
 %====================================================================
 %\hyphenpenalty=10000
@@ -127,18 +134,6 @@ Este artigo investiga a problemática da evasão nas escolas estaduais da cidade
 \section{Links importantes}
 https://app.powerbi.com/view?r=eyJrIjoiN2ViNDBjNDEtMTM0OC00ZmFhLWIyZWYtZjI1YjU0NzQzMTJhIiwidCI6IjI2ZjczODk3LWM4YWMtNGIxZS05NzhmLWVhNGMwNzc0MzRiZiJ9
 
-https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/inep-data/estatisticas-censo-escolar
-
-TEODORO, L. de A.; KAPPEL, M. A. A. Aplicação de Técnicas de Aprendizado de Máquina Para Predição de Risco de Evasão Escolar em Instituições Públicas de Ensino Superior no Brasil. Revista Brasileira de Informática na Educação, [S. l.], v. 28, p. 838–863, 2020. DOI: 10.5753/rbie.2020.28.0.838. Disponível em: https://journals-sol.sbc.org.br/index.php/rbie/article/view/3691. Acesso em: 17 ago. 2025.
-
-OKEWOLE, Dorcas Modupe. A Dummy Variable Regression on Students' Academic Performance. 2012.
-
-FERREIRA, Elen Cristina da Silva; OLIVEIRA, Nayara Maria de. EVASÃO ESCOLAR NO ENSINO MÉDIO: causas e consequências . Scientia Generalis, [S. l.], v. 1, n. 2, p. 39–48, 2020. Disponível em: https://scientiageneralis.com.br/index.php/SG/article/view/v1n2a4. Acesso em: 19 ago. 2025.
-
-RADÜNZ, Angela. Regressão logística. 1992.
-
-BARBOSA, Dyego; CABRAL, Luciano; DWAN, Filipe; FEITAS, Elyda; MELLO, Rafael Ferreira. Previsão da Evasão Escolar através da Análise de Dados e Aprendizagem de Máquina: Um estudo de caso. In: WORKSHOP DE APLICAÇÕES PRÁTICAS DE LEARNING ANALYTICS EM INSTITUIÇÕES DE ENSINO NO BRASIL (WAPLA), 2. , 2023, Passo Fundo/RS. Anais [...]. Porto Alegre: Sociedade Brasileira de Computação, 2023 . p. 42-50. DOI: https://doi.org/10.5753/wapla.2023.236137.
-
 \section{Fundamentos Teóricos}
 
 A evasão escolar é um fenômeno amplamente estudado nas áreas da Educação e das Ciências Sociais, podendo ser associado a fatores de ordem social, econômica e cultural. Segundo Araque, Roldán e Salguero (2009), as principais razões que influenciam o abandono da escola estão relacionadas a variáveis socioeconômicas, familiares, institucionais e psicológicas. Nesse sentido, compreender esse fenômeno requer considerar tanto o contexto social do aluno quanto as condições oferecidas pelo sistema educacional. 
@@ -179,185 +174,17 @@ Para o treino e teste efetivo dos modelos, 80\% da base de dados foi destinada a
 \subsection{Técnicas de Aprendizado de Máquina}
 Este Trabalho apresenta três técnicas de aprendizado de máquina para efeito de modelagem probabilística, sendo elas Regressão Logística, Redes Neurais e Florestas Aleatórias de Classificação. Tais técnicas foram utilizadas devido a seus retornos baseados em estimativas em valores reais entre 0 e 1, que são consistentes com o modelo de probabilidades. Destaca-se que a escolha de diferentes técnicas reflete unicamente o objetivo de obter o mais acurado desempenho preditivo para o problema de previsão de probabilidades.
 
-A Regressão Logística, conforme Radünz (1992), é um método de regressão compatível com modelagens de variável dependente binária e variáveis independetes numéricas ou categóricas. 
-
-\subsection{Métricas}
-
-
-\section{Manuscript Preparation}
-Before formatting the manuscript, please read carefully the guide for authors, which presents important information on ethics, selection criteria, guidance on methodology and submission instructions. Then, this template may guide the authors to correctly format the manuscript.
-
-The number of pages of the manuscript must be in between 15--30, excluding references and appendices.
-
-
-\subsection{Page Setup}
-The paper size must be set to A4 (210x297 mm). The document margins must be 2.3 cm in all sides (Top: 2.3 cm; Bottom: 2.3 cm; Left: 2.3 cm; Right: 2.3 cm).
-
-Regarding the page layout, authors should set the vertical alignment to the top, and the header and the footer: 1.25 cm.
-
-Any text or material outside the margins might have problems with overlay information.
-
-
-\subsection{Title}
-Use 17-point Times New Roman for the title in the original language, center aligned, line space multiple 1,15 with a bold font style, with an additional spacing of 10-point after, and initial letters capitalized. Articles and words like ``is'', ``or'', ``then'', etc. should not be capitalized unless they are the first word of the title.
-
-If the original language of the manuscript is Portuguese or English, then it is necessary to add the title in English. After the title in the original language, add in the next paragraph a “Title:” heading and the corresponding title in English just in the sequence. Use 12-point Times New Roman type, center aligned, line space multiple 1,15 with an italic font style, with an additional spacing of 24-point after, and initial letters capitalized. As in the title in the original language, articles and words like ``is'', ``or'', ``then'', etc. should not be capitalized unless they are the first word of the title.
-
-
-\subsection{Authors’ Information}
-Use 10-point Times New Roman type for the authors’ information, aligned left, line space single with an italic font style, with no additional spacing. In the first line of authors’ information provide the full name of the authors, in the second line his affiliation and in the last line his email address. If there is only one author, this information must be in the center. If there are two or three authors, then organize the information respectively in two or three columns. For more authors, consider organizing the information in two or three columns and as many lines as necessary.
-
-Notice that all information that may identify the authors must be suppressed of the manuscript at the submission phase. However, this information must be filled in the metadata of the submission form as well as in the final version of the manuscript in case of acceptance.
-
-
-\subsection{Abstract and Keywords}
-Each paper must have an abstract. The abstract should appear justified, with a line space single, no spacing before and after, and font size of 10-point Times in italic. The abstract should summarize the contents of the manuscript and should contain at least 150 and at most 300 words long. The sentence must end with a period. Before the abstract text there is one line with the ``Abstract'' heading in font size of 12-point Times in bold.
-
-In the next line after the abstract, comes the keywords, with the heading ``Keywords:'' in font size of 10-point Times in bold, followed by 3 to 10 keywords aligned left, with a line space single, no special indentation, with no spacing before and 24-points spacing after. The keywords should be set in Times 10-point font size and in italic font style, with 24-point spacing after. To separate the keywords, use the semi-colon. Keywords must be title cased.
-
-If the manuscript is written in Portuguese or Spanish, the authors must provide the abstract and keywords in this language before providing the one in English.
-
-
-\subsection{The Sections}
-The document is organized in only one column. The section text must be set to 12-point Times, justified, line space single and 6-point spacing after.
-
-Section, subsection and sub subsection first paragraph should not have the first line indent, other paragraphs should have a first line indent of 0.75 centimeter.
-
-
-\subsubsection{Section Titles}
-The heading of a section title must be 14-point bold with initial letters capitalized, aligned to the left with a line space sing, with an additional spacing of 24-point before and 12-point after. After the title number, there should be no dot.
-
-
-\subsubsection{Subsection Titles}
-The heading of a subsection title must be 12-point bold with initial letters capitalized, aligned to the left with a line space single, with an additional spacing of 12-point before and 6-point after. After the title number, there should be no dot.
-
-
-\subsubsection{Sub Subsection Titles}
-The heading of a sub subsection title should be in 12-point italic with initial letters capitalized, aligned to the left with a line space single, with an additional spacing of 12-point before and 6-point after. After the title number, there should be no dot.
-
-
-\subsection{Tables}
-Tables (e.g., \autoref{tab:one}) must be positioned preferably at the top or bottom of the page within the given margins. Avoid breaking tables on different pages, unless it does not fit one page only. Tables should be properly numbered, centered and should always have a caption positioned above it. Captions should be centered with 9-point Times, with 12-point spacing before and 6-point after. The final sentence of a caption must end with a period.
-
-Table text should be 10-point Times, with no spacing before or after.
-
-\begin{table}[h]
-	\caption{Caption table 1}
-	\label{tab:one}
-	\centering\footnotesize%
-	\begin{tabular}{|c|c|}
-		\hline
-		\rowcolor{gray} \textbf{Example column 1} & \textbf{Example column 2}\\
-		\hline
-		Example text 1 & Example text 2\\
-		\hline
-	\end{tabular}
-\end{table}
-
-
-\subsection{Figures}
-Figures should be produced electronically and integrated into the document. As they may lose quality when integrated into the document, it is important to check if it is with a good resolution (at least 300 dpi is recommended). Check line drawings, grids, and details within the figures that must be clearly readable and may not be written one on top of the other, considering 100\% view and print version.
-
-Figures (e.g., \autoref{fig:one}) must appear inside the designated margins. They should be properly numbered, centered and should always have a caption positioned under it. Captions should be centered, with 9-point font size. Spacing before and after should be of 6-point and 12-point, respectively.
-
-The final sentence of a caption must end with a period. 
-
-\begin{figure}[h]
-	\centerline{\includegraphics[scale=0.25]{newlogo.png}}
-	\caption{Caption figure 1}
-	\label{fig:one}
-\end{figure}
-
-
-\subsection{Equations}
-Special attention with equations as some characters may be lost as well as formatting. Equations (e.g., \autoref{eq:one}) should be placed on a separate line, numbered and centered. An extra line space should be added below the equation. The numbers accorded to equations must appear enclosed in brackets and positioned right side (with some space after the equation).
-The use of a table with two columns is advisable.
-
-\begin{equation}
-	a = b + c
-	\label{eq:one}
-\end{equation}
-
-
-\subsection{Program Code}
-Program listing commands in text (e.g., \autoref{code:one}) should be set in 9-point Courier New, with no spacing before or after, and no first line indent. Codes must appear inside the designated margins, with external borders and they should be properly numbered. Captions should be centered, with 9-point font size. Spacing before and after should be of 6-point and 12-point, respectively.
-
-\begin{code}[h]
-	\begin{lstlisting}
-begin
-    Writeln('Hello World!!');
-end.
-	\end{lstlisting}
-	\caption{Example of code}
-	\label{code:one}
-\end{code}
-
-
-\subsection{In-Text Citations and Reference List}
-
-When you use others' ideas in your paper, you should credit them with an in-text citation. In-text citations must follow APA 7 Style, which consist of the surname of the authors and the year of publication. More on \href{https://apastyle.apa.org/}{Writing In-Text Citations in APA Style}, please refer to \href{https://libguides.brenau.edu/APA7}{APA Citation Guide (7th edition)}.
-
-The  \href{https://libguides.brenau.edu/APA7}{APA Citation Guide (7th edition)} explains why and what to cite, citing references in text, the purpose of the reference list and how to build the reference list. It is possible to find more information on  \href{https://libguides.brenau.edu/APA7}{APA Citation Guide (7th edition)} and on how to deal with missing information as well as class notes, class lectures, presentations, social media, among other sources. Some sample references are provided by the  \href{https://libguides.brenau.edu/APA7}{APA Citation Guide (7th edition)}.
-
-The reference list must be ordered alphabetically. References should be set to 12-point, justified, with a single line space, 6-point additional spacing after and hanging indent of 0.75 centimeter.
-
-Citation 1 \parencite{Baker2011}
-
-Citation 2 \parencite{Seffrin2013}
-
-Citation 3 \parencite{Brasil2008}
-
-Citation 4 \parencite{Kautzman2015}
-
-Citation 5 \parencite{Sweller1991}
-
-Citation 6 \parencite{Clark2006}
-
-Citation 7 \parencite{Mason2012}
-
-
-\section{Conclusions}
-We hope you find the information in this template useful, and it helps you in the preparation of your manuscript.
-
-If you find inconsistencies or need additional information, please contact the editors.
-
-
-\section*{Acknowledgements}
-%Place the acknowledgements only in the final version of the manuscript, after acceptance. They should be placed before the references section without numbering.
-Our special thanks to Rafael Bohrer Ávila, Matheus Segalotto and Bruno Fagundes da Silva for their help with this latex template. 
-
 
 %====================================================================
 
-\printbibliography
+
 %See the guidelines for metadata and references:
 %https://sol.sbc.org.br/journals/index.php/rbie/libraryFiles/downloadPublic/71
 %====================================================================
 
 
- \section*{Appendix 1}
-\label{apendice1}
+\nocite{*}
+\printbibliography
 
-If any, the appendix should appear directly after the references without numbering, and not on a new page.
-
-\begin{enumerate}
-    \item[A] When the reference has a Link
-    \begin{itemize}
-        \item Make a clickable link on the respective URL (if you are using MS-Word, use the tool Insert Hyperlink, informing the URL).
-    \end{itemize}
-    \item[B] Allow readers to search for the reference on Google Scholar
-    \begin{itemize}
-        \item Copy the title of the reference and put in between ``\%22'', including the ``+'' character between each word: http://scholar.google.com/scholar?q=\%22PASTE+TITLE+\\HERE\%22\&hl=en\&lr=\&btnG=Search
-        \item If it is a common title, you may add the author, such as in: \\http://scholar.google.com/ scholar?q=PASTE+AUTHOR+HERE+\%22PASTE+TITLE\\+HERE\%22\&hl=en\&lr=\&btnG=Search
-        \item Or you may use the publication year (YEAR) to restrict the results, such as in:\\ http://scholar.google.com/scholar?
-        q=PASTE+AUTHOR+HERE+\%22PASTE+TITLE\\+HERE\%22\&hl=en\&lr=\&btnG=Search \&as\_ylo=YEAR\&as\_yhi=YEAR
-        \item It is highly advisable to confirm if the link is correct (and if Google Scholar presents a correct result).
-        \item Include the term ``[GS SEARCH]'' at the end of each reference and make “GS SEARCH” a hyperlink with the URL just created.
-    \end{itemize}
-    \item[C] Allow readers to access references with DOI
-    \begin{itemize}
-        \item Add DOI hyperlink (make it clickable) using the corresponding URL (the URL can be created adding ``http://doi.org/'' in front of the DOI hyperlink).
-    \end{itemize}
-\end{enumerate}
 
 \end{document}
