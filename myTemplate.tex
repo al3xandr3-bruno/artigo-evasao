@@ -123,13 +123,13 @@ El absentismo escolar en la enseñanza pública brasileña se está revelando co
 \section{Introdução}
 A evasão escolar é definida como a ausência de retorno ao sistema de ensino formal do aluno em idade escolar após abandono ou reprovação. Deste modo, enquanto o abandono faz referência à situação do aluno que deixa de frequentar as aulas durante o ano letivo, a evasão refere-se ao aluno que, por qualquer motivo, não regressou à rede de ensino com o reinicio do ano letivo, assim como descrito pelo manual guia do Sistema de Alerta Preventivo  de Evasão e Abandono Escolar (SAP). 
 
-Elucidada sua definição, a evasão se mostra um grande desafio na esfera do ensino brasileiro, em especial ao ensino público. Segundo os indicadadores de taxa de transição e fluxo provenientes do censo escolar, a nível nacional e na etapa do ensino médio, enquanto a educação privada tem taxa de evasão de 2\% a 3\% na série histórica, escolas públicas estaduais apresentam evasão de 7\% a 12\% do contingente total de alunos. 
+Elucidada sua definição, a evasão se mostra um grande desafio na esfera do ensino brasileiro, em especial ao ensino público. Segundo os indicadores de taxa de transição e fluxo provenientes do censo escolar, a nível nacional e na etapa do ensino médio, enquanto a educação privada tem taxa de evasão de 2\% a 3\% na série histórica, escolas públicas estaduais apresentam evasão de 7\% a 12\% do contingente total de alunos. 
 
 Quando analisado a nível municipal em São Paulo com base na série histórica de 2014 a 2021, também no ensino médio, a diferença é levemente superior. A rede privada apresenta taxa de 1\% a 2,5\% de evasão, ao passo que a rede estadual exibe taxa de 6\% a 12\%. Com base no último registro mensurado, em 2021, 8,7\% de alunos do ensino estadual se evadiram em comparação com 2,6 por cento do ensino privado. Para mais, proporcionalmente há um maior número de matrículas no ensino público em relação ao ensino privado, 340 mil e 81 mil em 2021 respectivamente segundo dados do INEP, o que reforça a gravidade do retorno ao ensino público. 
 
-Acerca das causas que levam à evasão, Silva (2013) ressalta que de modo geral o nível socioeconômico das famílias é um dos principais fatores que impele estudantes a não retomar a vida acadêmica. Um baixo nível socioeconômico, que reflete também a pobreza, induz indivíduos a abandonar os estudos à procura de trabalho para incoporar a renda familiar mensal; da mesma forma destaca-se a dificuldade em conciliar estudo e trabalho, procedente do contexto econômico-social do aluno. Silva (2013) também aponta que não há um conjunto de técnicas e sistemas governamentais para rastrear e entender o abandono e evasão escolar nas redes brasileiras de ensino, o que poderia ser aspecto-chave para a desinformação e, por conseguinte, à continuidade do problema.
+Acerca das causas que levam à evasão, Silva (2013) ressalta que de modo geral o nível socioeconômico das famílias é um dos principais fatores que impele estudantes a não retomar a vida acadêmica. Um baixo nível socioeconômico, que reflete também a pobreza, induz indivíduos a abandonar os estudos à procura de trabalho para incorporar a renda familiar mensal; da mesma forma destaca-se a dificuldade em conciliar estudo e trabalho, procedente do contexto econômico-social do aluno. Silva (2013) também aponta que não há um conjunto de técnicas e sistemas governamentais para rastrear e entender o abandono e evasão escolar nas redes brasileiras de ensino, o que poderia ser aspecto-chave para a desinformação e, por conseguinte, à continuidade do problema.
 
-Este artigo investiga a problemática da evasão nas escolas estaduais da cidade de São Paulo a partir da Pesquisa Nacional por Amostra de Domicílios (PNAD) com a finalidade de analisar e desenvolver modelos preditivos baseados em aprendizado de máquina para avaliar a probablidade de evasão escolar de alunos com base em suas características socioeconômicas, a fim de proporcionar um método probabilístico para previnir evasão e abandono escolar e compreender como o perfil do estudante impacta seu desenvolvimento acadêmico. 
+Este artigo investiga a problemática da evasão nas escolas estaduais da cidade de São Paulo a partir da Pesquisa Nacional por Amostra de Domicílios (PNAD) com a finalidade de analisar e desenvolver modelos preditivos baseados em aprendizado de máquina para avaliar a probabilidade de evasão escolar de alunos com base em suas características socioeconômicas, a fim de proporcionar um método probabilístico para previnir evasão e abandono escolar e compreender como o perfil do estudante impacta seu desenvolvimento acadêmico. 
 
 \section{Links importantes}
 https://app.powerbi.com/view?r=eyJrIjoiN2ViNDBjNDEtMTM0OC00ZmFhLWIyZWYtZjI1YjU0NzQzMTJhIiwidCI6IjI2ZjczODk3LWM4YWMtNGIxZS05NzhmLWVhNGMwNzc0MzRiZiJ9
@@ -158,12 +158,12 @@ Nota-se que os estudos revisados não abordam a evasão do ensino médio nas esc
 \section{Metodologia}
 A Pesquisa Nacional por Amostra de Domicílios (PNAD), realizada pelo Instituto Brasileiro de Geografia e Estatística (IBGE), é um conjunto de informações detalhadas sobre o cenário socioeconômico da sociedade brasileira. A partir dela, é possível extrair dados e informações das características gerais da população. A metodologia deste artigo consiste no processamento desses dados e a utilização de técnicas de aprendizado de máquina que possibilitem a previsão da probabilidade da evasão do aluno dadas as suas características de cunho social e econômico. Para tal, foram utilizadas as linguagens R, Python e a biblioteca Scikit-learn.
 
-A base de dados foi obtida diretamente a partir do website do IBGE na seção PNAD Contínua e lida preliminarmente em R para interpretação dos dados de largura fixa a largura variável com o auxílio da biblioteca PNADcIBGE. Foram filtradas apenas os resultados pertinentes, a partir do de ano de 2016, à analise de occorência de pessoas que são de São Paulo, não frequentam mais a escola, frequentavam a rede pública de ensino, frequentaram escola alguma vez, cursaram como grau mais elevado o ensino médio regular ou 2º grau, concluiram o curso que frequentaram e com idade a partir de 14 anos. Com base nesses dados é possível rotular ocorrência de evasão ou conclusão do ensino médio como variável binária exclusiva dependente.
+A base de dados foi obtida diretamente a partir do website do IBGE na seção PNAD Contínua e lida preliminarmente em R para interpretação dos dados de largura fixa a largura variável com o auxílio da biblioteca PNADcIBGE. Foram filtradas apenas os resultados pertinentes, a partir do de ano de 2016, à analise de ocorrência de pessoas que são de São Paulo, não frequentam mais a escola, frequentavam a rede pública de ensino, frequentaram escola alguma vez, cursaram como grau mais elevado o ensino médio regular ou 2º grau, concluiram o curso que frequentaram e com idade a partir de 14 anos. Com base nesses dados é possível rotular ocorrência de evasão ou conclusão do ensino médio como variável binária exclusiva dependente.
 
-Após o procedimento de filtragem, foi feita uma seleção das características, ou colunas, mais relavantes para explicar o fenômeno da evasão escolar. Características como sexo, cor ou raça, se já trabalhou ou estagiou por pelo menos 1 hora em alguma atividade remunerada em dinheiro, se nos últimos três meses, alguma vez, algum morador com menos de 18 anos de idade, sentiu fome, mas não comeu porque não havia dinheiro para comprar comida, número de componentes do domicílio (exclusive as pessoas cuja condição no domicílio era pensionista, empregado doméstico ou parente do empregado doméstico) e rendimento domiciliar per capita
+Após o procedimento de filtragem, foi feita uma seleção das características, ou colunas, mais relevantes para explicar o fenômeno da evasão escolar. Características como sexo, cor ou raça, se já trabalhou ou estagiou por pelo menos 1 hora em alguma atividade remunerada em dinheiro, se nos últimos três meses, alguma vez, algum morador com menos de 18 anos de idade, sentiu fome, mas não comeu porque não havia dinheiro para comprar comida, número de componentes do domicílio (exclusive as pessoas cuja condição no domicílio era pensionista, empregado doméstico ou parente do empregado doméstico) e rendimento domiciliar per capita
 (habitual de todos os trabalhos e efetivo de outras fontes), as quais são alguma das características que mais se correlacionam qualitativamente ao abandono e à evasão escolar no ensino médio (FERREIRA; OLIVEIRA, 2020).
 
-Foi gerado um arquivo CSV com os dados já filtrados e características selecionadas, e posteriormente este foi lido em Python para limpeza de dados faltantes, balanceamento de categorias pela técninca de undersampling, conforme aplicado em Teodoro e Kappel (2020), e verificação dos tipos de variáveis com o objetivo de utilizá-lo como base de treinamento aos modelos de aprendizado de máquina.
+Foi gerado um arquivo CSV com os dados já filtrados e características selecionadas, e posteriormente este foi lido em Python para limpeza de dados faltantes, balanceamento de categorias pela técnica de undersampling, conforme aplicado em Teodoro e Kappel (2020), e verificação dos tipos de variáveis com o objetivo de utilizá-lo como base de treinamento aos modelos de aprendizado de máquina.
 
 
 \subsection{Pré-processamento dos Dados}
@@ -174,6 +174,26 @@ Para o treino e teste efetivo dos modelos, 80\% da base de dados foi destinada a
 \subsection{Técnicas de Aprendizado de Máquina}
 Este Trabalho apresenta três técnicas de aprendizado de máquina para efeito de modelagem probabilística, sendo elas Regressão Logística, Redes Neurais e Florestas Aleatórias de Classificação. Tais técnicas foram utilizadas devido a seus retornos baseados em estimativas em valores reais entre 0 e 1, que são consistentes com o modelo de probabilidades. Destaca-se que a escolha de diferentes técnicas reflete unicamente o objetivo de obter o mais acurado desempenho preditivo para o problema de previsão de probabilidades.
 
+\section{Cronograma}
+O cronograma do projeto foi organizado de forma a contemplar as fases de pesquisa e os marcos de entrega definidos pela disciplina.
+\begin{table}[h]
+\centering
+\begin{tabular}{p{3cm} p{7cm} p{5cm}}
+\hline
+\textbf{Período} & \textbf{Atividades principais} & \textbf{Marcos oficiais} \\
+\hline
+Agosto (até 20) & Revisão bibliográfica, definição do tema, objetivos e trabalhos relacionados & Entrega do plano de pesquisa (20/08) \\
+Setembro        & Coleta de dados e pré-processamento & -- \\
+Outubro (até 08) & Implementação inicial e testes dos modelos & Relatório parcial + vídeo (06--08/10) \\
+Outubro (após 08) & Ajustes dos modelos, análises comparativas & -- \\
+Novembro (até 19) & Consolidação dos resultados e redação final & Relatório final + apresentação parcial (17--19/11) \\
+Novembro (após 19) & Revisão final e preparação da apresentação & Apresentação oficial (24--26/11) \\
+\hline
+\end{tabular}
+\caption{Cronograma híbrido das atividades e entregas do projeto.}
+\label{tab:cronograma}
+\end{table}
+
 
 %====================================================================
 
@@ -182,7 +202,7 @@ Este Trabalho apresenta três técnicas de aprendizado de máquina para efeito d
 %https://sol.sbc.org.br/journals/index.php/rbie/libraryFiles/downloadPublic/71
 %====================================================================
 
-
+\pagebreak
 \nocite{*}
 \printbibliography
 
