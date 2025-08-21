@@ -41,7 +41,7 @@
 		Bruno Alexandre Dias da Silva\\
 		Universidade de São Paulo\\
 		ORCID: \href{https://orcid.org/0000-0000-0000-0000}{0000-0000-0000-0000}\\
-		<author1@my-email>
+		Brunoalexdias20@usp.br
 	}
         \hspace{0.3cm}
 	\parbox{3.8cm}{%
@@ -55,14 +55,14 @@
 		Rafael de França\\
 		Universidade de São Paulo\\
 		ORCID: \href{https://orcid.org/0000-0000-0000-0000}{0000-0000-0000-0000}\\
-		<author1@my-email>
+		rafaeldefranca@usp.br
 	}
         \hspace{0.3cm}
 	\parbox{3.9cm}{\raggedright%
 		Richard Pereira do Nascimento\\
 		Universidade de São Paulo\\
 		ORCID: \href{https://orcid.org/0000-0000-0000-0000}{0000-0000-0000-0000}\\
-		<author2@my-email>
+		rcdwoods@usp.br
 	}
 }
 
@@ -77,7 +77,7 @@
 
 % Here goes the page heading information
 \heading{Gurgel et al.
-}{RBIE v.VV – yyyy}
+}{RBIE v.VV – 2025}
 
 % And finally here goes the citation information
 \citeas{Last name, Initials., \ldots \& Last name, Initials.  (Year). Article title in the original language. Revista Brasileira de Informática na Educação, vol, pp-pp. https://doi.org/10.5753/rbie.yyyy.id}
@@ -136,11 +136,11 @@ Este artigo investiga a problemática da evasão nas escolas estaduais da cidade
 
 A evasão escolar é um fenômeno amplamente estudado nas áreas da Educação e das Ciências Sociais, podendo ser associado a fatores de ordem social, econômica e cultural. Segundo Araque, Roldán e Salguero (2009), as principais razões que influenciam o abandono da escola estão relacionadas a variáveis socioeconômicas, familiares, institucionais e psicológicas. Nesse sentido, compreender esse fenômeno requer considerar tanto o contexto social do aluno quanto as condições oferecidas pelo sistema educacional. 
 
-No campo da análise de dados, o termo Mineração de Dados Educacionais (Educational Data Mining — EDM) refere-se ao uso de métodos computacionais para explorar grandes volumes de dados gerados em ambientes educacionais, buscando padrões relevantes (BAKER; ISOTANI; CARVALHO, 2011). O objetivo disso é apoiar a tomada de decisão em políticas públicas e institucionais, fornecendo evidências que permitam compreender e reduzir problemas como a própria evasão escolar.
+No campo da análise de dados, o termo Mineração de Dados Educacionais (\textit{Educational Data Mining — EDM}) refere-se ao uso de métodos computacionais para explorar grandes volumes de dados gerados em ambientes educacionais, buscando padrões relevantes (BAKER; ISOTANI; CARVALHO, 2011). O objetivo disso é apoiar a tomada de decisão em políticas públicas e institucionais, fornecendo evidências que permitam compreender e reduzir problemas como a própria evasão escolar.
 
-Associado à EDM, o Aprendizado de Máquina (Machine Learning) é um subcampo da Inteligência Artificial que possibilita a criação de modelos preditivos a partir de dados. Esses modelos são capazes de identificar relações complexas entre variáveis e gerar previsões com base em informações históricas (MITCHELL, 1997). No contexto da evasão escolar, técnicas de aprendizado supervisionado permitem estimar a probabilidade de um estudante abandonar ou concluir seus estudos, dadas suas características socioeconômicas, acadêmicas e pessoais (TEODORO; KAPPEL, 2020).
+Associado à EDM, o Aprendizado de Máquina (\textit{Machine Learning}) é um subcampo da Inteligência Artificial que possibilita a criação de modelos preditivos a partir de dados. Esses modelos são capazes de identificar relações complexas entre variáveis e gerar previsões com base em informações históricas (MITCHELL, 1997). No contexto da evasão escolar, técnicas de aprendizado supervisionado permitem estimar a probabilidade de um estudante abandonar ou concluir seus estudos, dadas suas características socioeconômicas, acadêmicas e pessoais (TEODORO; KAPPEL, 2020).
 
-Entre as abordagens mais comuns em problemas de classificação binária, destacam-se a Regressão Logística, as Redes Neurais e os métodos de Floresta Aleatória de Classificação. A Regressão Logística (RADÜNZ, 1992) permite modelar a relação entre variáveis independentes e uma variável dependente categórica, atribuindo probabilidades ao evento de interesse. Já as Redes Neurais, inspiradas no funcionamento do cérebro humano, são capazes de identificar padrões não-lineares e de alta complexidade (GARDNER; DORLING, 1998). Por fim, o método de Florestas Aleatórias, proposto por Breiman (2001), combina múltiplas árvores de decisão para melhorar a acurácia preditiva e reduzir problemas de sobreajuste (overfitting).
+Entre as abordagens mais comuns em problemas de classificação binária, destacam-se a Regressão Logística, as Redes Neurais e os métodos de Floresta Aleatória de Classificação. A Regressão Logística (RADÜNZ, 1992) permite modelar a relação entre variáveis independentes e uma variável dependente categórica, atribuindo probabilidades ao evento de interesse. Já as Redes Neurais, inspiradas no funcionamento do cérebro humano, são capazes de identificar padrões não-lineares e de alta complexidade (GARDNER; DORLING, 1998). Por fim, o método de Florestas Aleatórias, proposto por Breiman (2001), combina múltiplas árvores de decisão para melhorar a acurácia preditiva e reduzir problemas de sobreajuste (\textit{overfitting}).
 
 Dessa forma, os fundamentos apresentados evidenciam a relevância de associar teorias sobre evasão escolar com métodos de mineração de dados e aprendizado de máquina, permitindo analisar grandes quantidades de dados, como a PNAD, e construir modelos preditivos capazes de apoiar políticas públicas e institucionais na área da Educação.
 
@@ -161,7 +161,7 @@ A base de dados foi obtida diretamente a partir do website do IBGE na seção PN
 Após o procedimento de filtragem, foi feita uma seleção das características, ou colunas, mais relevantes para explicar o fenômeno da evasão escolar. Características como sexo, cor ou raça, se já trabalhou ou estagiou por pelo menos 1 hora em alguma atividade remunerada em dinheiro, se nos últimos três meses, alguma vez, algum morador com menos de 18 anos de idade, sentiu fome, mas não comeu porque não havia dinheiro para comprar comida, número de componentes do domicílio (exclusive as pessoas cuja condição no domicílio era pensionista, empregado doméstico ou parente do empregado doméstico) e rendimento domiciliar per capita
 (habitual de todos os trabalhos e efetivo de outras fontes), as quais são alguma das características que mais se correlacionam qualitativamente ao abandono e à evasão escolar no ensino médio (FERREIRA; OLIVEIRA, 2020).
 
-Foi gerado um arquivo CSV com os dados já filtrados e características selecionadas, e posteriormente este foi lido em Python para limpeza de dados faltantes, balanceamento de categorias pela técnica de undersampling, conforme aplicado em Teodoro e Kappel (2020), e verificação dos tipos de variáveis com o objetivo de utilizá-lo como base de treinamento aos modelos de aprendizado de máquina.
+Foi gerado um arquivo CSV com os dados já filtrados e características selecionadas, e posteriormente este foi lido em Python para limpeza de dados faltantes, balanceamento de categorias pela técnica de subamostragem, conforme aplicado em Teodoro e Kappel (2020), e verificação dos tipos de variáveis com o objetivo de utilizá-lo como base de treinamento aos modelos de aprendizado de máquina.
 
 
 \subsection{Pré-processamento dos Dados}
