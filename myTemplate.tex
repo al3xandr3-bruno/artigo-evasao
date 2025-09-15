@@ -14,6 +14,7 @@
 % Pacotes para citações/referências ABNT
 %usepackage[alf]{abntex2cite} % citações autor-data
 %\usepackage[num]{abntex2cite} % citações numéricas
+\usepackage{amsmath}
 
 % The next two statements are needed for the example table in this document
 % (i.e. you don't necessarily need them in your own paper)
@@ -167,12 +168,40 @@ Foi gerado um arquivo CSV com os dados já filtrados e características selecion
 
 
 \subsection{Pré-processamento dos Dados}
-Para simplificação e integridade dos modelos de regressão (OKEWOLE, 2012), as variáveis categóricas foram transformadas em variáveis binárias exclusivas. Variáveis numéricas foram padronizadas de acordo com a média das amostras e seu desvio padrão.
+Para simplificação e integridade dos modelos de regressão (OKEWOLE, 2012), as variáveis categóricas foram transformadas em variáveis binárias exclusivas. Variáveis numéricas foram padronizadas de acordo com a média das amostras e seu desvio padrão com base na fórmula:
 
-Para o treino e teste efetivo dos modelos, 80\% da base de dados foi destinada ao treinamento e o restante, 20\%, a testes para verificação das métricas. 
+\vspace{0.5cm}
+\begin{equation}
+\large Z = \frac{x-\mu}{s}
+\end{equation}
+\vspace{0.5cm}
+
+Para o treino e teste efetivo dos modelos, 85\% da base de dados foi destinada ao treinamento e o restante, 15\%, a testes para verificação das métricas. 
 
 \subsection{Técnicas de Aprendizado de Máquina}
 Este Trabalho apresenta três técnicas de aprendizado de máquina para efeito de modelagem probabilística, sendo elas Regressão Logística, Redes Neurais e Florestas Aleatórias de Classificação. Tais técnicas foram utilizadas devido a seus retornos baseados em estimativas em valores reais entre 0 e 1, que são consistentes com o modelo de probabilidades. Destaca-se que a escolha de diferentes técnicas reflete unicamente o objetivo de obter o mais acurado desempenho preditivo para o problema de previsão de probabilidades.
+
+\subsection{Métricas de Desempenho}
+Com o objetivo de extrair resultados acerca do desempenho dos modelos deste trabalho, foram utilizadas as fórmulas de precisão, revogação, acurácia e o índice F1 calculados com base na matriz de confusão proveniente do conjunto de testes com os modelos já treinados e selecionados os melhores via busca em grade de hiperparâmetros com validação cruzada em k-partições.
+
+
+\subsubsection{Matriz de Confusão}
+A matriz de confusão, assim como ressalta Franceschi (2019), é uma maneira de apresentar os valores reais e preditos pelo modelo com o intuito de mensurar os erros e acertos em cada classe de um determinado problema para se ter percepção dos seus desempenhos individuais.
+
+Para este trabalho, dado que o problema segue a forma de classes binárias (evasão ou não-evasão), a matriz de confusão, seguindo o modelo de Franceschi (2019) é dada por:
+
+\vspace{0.5cm}
+\begin{equation}
+\large
+M = 
+\begin{pmatrix}
+VP & FP \\
+FN & VN
+\end{pmatrix}
+\end{equation}
+\vspace{0.5cm}
+
+Conforme discorre Franceschi (2019), embasado por Castro e Braga (2011), a matriz principal da matriz representa os valores corretos preditos pelo modelo.
 
 \section{Cronograma}
 O cronograma do projeto foi organizado de forma a contemplar as fases de pesquisa e os marcos de entrega definidos pela disciplina.

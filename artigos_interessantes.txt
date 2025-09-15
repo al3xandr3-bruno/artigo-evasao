@@ -1,0 +1,12 @@
+BATISTA, Santos Dias; SOUZA, Alesxsandra Matos; OLIVEIRA, Júlia Mara da Silva. A evasão escolar no ensino médio: um estudo de caso. Revista Profissão Docente, UNIUBE. Uberaba/MG, v. 9, n. 19, 2009.
+
+bibtex para eventual referência:
+@article{batista2009evasao,
+  title={A evas{\~a}o escolar no ensino m{\'e}dio: um estudo de caso},
+  author={Batista, Santos Dias and Souza, Alesxsandra Matos and Oliveira, J{\'u}lia Mara da Silva},
+  journal={Revista Profiss{\~a}o Docente, UNIUBE. Uberaba/MG},
+  volume={9},
+  number={19},
+  year={2009}
+}
+
