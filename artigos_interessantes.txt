@@ -10,3 +10,12 @@ bibtex para eventual referência:
   year={2009}
 }
 
+@article{strauss2022importancia,
+  title={A import{\^a}ncia de utilizar m{\'e}tricas adequadas de avalia{\c{c}}{\~a}o de performance em modelos preditivos de machine learning},
+  author={Strauss, Edilberto and J{\'u}nior, Manoel Villas B{\^o}as and Ferreira, Wagner Luiz Lobo},
+  journal={Projectus},
+  volume={7},
+  number={2},
+  pages={52--62},
+  year={2022}
+}
