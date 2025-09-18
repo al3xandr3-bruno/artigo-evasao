@@ -137,15 +137,42 @@ Este artigo investiga a problemática da evasão no ensino brasileiro a partir d
 
 \section{Fundamentos Teóricos}
 
-A evasão escolar é um fenômeno amplamente estudado nas áreas da Educação e das Ciências Sociais, podendo ser associado a fatores de ordem social, econômica e cultural. Segundo Araque, Roldán e Salguero (2009), as principais razões que influenciam o abandono da escola estão relacionadas a variáveis socioeconômicas, familiares, institucionais e psicológicas. Nesse sentido, compreender esse fenômeno requer considerar tanto o contexto social do aluno quanto as condições oferecidas pelo sistema educacional. 
+O presente capítulo tem como objetivo apresentar a base conceitual que sustenta esta pesquisa, fornecendo o embasamento necessário para compreender as abordagens utilizadas na predição da evasão escolar no Ensino Médio. A fundamentação teórica é fundamental para situar o estudo no contexto das pesquisas já existentes, permitindo identificar conceitos-chave, modelos consolidados e contribuições de autores que exploraram temas relacionados à evasão escolar e ao uso de técnicas de aprendizado de máquina em contextos educacionais.
 
+\subsection{Evasão Escolar e Fatores Socioeconômicos}
+A evasão escolar é um fenômeno amplamente estudado nas áreas da Educação e das Ciências Sociais, podendo ser associado a fatores de ordem social, econômica e cultural. Segundo Araque, Roldán e Salguero (2009), as principais razões que influenciam o abandono da escola estão relacionadas a variáveis socioeconômicas, familiares, institucionais e psicológicas. Nesse sentido, compreender esse fenômeno requer considerar tanto o contexto social do aluno quanto as condições oferecidas pelo sistema educacional.
+
+\subsection{Mineração de Dados Educacionais e Aprendizado de Máquina}
 No campo da análise de dados, o termo Mineração de Dados Educacionais (\textit{Educational Data Mining — EDM}) refere-se ao uso de métodos computacionais para explorar grandes volumes de dados gerados em ambientes educacionais, buscando padrões relevantes (BAKER; ISOTANI; CARVALHO, 2011). O objetivo disso é apoiar a tomada de decisão em políticas públicas e institucionais, fornecendo evidências que permitam compreender e reduzir problemas como a própria evasão escolar.
 
 Associado à EDM, o Aprendizado de Máquina (\textit{Machine Learning}) é um subcampo da Inteligência Artificial que possibilita a criação de modelos preditivos a partir de dados. Esses modelos são capazes de identificar relações complexas entre variáveis e gerar previsões com base em informações históricas (MITCHELL, 1997). No contexto da evasão escolar, técnicas de aprendizado supervisionado permitem estimar a probabilidade de um estudante abandonar ou concluir seus estudos, dadas suas características socioeconômicas, acadêmicas e pessoais (TEODORO; KAPPEL, 2020).
 
+\subsection{Principais Técnicas Utilizadas}
 Entre as abordagens mais comuns em problemas de classificação binária, destacam-se a Regressão Logística, as Redes Neurais e os métodos de Floresta Aleatória de Classificação. A Regressão Logística (RADÜNZ, 1992) permite modelar a relação entre variáveis independentes e uma variável dependente categórica, atribuindo probabilidades ao evento de interesse. Já as Redes Neurais, inspiradas no funcionamento do cérebro humano, são capazes de identificar padrões não-lineares e de alta complexidade (GARDNER; DORLING, 1998). Por fim, o método de Florestas Aleatórias, proposto por Breiman (2001), combina múltiplas árvores de decisão para melhorar a acurácia preditiva e reduzir problemas de sobreajuste (\textit{overfitting}).
 
-Dessa forma, os fundamentos apresentados evidenciam a relevância de associar teorias sobre evasão escolar com métodos de mineração de dados e aprendizado de máquina, permitindo analisar grandes quantidades de dados, como a PNAD, e construir modelos preditivos capazes de apoiar políticas públicas e institucionais na área da Educação.
+\subsection{Técnicas Computacionais Complementares}
+Embora este trabalho foque na aplicação de Regressão Logística, Redes Neurais e Florestas Aleatórias de Classificação, outras técnicas computacionais também têm sido amplamente empregadas em estudos de predição e análise de dados educacionais. Entre elas, destacam-se:
+
+\textbf{Máquinas de Vetores de Suporte (SVM)}: modelo supervisionado que busca encontrar um hiperplano ótimo de separação entre classes. As SVMs são reconhecidas por sua eficiência em problemas de classificação binária e por sua capacidade de lidar com dados de alta dimensionalidade, sendo frequentemente utilizadas em contextos educacionais para a identificação de padrões de desempenho acadêmico (CORTES; VAPNIK, 1995).
+
+\textbf{Naive Bayes}: técnica baseada em probabilidade que utiliza o Teorema de Bayes para estimar a classe de uma observação com base na distribuição condicional das variáveis independentes. Apesar de sua simplicidade e da suposição de independência entre atributos, o Naive Bayes apresenta bons resultados em problemas de classificação de texto e dados categóricos, podendo ser aplicado à análise de questionários e registros escolares (ZHANG, 2004).
+
+\textbf{K-Nearest Neighbors (KNN)}: algoritmo que classifica uma observação com base na proximidade de seus vizinhos mais próximos em um espaço multidimensional. O KNN é intuitivo e eficaz em situações em que não se pressupõe uma relação linear entre as variáveis, sendo útil para identificar perfis de estudantes com risco de evasão a partir de características socioeconômicas semelhantes (COVER; HART, 1967).
+
+Além dessas técnicas, também se destacam os métodos de \textit{clustering} como o K-Means, utilizados em contextos de aprendizado não supervisionado. Esses métodos permitem segmentar grupos de estudantes com características semelhantes, favorecendo análises exploratórias sobre padrões de evasão sem a necessidade de rótulos previamente definidos.
+
+\subsection{A Pesquisa Nacional por Amostra de Domicílios (PNAD)}
+A Pesquisa Nacional por Amostra de Domicílios (PNAD), realizada pelo Instituto Brasileiro de Geografia e Estatística (IBGE), constitui uma das principais fontes de dados socioeconômicos no Brasil. Seu objetivo é coletar informações abrangentes sobre características demográficas, educacionais, ocupacionais e de rendimento da população brasileira, por meio de entrevistas domiciliares aplicadas em amostras representativas em nível nacional, regional e estadual (IBGE, 2022).
+
+A PNAD Contínua, em vigor desde 2012, aprimorou o levantamento ao adotar coleta trimestral, permitindo análises mais atualizadas e consistentes acerca da dinâmica social e econômica do país. Entre suas variáveis, destacam-se renda familiar per capita, inserção no mercado de trabalho, características do domicílio, composição familiar, escolaridade e acesso a programas sociais. Tais informações são de grande relevância para estudos sobre evasão escolar, pois possibilitam identificar relações entre vulnerabilidade socioeconômica e permanência na escola.
+
+\subsection{Importância da PNAD no Contexto Acadêmico}
+A PNAD desempenha papel fundamental como fonte de dados em pesquisas acadêmicas brasileiras, especialmente nas áreas de Ciências Sociais, Economia e Educação. Por sua abrangência e representatividade estatística, a pesquisa possibilita análises robustas sobre condições de vida, desigualdade e mobilidade social. Estudos desenvolvidos por instituições de ensino e pesquisa frequentemente utilizam a PNAD como base empírica para compreender fenômenos relacionados ao trabalho, à renda e à escolaridade da população.
+
+No campo educacional, a PNAD se destaca por permitir a investigação de variáveis socioeconômicas associadas à permanência ou evasão escolar. A inclusão de indicadores como nível de escolaridade dos responsáveis, rendimento domiciliar per capita, participação no mercado de trabalho e acesso a programas sociais fornece subsídios para estudos que buscam identificar fatores de risco e vulnerabilidade entre os estudantes. Adicionalmente, a consolidação histórica da PNAD garante comparabilidade ao longo do tempo, permitindo a construção de séries históricas sobre aspectos socioeconômicos.
+
+\subsection{Síntese}
+Dessa forma, os fundamentos apresentados evidenciam a relevância de associar teorias sobre evasão escolar com métodos de mineração de dados e aprendizado de máquina, bem como o uso de bases de dados socioeconômicas amplas como a PNAD. Essa integração permite analisar grandes quantidades de dados e construir modelos preditivos capazes de apoiar políticas públicas e institucionais na área da Educação, contribuindo para a redução da evasão escolar e para a promoção da equidade educacional.
 
 \section{Trabalhos Relacionados}
 Diversos estudos buscaram modelar de forma probabilística ou com técnicas de aprendizado de máquina o fenômeno da evasão escolar no Brasil. Como exemplo, destacam dois trabalhos acerca da evasão no âmbito acadêmico.
