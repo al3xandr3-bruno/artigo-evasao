@@ -28,13 +28,13 @@
 \addbibresource{references.bib}
 
 % Here goes the paper main title
-\title{Aprendizado de Máquina Aplicado à Predição da Evasão no Ensino Médio em São Paulo}
+\title{Aprendizado de Máquina Aplicado à Predição da Evasão no Ensino Médio Brasileiro: Uma Abordagem Baseada em Variáveis Socioeconômicas}
 
 % If the manuscript is written in English, then this element must be removed.
-\titleinenglish{Machine Learning Applied to Predicting Dropout Rates in High Schools in São Paulo}
+\titleinenglish{Machine Learning Applied to Predicting Dropout Rates in Brazilian High Schools: An Approach Based on Socioeconomic Variables}
 
 % If the manuscript is written in English, then this element must be removed.
-\titleinspanish{Aprendizaje automático aplicado a la predicción del abandono escolar en la enseñanza secundaria de São Paulo}
+\titleinspanish{Aprendizaje automático aplicado a la predicción de la deserción escolar en la educación secundaria brasileña: un enfoque basado en variables socioeconómicas}
 
 % Here goes the paper author information (repeat for two or more authors)
 \author{%
@@ -232,8 +232,176 @@ FN & VN
 \end{equation}
 \vspace{0.5cm}
 
-Conforme discorre Franceschi (2019), embasado por Castro e Braga (2011), a matriz principal da matriz representa os valores corretos preditos pelo modelo.
+Conforme Castro e Braga (2011, apud Franceschi, 2019), a matriz principal da matriz representa os valores corretos preditos pelo modelo, isto é, \textit{VP} (Verdadeiro Positivo) e \textit{VN} (Verdadeiro Negativo). Os demais elementos expressam os erros retornados pelo modelo: \textit{FP} (Falso Positivo) e \textit{FN} (Falso Negativo).
 
+Na representação deste trabalho, as linhas expressam as classes reais do problema, enquanto as colunas representam as classes preditas.
+
+\subsubsection{Métricas Derivadas da Matriz de Confusão}
+Dada a interpretação da matriz de confusão, pode-se, por meio de seus elementos, derivar métricas pertinentes à explicação do desempenho das classes e, por consequência, dos modelos deste trabalho, como demonstrado por Klén et al. (2024):
+
+\vspace{0.5cm}
+A taxa de precisão:
+\begin{equation}
+    \large \frac{VP}{VP+FP}
+\end{equation}
+\vspace{0.5cm}
+
+\vspace{0.5cm}
+A taxa de revocação:
+\begin{equation}
+    \large \frac{VP}{VP+FN}
+\end{equation}
+\vspace{0.5cm}
+
+\vspace{0.5cm}
+A taxa de acurácia:
+\begin{equation}
+    \large \frac{VP+VN}{VP+FP+VN+FN}
+\end{equation}
+\vspace{0.5cm}
+
+\vspace{0.5cm}
+E o índide F1:
+\begin{equation}
+    \large 2 \frac{P \cdot R}{P+R}
+\end{equation}
+\vspace{0.5cm}
+
+Em que \textit{P} é a taxa de \textit{precisão} e \textit{R} a taxa de \textit{revocação}.
+
+Acerca das métricas derivadas: a precisão representa os resultados classificados como verdadeiros positivos dentre os falsos e verdadeiros positivos, e mensura o quanto o algoritmo se distancia de falsos positivos; a taxa de revocação expressa a taxa de verdadeiros positivos em relação a verdadeiros positivos e falsos negativos, e demonstra o quanto o algoritmo separa corretamente verdadeiros positivos de falsos negativos; a acurácia representa a taxa de acertos bruta de todas as classes em todo o conjunto de teste; o índice F1, como descrito por Klén et al. (2024), é a média harmônica entre a precisão e a revocação. Para classes "negativas" (verdadeiro negativo), as mesmas lógicas da precisão e da revocação são implementadas com a ressalva de que são feitas em relação a falsos negativos e a falsos positivos respectivamente. 
+
+\section{Resultados Parciais}
+
+Com base nos dados coletados a partir da PNAD, as variáveis socioeconômicas, selecionadas neste presente trabalho, parecem não ser suficientes para determinar a evasão do aluno. O que se contrapõe aos trabalhos de Silva (2013) e Ferreira \& Oliveira (2020), que ressaltam tais variáveis como um dos principais motivos que levam ao abandono contínuo do ensino médio, em especial aos condições de trabalho de jovens em idade escolar.
+
+Tal fato levanta a hipótese de que fatores socioeconômicos devem estar atrelados a fatores acadêmicos, como a presença ou notas, e fatores psicológicos, como a falta de interesse na escola, para uma real percepção e modelagem preditiva da evasão escolar. Por outro lado, também há a hipótese de que os fatores socioeconômicos que se correlacionam com a evasão não foram levados em consideração para a filtragem e modelagem deste trabalho.
+
+A Pesquisa Nacional por Amostra de Domicílios (PNAD) apresenta um vasta base de dados acerca de aspectos socioeconômicos da população brasileira, contudo carece de determinantes acadêmicos específicos e questões que revelem a consideração do entrevistado acerca de sua vida no contexto acadêmico. 
+
+Ao longo deste trabalho, as seguintes variáveis foram filtradas e tratadas para modelagem da evasão e treinamento posterior com os algoritmos de aprendizado de máquina:
+
+\begin{table}
+\caption{Descrição de Variáveis da Base de Dados}
+\centering
+\label{tab:variables}
+\begin{tabular}{lp{8cm}}
+\hline
+Variável & Descrição \\ \hline
+UF & Unidade da Federação do estudante \\
+sexo & Sexo do estudante \\
+raça & Raça/cor do estudante \\
+idade & Idade em anos \\
+frequenta\_escola & Indica se atualmente frequenta escola \\
+frequentou\_escola & Indica se já frequentou escola em algum momento \\
+curso\_frequentado & Tipo de curso frequentado (fundamental, médio, etc.) \\
+terminou\_curso & Indica se concluiu o curso frequentado \\
+V4001--V4004 & Variáveis da PNAD relacionadas ao trabalho e ocupação \\
+condicao\_domicilio & Condição de ocupação do domicílio (próprio, alugado, cedido, etc.) \\
+num\_pessoas\_domicilio & Número de pessoas no domicílio \\
+bolsa\_familia & Recebimento de Bolsa Família \\
+aux\_governo & Recebimento de outros auxílios governamentais \\
+renda\_per\_capita & Renda domiciliar per capita \\
+situacao\_domicilio & Situação do domicílio (urbano/rural) \\
+tipo\_area\_dom & Tipo de área do domicílio \\
+tipo\_domicilio & Tipo de construção do domicílio \\
+tipo\_abastecimento\_de\_agua & Forma de abastecimento de água do domicílio \\
+horas\_trabalhadas\_emp\_princ\_sem & Horas semanais trabalhadas no emprego principal \\
+horas\_trabalhadas\_emp\_sec\_sem & Horas semanais trabalhadas no emprego secundário \\
+horas\_trabalhadas\_outros\_emp\_sem & Horas semanais trabalhadas em outros empregos \\
+procurou\_emprego\_ult\_30\_dias & Indica se procurou emprego nos últimos 30 dias \\
+deseja\_trabalhar & Indica se deseja trabalhar atualmente \\
+tempo\_procura\_emprego\_at1a & Tempo de procura por emprego: até 1 ano \\
+tempo\_procura\_emprego\_1a2a & Tempo de procura por emprego: entre 1 e 2 anos \\
+tempo\_procura\_emprego\_m2a & Tempo de procura por emprego: mais de 2 anos \\
+num\_serie & Série escolar em que o estudante está matriculado \\
+evasao & Indicador de evasão escolar (variável-alvo) \\ \hline
+\end{tabular}
+\end{table}
+
+
+\subsubsection{Resultado do Desempenho dos Modelos}
+A hipótese de que variáveis socioeconômicas não determinam de forma exclusiva o fenômeno da evasão no ensino médio pode ser constatada a partir do desempenho de cada classe com base nas métricas derivadas:
+
+\vspace{0.5cm}
+\begin{table}[htbp]
+\centering
+\label{tab:metricas}
+\begin{tabular}{lcccc}
+\hline
+Classe        & Precisão & Revocação & Índice-F1 & Suporte \\ \hline
+Não-evasão           & 0,86     & 0,77      & 0,81     & 2802    \\
+Evasão           & 0,35     & 0,49      & 0,41     & 708     \\ \hline
+Acurácia      &          &           & 0,72     & 3510    \\
+Média Macro   & 0,60     & 0,63      & 0,61     & 3510    \\
+Média Ponderada & 0,75   & 0,72      & 0,73     & 3510    \\ \hline
+\end{tabular}
+\caption{Métricas de desempenho do classificador Redes Neurais}
+\end{table}
+\vspace{0.5cm}
+
+Com base na tabela, é possível perceber um alto desempenho em relação a Não-evasão, com uma precisão de 0,86, revocação de 0,77 e índice-f1 de 0,81. Contudo a classe que representa efetivamente a evasão tem precisão de 0,35 apenas, isto é, em todos os casos da classe Evasão (verdadeiros ou falsos), o algoritmo de Redes Neurais teve êxito em predizer corretamente apenas 35\% deles, e com falsos positivos (revocação) teve êxito na previsão de apenas 49\% dos casos. 
+
+O algoritmo de Regressão Logística, apresentou desempenho semelhante para as classes:
+
+\vspace{0.5cm}
+\begin{table}[htbp]
+\centering
+\label{tab:metricas}
+\begin{tabular}{lcccc}
+\hline
+Classe        & Precisão & Revocação & F1-Score & Suporte \\ \hline
+Não-evasão           & 0,87     & 0,73      & 0,79     & 2802    \\
+Evasão           & 0,35     & 0,57      & 0,43     & 708     \\ \hline
+Acurácia      &          &           & 0,70     & 3510    \\
+Média Macro   & 0,61     & 0,65      & 0,61     & 3510    \\
+Média Ponderada & 0,76   & 0,70      & 0,72     & 3510    \\ \hline
+\end{tabular}
+\caption{Métricas de desempenho do classificador Regressão Logística}
+\end{table}
+\vspace{0.5cm}
+
+O algoritmo de Floresta Aleatória se mostrou semelhante em relação aos outros modelos, com a ressalva de que apresentou desempenho ligeiramente pior em ambas as classes.
+
+\vspace{0.5cm}
+\begin{table}[htbp]
+\centering
+\label{tab:metricas2}
+\begin{tabular}{lcccc}
+\hline
+Classe        & Precisão & Revocação & F1-Score & Suporte \\ \hline
+Não-evasão           & 0,84     & 0,65      & 0,73     & 2802    \\
+Evasão           & 0,27     & 0,53      & 0,36     & 708     \\ \hline
+Acurácia      &          &           & 0,62     & 3510    \\
+Média Macro   & 0,56     & 0,59      & 0,55     & 3510    \\
+Média Ponderada & 0,73   & 0,62      & 0,66     & 3510    \\ \hline
+\end{tabular}
+\caption{Métricas de desempenho do classificador Floresta Aleatória}
+\end{table}
+\vspace{0.5cm}
+
+Baseado nas tabelas de métricas dos diferentes modelos, apesar de evidenciado um baixo desempenho na classe de evasão, o algoritmo de Redes Neurais apresentou a maior acurácia global, contudo o modelo de Floresta Aleatória se mostrou o melhor na predição da classe evasão, com uma revocação e um índice-F1 superiores aos provenientes do modelo de Redes Neurais.
+
+A natureza desbalanceada da base de dados bruta também pode ser um fator que interfere na capacidade do modelo de generalizar para ambas as classes, uma vez que para a classe de Evasão foi utilizado o método de sobreamostragem com a criação de registros sintéticos a partir de semelhança com k-vizinhos ($k=2$ neste trabalho)
+
+\vspace{0.5cm}
+\begin{table}[htbp]
+\centering
+\label{tab:proporcao}
+\begin{tabular}{lc}
+\hline
+Classe & Proporção \\ \hline
+Não-evasão  & 0,798 \\ 
+Evasão      & 0,202 \\ \hline
+\end{tabular}
+\caption{Proporção das classes na base de dados}
+\end{table}
+\vspace{0.5cm}
+
+Deste modo, pelo fato de aprender a partir de dados sintéticos, os diferentes modelos podem ter dificuldade de generalizar com dados reais, o que é verificado nos testes.
+
+
+\pagebreak
 \section{Cronograma}
 O cronograma do projeto foi organizado de forma a contemplar as fases de pesquisa e os marcos de entrega definidos pela disciplina.
 \begin{table}[h]
