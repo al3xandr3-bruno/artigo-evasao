@@ -194,7 +194,7 @@ Apoiado em tais conjuntos de dados, a metodologia deste artigo consiste no proce
 
 Conjuntos de dados provenientes do INEP foram extraídos do site de dados abertos do instituto na aba de "Indicadores Educacionais" e "Microdados". Bases de dados como a taxa de repetência e de evasão, taxa de distorção idade-série, índice do esforço docente, número médio de alunos por turma, nível de adequação do docente e microdados da educação básica (todos a nível municipal e do ano de 2017) foram coletados, extraindo apenas ocorrências do ensino médio, em formato de planilhas xlsx ou arquivo com valores separados por vírgula (\textit{CSV}) e lidos posteriormente em Python com a biblioteca de manipulação de dados Pandas.
 
-Em sequência, foi realizada a junção das bases supracitadas por meio das colunas, renomeadas a partir da amostra original, UF (sigla da unidade federativa), COD\_MUNICIPIO (código do município), LOCALIZACAO (urbana ou rural) E DEP\_ADMINISTRATIVA (instituição privada ou pública), consideradas chave primária composta do conjunto de dados. Deste modo, foi construído uma única estrutura de dados tabular (\textit{dataframe}) contendo as variáveis institucionais relevantes à manifestação da evasão na fase final da educação básica (BANAAG ET AL., 2024; SHIRASU \& ARRAES, 2018; SOUSA ET AL., 2025). 
+Em sequência, foi realizada a junção das bases supracitadas por meio das colunas, renomeadas a partir da amostra original, UF (sigla da unidade federativa), COD\_MUNICIPIO (código do município), LOCALIZACAO (urbana ou rural) E DEP\_ADMINISTRATIVA (instituição privada ou pública), consideradas chave primária composta do conjunto de dados. Deste modo, foi construído uma única estrutura de dados tabular (\textit{dataframe}) contendo as variáveis institucionais relevantes à manifestação da evasão na fase final da educação básica fundamento na literatura da evasão escolar no Brasil e no mundo (BANAAG ET AL., 2024; SHIRASU \& ARRAES, 2018; SOUSA ET AL., 2025). 
 
 Para modelagem estatística ulterior isolada também foi coletada uma amostra a nível escolar do Sistema de Avaliação da Educação Básica (SAEB), com variáveis sociais e acadêmicas no ano de 2017, também oriunda dos microdados do INEP.
 
@@ -275,40 +275,38 @@ De forma que $y_i$ é o valor real, $\hat{y_i}$ é valor predito pelo modelo e $
 
 Com base nos dados coletados a partir dos dados abertos do INEP e na regressão linear múltipla resumida na tabela 1:
 
-\vspace{0.5cm}
 \begin{table}[htbp]
 \centering
-\caption{Resultados da regressão OLS para a variável dependente \texttt{TX\_EV\_TOTAL}}
+\caption{Resultados da regressão linear MQO para a variável dependente \texttt{TX\_EV\_TOTAL}}
 \label{tab:regressao_tx_ev_sem_ic}
 \begin{tabular}{lrrrr}
 \hline
 \textbf{Variável} & \textbf{Coef.} & \textbf{Erro Padrão} & \textbf{t} & \textbf{P$>$|t|} \\
 \hline
-const & -0.0029 & 0.003 & -0.898 & 0.369 \\
-DEP\_ADMINISTRATIVA\_Pública & 0.0273 & 0.002 & 16.393 & 0.000 \\
-Grupo 2 & 0.0572 & 0.009 & 6.338 & 0.000 \\
-Grupo 3 & -0.0115 & 0.004 & -3.189 & 0.001 \\
-Grupo 4 & -0.0168 & 0.006 & -2.989 & 0.003 \\
-Grupo 5 & 0.0049 & 0.005 & 1.079 & 0.281 \\
-IN\_BIBLIOTECA & 0.0016 & 0.002 & 0.694 & 0.488 \\
-IN\_COZINHA & -0.0031 & 0.003 & -1.143 & 0.253 \\
-IN\_INTERNET & 0.0178 & 0.003 & 6.740 & 0.000 \\
-IN\_LABORATORIO\_CIENCIAS & -0.0052 & 0.004 & -1.253 & 0.210 \\
-IN\_LABORATORIO\_INFORMATICA & 0.0011 & 0.003 & 0.413 & 0.680 \\
-IN\_QUADRA\_ESPORTES & 0.0025 & 0.003 & 0.881 & 0.378 \\
-NUM\_ALUNO\_TURMA\_TOTAL & 0.0000 & 0.000 & 0.642 & 0.521 \\
-TX\_DI\_TOTAL & 0.1853 & 0.004 & 41.654 & 0.000 \\
-TX\_IED\_N5 & 0.0070 & 0.004 & 1.767 & 0.077 \\
-TX\_IED\_N6 & -0.0112 & 0.006 & -1.939 & 0.053 \\
-TX\_REP\_TOTAL & 0.0528 & 0.009 & 5.622 & 0.000 \\
+const & -0,0029 & 0,003 & -0,898 & 0,369 \\
+DEP\_ADMINISTRATIVA\_Pública & 0,0273 & 0,002 & 16,393 & 0,000 \\
+Grupo 2 & 0,0572 & 0,009 & 6,338 & 0,000 \\
+Grupo 3 & -0,0115 & 0,004 & -3,189 & 0,001 \\
+Grupo 4 & -0,0168 & 0,006 & -2,989 & 0,003 \\
+Grupo 5 & 0,0049 & 0,005 & 1,079 & 0,281 \\
+IN\_BIBLIOTECA & 0,0016 & 0,002 & 0,694 & 0,488 \\
+IN\_COZINHA & -0,0031 & 0,003 & -1,143 & 0,253 \\
+IN\_INTERNET & 0,0178 & 0,003 & 6,740 & 0,000 \\
+IN\_LABORATORIO\_CIENCIAS & -0,0052 & 0,004 & -1,253 & 0,210 \\
+IN\_LABORATORIO\_INFORMATICA & 0,0011 & 0,003 & 0,413 & 0,680 \\
+IN\_QUADRA\_ESPORTES & 0,0025 & 0,003 & 0,881 & 0,378 \\
+NUM\_ALUNO\_TURMA\_TOTAL & 0,0000 & 0,000 & 0,642 & 0,521 \\
+TX\_DI\_TOTAL & 0,1853 & 0,004 & 41,654 & 0,000 \\
+TX\_IED\_N5 & 0,0070 & 0,004 & 1,767 & 0,077 \\
+TX\_IED\_N6 & -0,0112 & 0,006 & -1,939 & 0,053 \\
+TX\_REP\_TOTAL & 0,0528 & 0,009 & 5,622 & 0,000 \\
 \hline
-\multicolumn{5}{l}{\footnotesize $R^2 = 0.514$, Estatística-F = 455.7, Prob(F) = 0.00, $E_{qm}=0.0026$} \\
+\multicolumn{5}{l}{\footnotesize $R^2 = 0,514$, Estatística-F = 455,7, Prob(F) = 0,00, $E_{qm}=0,0026$} \\
 \multicolumn{5}{l}{\footnotesize Observações = 6915} \\
 \end{tabular}
 \end{table}
-\vspace{0.5cm}
 
-
+O modelo tem erro quadrático médio $E_{qm}=0,0026$ o que indica que erra cerca de 5 pontos percentuais para fins de predição. Ao mesmo tempo, apresenta um $R^2=0,514$, explicando $51\%$ da variação dos dados, e uma $Prob(F)=0$, que indica que o modelo é significativo para explicar a variável dependente.
 
 Os resultados mostram que, ao manter as outras variáveis constantes, quando TX\_DI\_TOTAL, a taxa de defasagem idade-série, aumenta em 1 ponto percentual, a taxa de evasão total tende a aumentar em 0,1853 pontos percentuais. O coeficiente é estatisticamente significativo com $p<0.001$ e se mostra como o coeficiente mais alto que se relaciona com a variável dependente TX\_EV\_TOTAL.
 
@@ -318,46 +316,124 @@ Os resultados também sugerem que, com $N=6915$ observações, as variáveis de 
 
 Em resumo, as variáveis Grupo 2, TX\_DI\_TOTAL, TX\_REP\_TOTAL, são evidenciadas como as mais relevantes no presente estudo. 
 
-Baseado, em particular, na taxa de repetência, decidiu-se utilizar a base do Sistema de Avaliação do Educação básica (SAEB) do INEP, para descobrir quais variáveis mais impactam na taxa de repetência e, de forma implícita, na taxa de defasagem idade-série.
+com base, em particular, na taxa de repetência, decidiu-se utilizar a base do Sistema de Avaliação do Educação básica (SAEB) do INEP, para investigar quais variáveis mais impactam na taxa de repetência e, de forma implícita, na taxa de defasagem idade-série, dado que a repetência leva à defasagem em relação à série cursada.
 
 Com base na tabela 2, que resume os resultados da regressão linear múltipla da base de dados do SAEB:
 
-\vspace{0.5cm}
 \begin{table}[htbp]
 \centering
-\caption{Resultados da regressão OLS para a variável dependente \texttt{TX\_RESP\_Q041}}
+\caption{Resultados da regressão linear MQO para a variável dependente \texttt{TX\_RESP\_Q041}}
 \label{tab:regressao_tx_resp_q041}
+\small
 \begin{tabular}{lrrrrr}
 \hline
-\textbf{Variável} & \textbf{Coef.} & \textbf{Erro Padrão} & \textbf{t} & \textbf{P$>$|t|} & \textbf{[0.025, 0.975]} \\
+\textbf{Variável} & \textbf{Coeficiente} & \textbf{Erro padrão} & \textbf{t} & \textbf{p$>$|t|} & \textbf{[0,025 ; 0,975]} \\
 \hline
-const & 0.2779 & 0.011 & 25.240 & 0.000 & 0.256 -- 0.299 \\
-PROFICIENCIA\_MT & -0.1585 & 0.003 & -62.430 & 0.000 & -0.164 -- -0.154 \\
-TX\_RESP\_Q001 & 0.0852 & 0.010 & 8.284 & 0.000 & 0.065 -- 0.105 \\
-TX\_RESP\_Q002\_Indígena & 0.1252 & 0.018 & 6.794 & 0.000 & 0.089 -- 0.161 \\
-TX\_RESP\_Q002\_Parda & 0.0514 & 0.007 & 7.256 & 0.000 & 0.037 -- 0.065 \\
-TX\_RESP\_Q002\_Preta & 0.1439 & 0.012 & 12.093 & 0.000 & 0.121 -- 0.167 \\
-TX\_RESP\_Q038 & 0.0639 & 0.007 & 8.602 & 0.000 & 0.049 -- 0.078 \\
-TX\_RESP\_Q044 & -0.1061 & 0.010 & -10.970 & 0.000 & -0.125 -- -0.087 \\
-TX\_RESP\_Q052 & 0.0914 & 0.009 & 10.613 & 0.000 & 0.074 -- 0.108 \\
+const & 0,6980 & 0,039 & 17,716 & 0,000 & [0,621 ; 0,775] \\
+PROFICIENCIA\_MT & -0,1567 & 0,003 & -61,733 & 0,000 & [-0,162 ; -0,152] \\
+TX\_RESP\_Q001 & 0,0841 & 0,010 & 8,203 & 0,000 & [0,064 ; 0,104] \\
+TX\_RESP\_Q002\_Indígena & 0,1083 & 0,018 & 5,879 & 0,000 & [0,072 ; 0,144] \\
+TX\_RESP\_Q002\_Parda & 0,0474 & 0,007 & 6,716 & 0,000 & [0,034 ; 0,061] \\
+TX\_RESP\_Q002\_Preta & 0,1422 & 0,012 & 11,985 & 0,000 & [0,119 ; 0,165] \\
+TX\_RESP\_Q027 & -0,4332 & 0,039 & -11,121 & 0,000 & [-0,510 ; -0,357] \\
+TX\_RESP\_Q038 & 0,0595 & 0,007 & 8,035 & 0,000 & [0,045 ; 0,074] \\
+TX\_RESP\_Q044 & -0,1006 & 0,010 & -10,433 & 0,000 & [-0,120 ; -0,082] \\
+TX\_RESP\_Q052 & 0,0965 & 0,009 & 11,240 & 0,000 & [0,080 ; 0,113] \\
 \hline
-\multicolumn{6}{l}{\footnotesize $R^2 = 0.268$, Estatística-F = 861.3, Prob(F) = 0.00} \\
-\multicolumn{6}{l}{\footnotesize Observações = 18846} \\
+\multicolumn{6}{l}{\footnotesize $R^2 = 0,272$, Estatística F = 782,4, Prob(F) = 0,00, $E_{qm}=0,0299$} \\
+\multicolumn{6}{l}{\footnotesize Número de observações = 18846} \\
 \end{tabular}
 \end{table}
-\vspace{0.5cm}
 
-Pode-se observar que das variáveis coletadas todas são significativas com $p<0,001$, e se destacam as variáveis PROFICIENCIA\_MT ($\beta_i=-0,1585$), que mede a proficiência de matemática média da instituição; TX\_RESP\_Q002\_Preta ($\beta_i=0,1439$), que refere-se à taxa de alunos autodeclarados pretos na instituição de ensino; TX\_RESP\_Q002\_Indígena ($\beta_i=0,1252$), que faz juz à taxa de alunos autodeclarados indígenas. Tais variáveis possuem os maiores coeficientes do conjunto de regressores. 
+O modelo se mostra estatisticamente significativo dada $Prob(F)=0$, e explica 27,2\% da variação dos dados coletados.
 
-De acordo com os resultados, o aumento de 1 ponto na proficiência em matemática faz com que a taxa de repetência tenda a diminuir em 0,1585 pontos percentuais.
+Pode-se observar que das variáveis coletadas todas são significativas com $p<0,001$, e se destacam as variáveis TX\_RESP\_Q027, taxa de alunos incentivados pelos pais aos estudos, com um alto coeficiente de $\beta_i=-0,4332$, PROFICIENCIA\_MT ($\beta_i=-0,1567$), que mede a proficiência de matemática média da instituição; TX\_RESP\_Q002\_Preta ($\beta_i=0,1422$), que refere-se à taxa de alunos autodeclarados pretos na instituição de ensino; TX\_RESP\_Q002\_Indígena ($\beta_i=0,1083$), que faz jus à taxa de alunos autodeclarados indígenas. Tais variáveis possuem os maiores coeficientes do conjunto de regressores. 
 
-Por outro lado, o aumento de 1 ponto percentual no grupo de alunos autodeclarados pretos nas instituições tende a elevar a taxa de repetência em 0,1439. E o mesmo pode ser observado para o grupo de alunos indígenas, cujo aumento de 1 ponto percentual implica em $+0.1252$ pontos percentuais na taxa de repetência.
+De acordo com os resultados, o aumento de 1 ponto percentual na taxa de alunos incentivados ao estudo está associado à diminuição de 0,4332 pontos percentuais na taxa de repetência. De modo semelhante, o aumento de 1 ponto percentual na proficiência em matemática tem associação com a diminuição em 0,1567 pontos percentuais da variável dependente.
 
-A variável TX\_RESP\_Q041, que faz referência à taxa de alunos que gostam de estudar língua portuguesa, também mostra que com o aumento de 1 ponto percentual, a taxa de repetência tende a $-0,1061$ pontos percentuais.
+Por outro lado, o aumento de 1 ponto percentual no grupo de alunos autodeclarados pretos nas instituições tende a elevar a taxa de repetência em 0,1422. E o mesmo pode ser observado para o grupo de alunos indígenas, cujo aumento de 1 ponto percentual implica em $+0.1083$ pontos percentuais na taxa de repetência. Ademais, o aumento de 1 ponto percentual na taxa de alunos que trabalham (TX\_RESP\_Q038) está associado a $+0,0595$ pontos percentuais na taxa de repetência.
 
-A correlação entre evasão, repetência e defasagem idade-série é corroborada pela cenário do ensino médio brasileiro. De acordo com dados da PNAD, pesquisa nacional realizada pelo IBGE, a taxa de evasão entre pretos em idade escolar adequada ao ensino secundário é de 22,87\%, entre pardos 22,26\%, e entre indígenas equivalente a 25,64\%, com base na lógica de cálculo de evasão deste trabalho. Brancos apresentam o menor número com cerca de 16,16\%. Na repetência, o grupo de pretos e pardos é cerca de 2 a 4 pontos percentuais acima do percentual de brancos que se mantêm na mesma série em todo o Brasil. Ainda segundo a plataforma inepdata, a taxa de jovens pretos e pardos que estão defasados no quesito idade-série, chega a ser de 10 pontos percentuais em comparação com jovens brancos.
+A variável TX\_RESP\_Q044, que faz referência à taxa de alunos que gostam de estudar língua portuguesa, também mostra que com o aumento de 1 ponto percentual, a taxa de repetência tende a $-0,1006$ pontos percentuais. E curiosamente, o aumento de 1 ponto percentual na taxa de alunos que demonstram interesse por matemática (TX\_RESP\_Q052) está associado a um aumento de aproximandamente 0,09 pontos percentuais na taxa de repetência.
 
-A evasão e dificuldade escolar de tais grupos fragilizados também são refletidos em sua situação socioeconômica e o inverso também é verdadeiro. Jovens em idade escolar pretos apresentam renda média mensal de 790 reais, jovens pardos 780 reais, jovens indígenas 727 reais, e jovens brancos 1230 reais em média, segundo dados da PNAD e no contexto desta pesquisa.
+A correlação entre evasão, repetência e defasagem idade-série é corroborada pela cenário do ensino médio brasileiro. De acordo com dados da PNAD, pesquisa nacional realizada pelo IBGE, coletados nesta pesquisa para análise complementar, a taxa de evasão entre pretos em idade escolar adequada ao ensino secundário é de 22,87\%, entre pardos 22,26\%, e entre indígenas equivalente a 25,64\% (com base na lógica de cálculo de evasão deste trabalho). Brancos apresentam o menor número com cerca de 16,16\%. 
+
+No índice de repetência, o grupo de pretos e pardos é cerca de 2 a 4 pontos percentuais acima do percentual de brancos que se mantêm na mesma série em todo o Brasil, de acordo com dados do INEP. Ainda segundo a plataforma inepdata, a taxa de jovens pretos e pardos que estão defasados no quesito idade-série, chega a ser de 10 pontos percentuais em comparação com jovens brancos.
+
+A evasão e dificuldade escolar de tais grupos fragilizados também são refletidos em suas condições socioeconômicas e o inverso também é verdadeiro. Jovens pretos em idade escolar que já estão fora do ensino médio devido à conclusão ou evasão apresentam renda média mensal de 790 reais, jovens pardos 780 reais, jovens indígenas 727 reais, e jovens brancos 1230 reais em média, segundo dados da PNAD no contexto desta pesquisa.
+
+Ante o exposto, os resultados parciais reforçam que, em alguma medida, fatores de infraestutura e institucionais não são signficativos para explicar a evasão e o índice de repetência tal como fatores acadêmicos e sociais, como a raça e o incentivo doméstico aos estudos e manutenção de presença na instituição de ensino.
+
+\subsection{Descrição de Variáveis Selecionadas}
+Para analisar estatisticamente a evasão e a repetência, foram selecionadas as seguintes variáveis descritas nas tabelas 3 (regressão da taxa de evasão como variável dependente) e 4 (regressão com taxa de repetência como variável dependente):
+
+\begin{table}[htbp]
+\centering
+\caption{Variáveis explicativas do modelo de regressão da taxa de evasão total (\texttt{TX\_EV\_TOTAL})}
+\label{tab:variaveis_tx_ev}
+\small
+\begin{tabular}{lp{9cm}}
+\hline
+\textbf{Variável} & \textbf{Descrição} \\
+\hline
+DEP\_ADMINISTRATIVA\_Pública & Escola pública (1 = sim, 0 = não) \\
+Grupo 2 & Docentes com bacharelado na mesma área (Grupo 2) \\
+Grupo 3 & Docentes com licenciatura ou bacharelado em área diferente (Grupo 3) \\
+Grupo 4 & Docentes com formação superior não enquadrada (Grupo 4) \\
+Grupo 5 & Docentes sem formação superior (Grupo 5) \\
+IN\_BIBLIOTECA & Percentual de escolas do município com biblioteca \\
+IN\_COZINHA & Percentual de escolas do município com cozinha \\
+IN\_INTERNET & Percentual de escolas do município com acesso à Internet \\
+IN\_LABORATORIO\_CIENCIAS & Percentual de escolas do município com laboratório de ciências \\
+IN\_LABORATORIO\_INFORMATICA & Percentual de escolas do município com laboratório de informática \\
+IN\_QUADRA\_ESPORTES & Percentual de escolas do município com quadra de esportes \\
+NUM\_ALUNO\_TURMA\_TOTAL & Número médio de alunos por turma \\
+TX\_DI\_TOTAL & Taxa de distorção idade-série \\
+TX\_IED\_N5 & Percentual de docentes nível 5 do Índice de Esforço Docente \\
+TX\_IED\_N6 & Percentual de docentes nível 6 do Índice de Esforço Docente \\
+TX\_REP\_TOTAL & Taxa total de reprovação \\
+\hline
+\end{tabular}
+\\[2mm]
+\footnotesize Fonte: Elaborado pelo autor a partir do Censo Escolar e do INEP.
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Variáveis da regressão da taxa de repetência (\texttt{TX\_RESP\_Q041})}
+\label{tab:vars_tx_resp_q041}
+\small
+\begin{tabular}{lp{10cm}}
+\hline
+\textbf{Variável} & \textbf{Descrição} \\
+\hline
+PROFICIENCIA\_MT & Proficiência média em Matemática da escola \\
+TX\_RESP\_Q001 & Percentual de alunos do sexo masculino \\
+TX\_RESP\_Q027 & Percentual de alunos que são incentivados pelos pais ao estudo \\
+TX\_RESP\_Q002\_Indígena & Percentual de alunos autodeclarados indígenas \\
+TX\_RESP\_Q002\_Parda & Percentual de alunos autodeclarados pardos \\
+TX\_RESP\_Q002\_Preta & Percentual de alunos autodeclarados pretos \\
+TX\_RESP\_Q038 & Percentual de alunos que trabalham fora de casa atualmente \\
+TX\_RESP\_Q044 & Percentual de alunos que gostam de estudar Língua Portuguesa \\
+TX\_RESP\_Q052 & Percentual de alunos que gostam de estudar Matemática \\
+\hline
+\end{tabular}
+\\[2mm]
+\footnotesize\centering Fonte: Elaborado pelo autor a partir da base SAEB do INEP.
+\end{table}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -371,6 +447,7 @@ A evasão e dificuldade escolar de tais grupos fragilizados também são refleti
 %https://sol.sbc.org.br/journals/index.php/rbie/libraryFiles/downloadPublic/71
 %====================================================================
 
+\pagebreak
 \pagebreak
 \nocite{*}
 \printbibliography
