@@ -28,13 +28,13 @@
 \addbibresource{references.bib}
 
 % Here goes the paper main title
-\title{Aprendizado de Máquina Aplicado à Predição da Evasão no Ensino Médio Brasileiro: Uma Abordagem Baseada em Variáveis Socioeconômicas}
+\title{Modelagem Estatística da Evasão no Ensino Médio Brasileiro: Uma Investigação Baseada em Variáveis Institucionais e Socioeconômicas}
 
 % If the manuscript is written in English, then this element must be removed.
-\titleinenglish{Machine Learning Applied to Predicting Dropout Rates in Brazilian High Schools: An Approach Based on Socioeconomic Variables}
+\titleinenglish{Statistical Modeling of Dropout Rates in Brazilian High Schools: An Investigation Based on Institutional and Socioeconomic Variables}
 
 % If the manuscript is written in English, then this element must be removed.
-\titleinspanish{Aprendizaje automático aplicado a la predicción de la deserción escolar en la educación secundaria brasileña: un enfoque basado en variables socioeconómicas}
+\titleinspanish{Modelización estadística de la deserción escolar en la enseñanza secundaria brasileña: una investigación basada en variables institucionales y socioeconómicas}
 
 % Here goes the paper author information (repeat for two or more authors)
 \author{%
@@ -173,250 +173,399 @@ No campo educacional, a PNAD se destaca por permitir a investigação de variáv
 Dessa forma, os fundamentos apresentados evidenciam a relevância de associar teorias sobre evasão escolar com métodos de mineração de dados e aprendizado de máquina, bem como o uso de bases de dados socioeconômicas amplas como a PNAD. Essa integração permite analisar grandes quantidades de dados e construir modelos preditivos capazes de apoiar políticas públicas e institucionais na área da Educação, contribuindo para a redução da evasão escolar e para a promoção da equidade educacional.
 
 \section{Trabalhos Relacionados}
-Diversos estudos buscaram modelar de forma probabilística ou com técnicas de aprendizado de máquina o fenômeno da evasão escolar no Brasil. Como exemplo, destacam dois trabalhos acerca da evasão no âmbito acadêmico.
+Diversos estudos buscaram modelar de forma probabilística ou com técnicas de aprendizado de
+máquina o fenômeno da evasão escolar no Brasil. Como exemplo, destacam dois trabalhos acerca
+da evasão no âmbito acadêmico.
 
-Em Mello et al. (2023) foram realizadas análises exploratórias acerca das características consideradas (variáveis independentes) como coeficiente de rendimento, tipo de escola de origem, percentual de frequência, nível de ensino, cor ou raça, modalidade de curso, sexo, renda familiar bruta, situação acadêmica, dentre outros aspectos, de alunos do Instituto Federal do Pernambuco (IFPE). Com a análise constatou-se que, como alguns exemplos, alguns cursos e períodos apresentam evasão maior que outros; o percentual de evasão do sexo masculino era maior em comparação ao feminino. Contudo, não houve análise acerca da renda per capita dos indivíduos, que é reiterada por autores que exploraram o tema de forma qualitativa, como Silva (2013) e Ferreira \& Oliveira (2020). Os autores utilizaram como técnica de aprendizado de máquina para a previsão de evasão XGBoost, Florestas Aleatórias e Árvores de decisão, para predizer a situação de matrícula do estudante conforme a base de dados disponível, e obtiveram, respectivamente, 82\%, 83\% e 80\% de acurácia. Esses resultados sugerem que tais modelos apresentam ótimo desempenho preditivo para estimar as probabilidades de evasão escolar, em concordância com o objetivo deste trabalho.
+Em Mello et al. (2023) foram realizadas análises exploratórias acerca das características
+consideradas (variáveis independentes) como coeficiente de rendimento, tipo de escola de origem,
+percentual de frequência, nível de ensino, cor ou raça, modalidade de curso, sexo, renda familiar
+bruta, situação acadêmica, dentre outros aspectos, de alunos do Instituto Federal do Pernambuco
+(IFPE). Com a análise constatou-se que, como alguns exemplos, alguns cursos e períodos apresentam
+evasão maior que outros; o percentual de evasão do sexo masculino era maior em comparação ao
+feminino. Contudo, não houve análise acerca da renda per capita dos indivíduos, que é reiterada
+por autores que exploraram o tema de forma qualitativa, como Silva (2013) e Ferreira \& Oliveira
+(2020). Os autores utilizaram como técnica de aprendizado de máquina para a previsão de evasão
+XGBoost, Florestas Aleatórias e Árvores de decisão, para predizer a situação de matrícula do
+estudante conforme a base de dados disponível, e obtiveram, respectivamente, 82\%, 83\% e 80\%
+de acurácia. Esses resultados sugerem que tais modelos apresentam ótimo desempenho preditivo
+para estimar as probabilidades de evasão escolar, em concordância com o objetivo deste trabalho.
 
-Por outro lado, o trabalho de Teodoro e Kappel (2020) também segue a mesma lógica do trabalho supracitado, com a ressalva de que tem ênfase em atributos diferentes e apresenta uma análise exploratória mais robusta acerca das características correlacionadas à evasão. Teodoro e Kappel optaram por desenvolver modelos preditivos baseados em Naive Bayes, KNN, Árvores de Decisão, Florestas Aleatórias de Classificação e Redes Neurais, com acurácias de 60\%, 75\%, 77\%, 79\% e 78\%, respectivamente, no geral. A apuração mostra que, em termos de acurácia, Florestas Aleatórias e Redes Neurais são as técnicas mais adequadas para estimação de evasão. Porém, assim como o estudo anterior, tem como principal objeto de estudo a evasão no ensino superior.  
+Por outro lado, o trabalho de Teodoro e Kappel (2020) também segue a mesma lógica do
+trabalho supracitado, com a ressalva de que tem ênfase em atributos diferentes e apresenta uma
+análise exploratória mais robusta acerca das características correlacionadas à evasão. Teodoro e
+Kappel optaram por desenvolver modelos preditivos baseados em Naive Bayes, KNN, Árvores de
+Decisão, Florestas Aleatórias de Classificação e Redes Neurais, com acurácias de 60\%, 75\%,
+77\%, 79\% e 78\%, respectivamente, no geral. A apuração mostra que, em termos de acurácia,
+Florestas Aleatórias e Redes Neurais são as técnicas mais adequadas para estimação de evasão.
+Porém, assim como o estudo anterior, tem como principal objeto de estudo a evasão no ensino
+superior.
 
-Nota-se que os estudos revisados não abordam a evasão do ensino médio nas escolas públicas. Há escassez de análise e implementação de variáveis acerca dos fatores socioeconômicos como o trabalho, a renda e a fome. Nesse sentido, o presente artigo pretende examinar e preencher estas lacunas, ao analisar e implementar atributos variados e propor modelos que expliquem de modo probabilístico o tópico.
+Apesar de trabalhos aplicados ao ensino médio/técnico (por exemplo, Barbosa et al., 2023),
+observa-se que a literatura nacional permanece concentrada em bases institucionais e recortes
+locais. Em âmbito brasileiro, ainda há escassez de investigações que integrem variáveis
+socioeconômicas de abrangência nacional — como renda per capita, trabalho precoce e insegurança
+alimentar — a modelos preditivos para o ensino médio nas redes pública e privada. Este artigo
+procura preencher essa lacuna ao combinar PNAD e aprendizado de máquina para estimar
+probabilidades de risco de evasão.
+
+Além das características individuais e domiciliares capturadas pela PNAD, a literatura indica que
+fatores estruturais ao nível da escola também se associam ao risco de evasão no ensino médio.
+Evidências reportam relações entre escolas de maior porte, turmas numerosas e razões aluno-
+professor elevadas com maior probabilidade de abandono, sugerindo que variáveis de contexto
+educacional podem complementar os atributos socioeconômicos no modelo preditivo. Em um
+desenho nacional, tais elementos podem ser operacionalizados por indicadores derivados de bases
+administrativas educacionais, agregados por unidade da federação ou município e vinculados aos
+registros individuais via chaves geográficas.
+
+Outro conjunto de determinantes envolve práticas e fluxos escolares. A literatura brasileira
+relaciona a repetência/atraso escolar, a disponibilidade de vagas/turnos e a qualificação docente a
+maiores taxas de abandono, o que respalda a inclusão de medidas como a taxa de reprovação no
+ensino médio e a proporção de docentes com formação adequada como variáveis de contexto. Esses
+indicadores, agregados por recortes territoriais, permitem capturar diferenças institucionais
+relevantes sem exigir a identificação da escola no nível do indivíduo, preservando a modelagem em
+escala nacional.
+
+Condições de infraestrutura educacional — como conectividade, laboratórios e manutenção
+predial — também são associadas a níveis de engajamento estudantil e, por consequência, à evasão.
+Uma estratégia pragmática consiste em sintetizar um índice de infraestrutura (via combinação
+simples de itens ou redução de dimensionalidade) por município ou unidade da federação e
+integrá-lo como variável de contexto ao lado dos determinantes socioeconômicos da PNAD. Esse
+acoplamento amplia a cobertura explicativa do modelo ao articular condições de vida e ambiente
+escolar.
+
+Em termos de interpretação e uso, trabalhos aplicados destacam o papel de técnicas de *ensemble*
+e análises de *feature importance* para orientar intervenções pedagógicas e de gestão, ao mesmo
+tempo em que estudos qualitativos em ensino médio ajudam a elucidar por que variáveis como renda
+per capita, trabalho precoce e insegurança alimentar emergem como relevantes. Essa combinação de
+previsibilidade e interpretabilidade é coerente com o objetivo de apoiar decisões em escala
+nacional, mantendo atenção às diferenças regionais e às especificidades das redes.
+
+Em linha com a ênfase em determinantes contextuais, evidências regionais analisando o ensino
+médio público do Ceará, com modelos logísticos multiníveis, exploram simultaneamente
+características dos estudantes e das escolas. Os resultados destacam a contribuição de fatores como
+desinteresse declarado, histórico de repetência e defasagem idade-série para o aumento do risco de
+abandono, enquanto a participação em programas de transferência de renda apresenta associação
+negativa com a evasão. Esse tipo de achado complementa o enfoque nacional ao indicar que
+variáveis de fluxo escolar e proteção social ajudam a explicar variações do risco para além das
+condições domiciliares.
+
+Já em aplicações baseadas em dados administrativos, há estudo recente com a rede estadual
+paulista que estrutura um sistema de alerta precoce com classificadores de aprendizado de máquina
+(por exemplo, florestas, *gradient boosting* e regressão logística) a partir de histórico escolar e
+registros de frequência. Além de reforçar o bom desempenho de métodos de *ensemble*, o trabalho
+relata ganhos práticos ao combinar importância de atributos com regras de priorização de
+atendimento, o que dialoga com a proposta deste artigo de aliar previsibilidade e utilidade para a
+gestão em escala nacional.
+
+Questões metodológicas recorrentes. A literatura destaca desafios que também norteiam nossa
+abordagem: (i) desbalanceamento de classes — a evasão costuma ser minoria; (ii) métricas
+alinhadas ao objetivo de intervenção — acurácia isolada pode mascarar falsos negativos; (iii)
+explicabilidade — necessária para a adoção por equipes pedagógicas; e (iv) transferência temporal
+— modelos treinados em um período podem degradar com mudanças de coorte/currículo. Em linha
+com essas recomendações, adotamos métricas como F1-score, AUC-ROC e, quando pertinente,
+AUC-PR, priorizando sensibilidade/*recall* na classe de risco; e técnicas de reamostragem
+(subamostragem, conforme nossa Metodologia) quando cabível. A análise de *feature importance*
+é tratada como insumo interpretável para orientar ações, em consonância com práticas relatadas em
+estudos aplicados (Barbosa et al., 2023; Teodoro \& Kappel, 2020).
+
+Implicações para variáveis e desenho de intervenções. Estudos qualitativos ajudam a explicar por
+que determinadas variáveis aparecem entre as mais relevantes nos modelos. Fatores como renda,
+trabalho e alimentação são recorrentemente associados à decisão de abandonar a escola no ensino
+médio brasileiro. Ao incorporar essas dimensões — operacionalizadas aqui via PNAD — produz-se
+um modelo que não apenas prediz, mas também dialoga com mecanismos plausíveis de evasão
+descritos na literatura (Silva, 2013; Ferreira \& Oliveira, 2020), o que favorece o desenho de
+intervenções focalizadas (auxílio financeiro, merenda/reforço de programas de alimentação,
+mediação de estágio/trabalho protegido, acompanhamento social).
+
+Considerações de adoção e equidade. A transferência dos resultados para a prática escolar exige
+atenção à calibração de probabilidades (para que o limiar de alerta reflita custos/benefícios de
+intervenção) e à equidade (evitar que o modelo reforce desigualdades ao superidentificar grupos
+específicos). O uso de métricas sensíveis à classe minoritária (Strauss; Villas Bôas Júnior;
+Ferreira, 2022) e a verificação de viés por subgrupos (sexo, raça/cor) ajudam a balizar decisões
+responsáveis. Tais cuidados metodológicos aumentam a aceitabilidade do sistema por gestores e
+docentes e estão alinhados às melhores práticas de *Learning Analytics* aplicadas à educação
+básica.
+
+Nota de escopo. Embora a revisão sintetize achados nacionais e internacionais, o objetivo empírico
+deste trabalho permanece delimitado ao ensino médio brasileiro, abrangendo as redes pública e
+privada, em escala nacional. As referências mais amplas servem para contextualizar o estado da
+arte e não implicam generalização automática para períodos futuros ou outros contextos;
+discutimos validade externa e possíveis diferenças regionais nas seções de Resultados e
+Conclusões.
+
+Em complemento, estudos qualitativos voltados especificamente ao ensino médio contribuem para
+fundamentar a seleção de variáveis e o enquadramento do problema. Batista, Souza e Oliveira
+(2009) apresentam um estudo de caso que discute fatores estruturais, familiares e socioeconômicos
+associados ao abandono na etapa final da educação básica. Embora não empregue técnicas de
+aprendizado de máquina, o trabalho oferece evidências sobre a relevância de indicadores como
+renda per capita, trabalho precoce e insegurança alimentar, que dialogam diretamente com as
+variáveis extraídas da PNAD neste estudo. Assim, a literatura qualitativa auxilia a interpretabilidade
+dos modelos, ao delinear mecanismos plausíveis pelos quais o contexto social do discente
+influencia a probabilidade de evasão.
+
+Do ponto de vista metodológico, a literatura também enfatiza a necessidade de métricas adequadas
+para avaliar modelos preditivos em cenários com classes desbalanceadas, como a evasão (menos
+frequente do que a permanência). Strauss, Villas Bôas Júnior e Ferreira (2022) discutem as
+limitações da acurácia como métrica isolada e recomendam o uso de F1-score, AUC-ROC e, quando
+pertinente, AUC-PR para capturar de forma mais fiel o desempenho sobre a classe minoritária.
+Essas diretrizes sustentam as escolhas de avaliação adotadas neste trabalho e reforçam a importância
+de reportar métricas sensíveis a falsos negativos, dada a natureza de risco e intervenção associada ao
+problema.
+
+
 
 \section{Metodologia}
-A Pesquisa Nacional por Amostra de Domicílios (PNAD), realizada pelo Instituto Brasileiro de Geografia e Estatística (IBGE), é um conjunto de informações detalhadas sobre o cenário socioeconômico da sociedade brasileira. A partir dela, é possível extrair dados e informações das características gerais da população. A metodologia deste artigo consiste no processamento desses dados e a utilização de técnicas de aprendizado de máquina que possibilitem a previsão da probabilidade da evasão do aluno dadas as suas características de cunho social e econômico. Para tal, foram utilizadas as linguagens R, Python e a biblioteca Scikit-learn.
+O Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira (INEP) dispõe uma vasta base de microdados e dados abertos baseados em variáveis institucionais, acadêmicas e socioeconômicas do sistema de ensino brasileiro no decorrer das últimas 2 décadas. Como complemento, a Pesquisa Nacional por Amostra de Domicílios (PNAD), realizada pelo Instituto Brasileiro de Geografia e Estatística (IBGE), é um conjunto de informações detalhadas sobre o cenário socioeconômico da sociedade brasileira. A partir dela, é possível extrair dados e informações das características gerais da população.  
 
-A base de dados foi obtida diretamente a partir do website do IBGE na seção PNAD Contínua e lida preliminarmente em R para interpretação dos dados de largura fixa a largura variável com o auxílio da biblioteca PNADcIBGE. Foram filtradas apenas os resultados pertinentes, a partir do de ano de 2016 até 2024, à analise de ocorrência de pessoas que são de São Paulo, não frequentam mais a escola, frequentaram escola alguma vez, cursaram como grau mais elevado o ensino médio regular ou 2º grau, e com idade até 18 anos. Com base nesses dados é possível rotular ocorrência de evasão ou conclusão do ensino médio como variável binária exclusiva dependente baseada no conclusão do curso.
+Apoiado em tais conjuntos de dados, a metodologia deste artigo consiste no processamento desses dados e a utilização de técnicas estatísticas que possibilitem uma análise quantitativa acerca da evasão de alunos do ensino médio brasileiro, e quais fatores explicam tal fenômeno, dadas as suas características de cunho social, econômico, acadêmico e institucional. Para tal, foram utilizadas as linguagens R, Python e a biblioteca Statsmodels.  
+
+Conjuntos de dados provenientes do INEP foram extraídos do site de dados abertos do instituto na aba de "Indicadores Educacionais" e "Microdados". Bases de dados como a taxa de repetência e de evasão, taxa de distorção idade-série, índice do esforço docente, número médio de alunos por turma, nível de adequação do docente e microdados da educação básica (todos a nível municipal e do ano de 2017) foram coletados, extraindo apenas ocorrências do ensino médio, em formato de planilhas xlsx ou arquivo com valores separados por vírgula (\textit{CSV}) e lidos posteriormente em Python com a biblioteca de manipulação de dados Pandas.
+
+Em sequência, foi realizada a junção das bases supracitadas por meio das colunas, renomeadas a partir da amostra original, UF (sigla da unidade federativa), COD\_MUNICIPIO (código do município), LOCALIZACAO (urbana ou rural) E DEP\_ADMINISTRATIVA (instituição privada ou pública), consideradas chave primária composta do conjunto de dados. Deste modo, foi construído uma única estrutura de dados tabular (\textit{dataframe}) contendo as variáveis institucionais relevantes à manifestação da evasão na fase final da educação básica fundamento na literatura da evasão escolar no Brasil e no mundo (BANAAG ET AL., 2024; SHIRASU \& ARRAES, 2018; SOUSA ET AL., 2025). 
+
+Para modelagem estatística ulterior isolada também foi coletada uma amostra a nível escolar do Sistema de Avaliação da Educação Básica (SAEB), com variáveis sociais e acadêmicas no ano de 2017, também oriunda dos microdados do INEP.
+
+A base de dados da PNAD foi obtida diretamente a partir do website do IBGE na seção PNAD Contínua e lida preliminarmente em R para interpretação dos dados de largura fixa a largura variável com o auxílio da biblioteca PNADcIBGE. Foram filtrados apenas os resultados pertinentes, a partir do de ano de 2016 até 2024, à analise de ocorrência de pessoas que não frequentam mais a escola, frequentaram escola alguma vez, cursaram como grau mais elevado o ensino médio regular ou 2º grau, e com idade até 18 anos. Com base nesses dados é possível rotular ocorrência de evasão ou conclusão do ensino médio como variável binária exclusiva dependente baseada na conclusão do curso.
 
 Após o procedimento de filtragem, foi feita uma seleção das características, ou colunas, mais relevantes para explicar o fenômeno da evasão escolar. Características como sexo, cor ou raça, se já trabalhou ou estagiou por pelo menos 1 hora em alguma atividade remunerada em dinheiro, remunerada em mercadorias e bens, não remunerada ou atividade ocasional ("bico"), número de componentes do domicílio (exclusive as pessoas cuja condição no domicílio era pensionista, empregado doméstico ou parente do empregado doméstico), se recebe bolsa família ou outro auxílio governamental e rendimento domiciliar per capita
 (habitual de todos os trabalhos e efetivo de outras fontes), as quais são algumas das características que mais se correlacionam qualitativamente ao abandono e à evasão escolar no ensino médio (FERREIRA; OLIVEIRA, 2020).
 
-Foi gerado um arquivo CSV com os dados já filtrados e características selecionadas, e posteriormente este foi lido em Python para limpeza de dados faltantes, balanceamento de categorias pela técnica de sobreamostragem, e verificação dos tipos de variáveis com o objetivo de utilizá-lo como base de treinamento aos modelos de aprendizado de máquina. Foi também criada a coluna "evasao" codificada de forma binária para classificar o aluno como evasão (1) e não-evasão (0).
+Foi gerado um arquivo CSV com os dados já filtrados e características selecionadas, e posteriormente este foi lido em Python para limpeza de dados faltantes, e verificação dos tipos de variáveis com o objetivo de utilizá-lo como base de dados complementar à análise de evasão. Foi também criada a coluna "evasao" codificada de forma binária para classificar o aluno como evasão (1) e conclusão (0).
 
 
 \subsection{Pré-processamento dos Dados}
-Para simplificação e integridade dos modelos de regressão (OKEWOLE, 2012), as variáveis categóricas foram transformadas em variáveis binárias exclusivas. Variáveis numéricas foram padronizadas de acordo com a média das amostras e seu desvio padrão com base na fórmula:
+As taxas obtidas a partir da base do INEP, inicialmente no formato 0 a 100 foram transformadas para formato decimal (0 a 1) como:
 
 \vspace{0.5cm}
 \begin{equation}
-\large Z = \frac{x-\mu}{s}
+\large T_k = \frac{t_k}{100}
 \end{equation}
 \vspace{0.5cm}
 
-Em que \textit{Z} é a novo valor da variável, \textit{x} é o valor atual da variável, $\mu$ representa a média da amostra para o grupo da variável (ou coluna) e \textit{s} é equivalente ao desvio-padrão do grupo da variável.
+Em que $T_k$ representa o vetor modificado e $t_k$ representa o vetor (coluna) da taxa original
 
-Para o treino e teste efetivo dos modelos, 85\% da base de dados foi destinada ao treinamento e o restante, 15\%, a testes para verificação das métricas. 
+Baseado nas limitações de tipo do modelo e da biblioteca utilizada, variáveis categóricas foram separadas em novas colunas de acordo com o número de valores únicos de texto presentes na coluna única original, transformadas cada coluna nova em vetores binários e na sequência a remoção de uma ou mais colunas para evitar correlação linear entre as características artificialmente separadas.  
 
-\subsection{Técnicas de Aprendizado de Máquina}
-Este Trabalho apresenta três técnicas de aprendizado de máquina para efeito de modelagem probabilística, sendo elas Regressão Logística, Redes Neurais e Florestas Aleatórias de Classificação. Tais técnicas foram utilizadas devido a seus retornos baseados em estimativas em valores reais entre 0 e 1, que são consistentes com o modelo de probabilidades. Destaca-se que a escolha de diferentes técnicas reflete unicamente o objetivo de obter o mais acurado desempenho preditivo para o problema de previsão de probabilidades.
+Variáveis ordinais numéricas foram tranformadas em variáveis categóricas textuais e, em sequência, o fluxo de transformação citado anteriormente para variáveis categóricas foi aplicado.
+
+Células vazias ou nulas tiveram suas linhas removidas por completo da base de modelagem para integridade da análise estatística.
+
+\subsection{Análise de Multicolinearidade}
+Multicolinearidade pode ser compreendida como uma relação linear entre duas ou mais variáveis dependentes. Conforme Paul (2006), quando há importância na investigação dos impactos dos regressores na variável dependente, a multicolinearidade pode ser um problema, visto que p-valores podem se mostrar equivocadamente elevados e em alguns casos pode interferir na interpretação dos coeficientes. Uma das maneiras de analisar se há multicolinearidade no conjunto de dados é calcular o fator de inflação de variância (\textit{VIF}), baseado em $R^2$, que indica o quanto uma variável independente é explicada pelos demais regressores para cada umas das $i$ variáveis indepedentes (MILOCA \& CONEJO, 2008).
+
+No presente trabalho será aplicado o \textit{VIF} para verificar a mutlicolinearidade entre as variáveis advindas das bases do INEP:
+
+\vspace{0.5cm}
+\begin{equation}
+\large F_i = \frac{1}{1-R_i^2}
+\end{equation}
+\vspace{0.5cm}
+
+
+$F_i$ se refere ao fator de inflação de variância do i-ésimo regressor; $R_i^2$ se refere ao $R^2$ da i-ésima variável independente.
+
+Um \textit{VIF} maior que 10 indica que a multicolinearidade influencia fortemente o valor dos coeficientes do modelo, como proposto por Johnson e Wichern (1988; apud MILOCA \& CONEJO, 2008), e algumas medidas em relação ao conjunto de dados ou ao modelo devem ser tomadas com o objetivo de preservar a interpretação dos dados na modelagem estatística.
+
+\subsection{Modelo Estatístico}
+Este artigo visa aplicar métodos estatísticos com o intuito de investigar o impacto das variáveis socioeconômicas e institucionais na evasão escolar e em variáveis que corroboram tal fenômeno. Para tanto, conforme Green et al (2011), que salientam a regressão linear como ferramenta amplamente usada para examinar as relações estatísticas entre variáveis, nesta pesquisa será utilizado, primordialmente, o modelo de regressão linear múltipla, expresso por:
+
+\vspace{0.5cm}
+\begin{equation}
+\large Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + \beta_3X_3 + \cdots + \beta_iX_i + \epsilon 
+\end{equation}
+\vspace{0.5cm}
+
+Em que $Y$ é a variável dependente a ser modelada, $X_i$ são as variáveis independentes, ou regressores, $\beta_i$ representa os coeficientes atrelados a cada variável independente e $\epsilon$ representa o erro aleatório. 
+
+Com o modelo, e o auxílio da técnica dos mínimos quadrados para quantificar os coeficientes, é possível mensurar a significância das diferentes variáveis independentes, e o quanto sua variação impacta na variável dependente, de acordo com o contexto das amostras e das variáveis coletadas.
+
+
 
 \subsection{Métricas de Desempenho}
-Com o objetivo de extrair resultados acerca do desempenho dos modelos deste trabalho, foram utilizadas as fórmulas de precisão, revogação, acurácia e o índice F1 calculados com base na matriz de confusão proveniente do conjunto de testes com os modelos já treinados e selecionados os melhores via busca em grade de hiperparâmetros com validação cruzada em k-partições.
-
-
-\subsubsection{Matriz de Confusão}
-A matriz de confusão, assim como ressalta Franceschi (2019), é uma maneira de apresentar os valores reais e preditos pelo modelo com o intuito de mensurar os erros e acertos em cada classe de um determinado problema para se ter percepção dos seus desempenhos individuais.
-
-Para este trabalho, dado que o problema segue a forma de classes binárias (evasão ou não-evasão), a matriz de confusão, seguindo o modelo de Franceschi (2019) é dada por:
+Com o objetivo de extrair resultados acerca do desempenho do modelo deste trabalho, foram utilizadas as técnicas $R^2$ e a média dos quadrados dos resíduos (\textit{MSE}). Por meio destas é possível ter ciência do quanto o modelo explica a variação da variável dependente que varia de 0 a 1 (sendo 1 o ajuste perfeito dos dados pelo modelo) e a média da magnitude de erros do modelo, respectivamente:
 
 \vspace{0.5cm}
 \begin{equation}
-\large
-M = 
-\begin{pmatrix}
-VP & FP \\
-FN & VN
-\end{pmatrix}
-\end{equation}
-\vspace{0.5cm}
-
-Conforme Castro e Braga (2011, apud Franceschi, 2019), a matriz principal da matriz representa os valores corretos preditos pelo modelo, isto é, \textit{VP} (Verdadeiro Positivo) e \textit{VN} (Verdadeiro Negativo). Os demais elementos expressam os erros retornados pelo modelo: \textit{FP} (Falso Positivo) e \textit{FN} (Falso Negativo).
-
-Na representação deste trabalho, as linhas expressam as classes reais do problema, enquanto as colunas representam as classes preditas.
-
-\subsubsection{Métricas Derivadas da Matriz de Confusão}
-Dada a interpretação da matriz de confusão, pode-se, por meio de seus elementos, derivar métricas pertinentes à explicação do desempenho das classes e, por consequência, dos modelos deste trabalho, como demonstrado por Klén et al. (2024):
-
-\vspace{0.5cm}
-A taxa de precisão:
-\begin{equation}
-    \large \frac{VP}{VP+FP}
+\large R^2 = 1 - \frac{\sum_i(y_i-\hat{y}_i)^2}{\sum_i(y_i-\bar{y})^2}
 \end{equation}
 \vspace{0.5cm}
 
 \vspace{0.5cm}
-A taxa de revocação:
 \begin{equation}
-    \large \frac{VP}{VP+FN}
+\large E_{qm} = \frac{1}{n} \sum_i(y_i-\hat{y_i})^2
 \end{equation}
 \vspace{0.5cm}
 
-\vspace{0.5cm}
-A taxa de acurácia:
-\begin{equation}
-    \large \frac{VP+VN}{VP+FP+VN+FN}
-\end{equation}
-\vspace{0.5cm}
-
-\vspace{0.5cm}
-E o índide F1:
-\begin{equation}
-    \large 2 \frac{P \cdot R}{P+R}
-\end{equation}
-\vspace{0.5cm}
-
-Em que \textit{P} é a taxa de \textit{precisão} e \textit{R} a taxa de \textit{revocação}.
-
-Acerca das métricas derivadas: a precisão representa os resultados classificados como verdadeiros positivos dentre os falsos e verdadeiros positivos, e mensura o quanto o algoritmo se distancia de falsos positivos; a taxa de revocação expressa a taxa de verdadeiros positivos em relação a verdadeiros positivos e falsos negativos, e demonstra o quanto o algoritmo separa corretamente verdadeiros positivos de falsos negativos; a acurácia representa a taxa de acertos bruta de todas as classes em todo o conjunto de teste; o índice F1, como descrito por Klén et al. (2024), é a média harmônica entre a precisão e a revocação. Para classes "negativas" (verdadeiro negativo), as mesmas lógicas da precisão e da revocação são implementadas com a ressalva de que são feitas em relação a falsos negativos e a falsos positivos respectivamente. 
+De forma que $y_i$ é o valor real, $\hat{y_i}$ é valor predito pelo modelo e $\bar{y}$ é a média dos valores da variável dependente.
 
 \section{Resultados Parciais}
 
-Com base nos dados coletados a partir da PNAD, as variáveis socioeconômicas, selecionadas neste presente trabalho, parecem não ser suficientes para determinar a evasão do aluno. O que se contrapõe aos trabalhos de Silva (2013) e Ferreira \& Oliveira (2020), que ressaltam tais variáveis como um dos principais motivos que levam ao abandono contínuo do ensino médio, em especial aos condições de trabalho de jovens em idade escolar.
+Com base nos dados coletados a partir dos dados abertos do INEP e na regressão linear múltipla resumida na tabela 1:
 
-Tal fato levanta a hipótese de que fatores socioeconômicos devem estar atrelados a fatores acadêmicos, como a presença ou notas, e fatores psicológicos, como a falta de interesse na escola, para uma real percepção e modelagem preditiva da evasão escolar. Por outro lado, também há a hipótese de que os fatores socioeconômicos que se correlacionam com a evasão não foram levados em consideração para a filtragem e modelagem deste trabalho.
-
-A Pesquisa Nacional por Amostra de Domicílios (PNAD) apresenta um vasta base de dados acerca de aspectos socioeconômicos da população brasileira, contudo carece de determinantes acadêmicos específicos e questões que revelem a consideração do entrevistado acerca de sua vida no contexto acadêmico. 
-
-Ao longo deste trabalho, as seguintes variáveis foram filtradas e tratadas para modelagem da evasão e treinamento posterior com os algoritmos de aprendizado de máquina:
-
-\begin{table}
-\caption{Descrição de Variáveis da Base de Dados}
-\centering
-\label{tab:variables}
-\begin{tabular}{lp{8cm}}
-\hline
-Variável & Descrição \\ \hline
-UF & Unidade da Federação do estudante \\
-sexo & Sexo do estudante \\
-raça & Raça/cor do estudante \\
-idade & Idade em anos \\
-frequenta\_escola & Indica se atualmente frequenta escola \\
-frequentou\_escola & Indica se já frequentou escola em algum momento \\
-curso\_frequentado & Tipo de curso frequentado (fundamental, médio, etc.) \\
-terminou\_curso & Indica se concluiu o curso frequentado \\
-V4001--V4004 & Variáveis da PNAD relacionadas ao trabalho e ocupação \\
-condicao\_domicilio & Condição de ocupação do domicílio (próprio, alugado, cedido, etc.) \\
-num\_pessoas\_domicilio & Número de pessoas no domicílio \\
-bolsa\_familia & Recebimento de Bolsa Família \\
-aux\_governo & Recebimento de outros auxílios governamentais \\
-renda\_per\_capita & Renda domiciliar per capita \\
-situacao\_domicilio & Situação do domicílio (urbano/rural) \\
-tipo\_area\_dom & Tipo de área do domicílio \\
-tipo\_domicilio & Tipo de construção do domicílio \\
-tipo\_abastecimento\_de\_agua & Forma de abastecimento de água do domicílio \\
-horas\_trabalhadas\_emp\_princ\_sem & Horas semanais trabalhadas no emprego principal \\
-horas\_trabalhadas\_emp\_sec\_sem & Horas semanais trabalhadas no emprego secundário \\
-horas\_trabalhadas\_outros\_emp\_sem & Horas semanais trabalhadas em outros empregos \\
-procurou\_emprego\_ult\_30\_dias & Indica se procurou emprego nos últimos 30 dias \\
-deseja\_trabalhar & Indica se deseja trabalhar atualmente \\
-tempo\_procura\_emprego\_at1a & Tempo de procura por emprego: até 1 ano \\
-tempo\_procura\_emprego\_1a2a & Tempo de procura por emprego: entre 1 e 2 anos \\
-tempo\_procura\_emprego\_m2a & Tempo de procura por emprego: mais de 2 anos \\
-num\_serie & Série escolar em que o estudante está matriculado \\
-evasao & Indicador de evasão escolar (variável-alvo) \\ \hline
-\end{tabular}
-\end{table}
-
-
-\subsubsection{Resultado do Desempenho dos Modelos}
-A hipótese de que variáveis socioeconômicas não determinam de forma exclusiva o fenômeno da evasão no ensino médio pode ser constatada a partir do desempenho de cada classe com base nas métricas derivadas:
-
-\vspace{0.5cm}
 \begin{table}[htbp]
 \centering
-\label{tab:metricas}
-\begin{tabular}{lcccc}
+\caption{Resultados da regressão linear MQO para a variável dependente \texttt{TX\_EV\_TOTAL}}
+\label{tab:regressao_tx_ev_sem_ic}
+\begin{tabular}{lrrrr}
 \hline
-Classe        & Precisão & Revocação & Índice-F1 & Suporte \\ \hline
-Não-evasão           & 0,86     & 0,77      & 0,81     & 2802    \\
-Evasão           & 0,35     & 0,49      & 0,41     & 708     \\ \hline
-Acurácia      &          &           & 0,72     & 3510    \\
-Média Macro   & 0,60     & 0,63      & 0,61     & 3510    \\
-Média Ponderada & 0,75   & 0,72      & 0,73     & 3510    \\ \hline
+\textbf{Variável} & \textbf{Coef.} & \textbf{Erro Padrão} & \textbf{t} & \textbf{P$>$|t|} \\
+\hline
+const & -0,0029 & 0,003 & -0,898 & 0,369 \\
+DEP\_ADMINISTRATIVA\_Pública & 0,0273 & 0,002 & 16,393 & 0,000 \\
+Grupo 2 & 0,0572 & 0,009 & 6,338 & 0,000 \\
+Grupo 3 & -0,0115 & 0,004 & -3,189 & 0,001 \\
+Grupo 4 & -0,0168 & 0,006 & -2,989 & 0,003 \\
+Grupo 5 & 0,0049 & 0,005 & 1,079 & 0,281 \\
+IN\_BIBLIOTECA & 0,0016 & 0,002 & 0,694 & 0,488 \\
+IN\_COZINHA & -0,0031 & 0,003 & -1,143 & 0,253 \\
+IN\_INTERNET & 0,0178 & 0,003 & 6,740 & 0,000 \\
+IN\_LABORATORIO\_CIENCIAS & -0,0052 & 0,004 & -1,253 & 0,210 \\
+IN\_LABORATORIO\_INFORMATICA & 0,0011 & 0,003 & 0,413 & 0,680 \\
+IN\_QUADRA\_ESPORTES & 0,0025 & 0,003 & 0,881 & 0,378 \\
+NUM\_ALUNO\_TURMA\_TOTAL & 0,0000 & 0,000 & 0,642 & 0,521 \\
+TX\_DI\_TOTAL & 0,1853 & 0,004 & 41,654 & 0,000 \\
+TX\_IED\_N5 & 0,0070 & 0,004 & 1,767 & 0,077 \\
+TX\_IED\_N6 & -0,0112 & 0,006 & -1,939 & 0,053 \\
+TX\_REP\_TOTAL & 0,0528 & 0,009 & 5,622 & 0,000 \\
+\hline
+\multicolumn{5}{l}{\footnotesize $R^2 = 0,514$, Estatística-F = 455,7, Prob(F) = 0,00, $E_{qm}=0,0026$} \\
+\multicolumn{5}{l}{\footnotesize Observações = 6915} \\
 \end{tabular}
-\caption{Métricas de desempenho do classificador Redes Neurais}
 \end{table}
-\vspace{0.5cm}
 
-Com base na tabela, é possível perceber um alto desempenho em relação a Não-evasão, com uma precisão de 0,86, revocação de 0,77 e índice-f1 de 0,81. Contudo a classe que representa efetivamente a evasão tem precisão de 0,35 apenas, isto é, em todos os casos da classe Evasão (verdadeiros ou falsos), o algoritmo de Redes Neurais teve êxito em predizer corretamente apenas 35\% deles, e com falsos positivos (revocação) teve êxito na previsão de apenas 49\% dos casos. 
+O modelo tem erro quadrático médio $E_{qm}=0,0026$ o que indica que erra cerca de 5 pontos percentuais para fins de predição. Ao mesmo tempo, apresenta um $R^2=0,514$, explicando $51\%$ da variação dos dados, e uma $Prob(F)=0$, que indica que o modelo é significativo para explicar a variável dependente.
 
-O algoritmo de Regressão Logística, apresentou desempenho semelhante para as classes:
+Os resultados mostram que, ao manter as outras variáveis constantes, quando TX\_DI\_TOTAL, a taxa de defasagem idade-série, aumenta em 1 ponto percentual, a taxa de evasão total tende a aumentar em 0,1853 pontos percentuais. O coeficiente é estatisticamente significativo com $p<0.001$ e se mostra como o coeficiente mais alto que se relaciona com a variável dependente TX\_EV\_TOTAL.
 
-\vspace{0.5cm}
+De maneira semelhante, TX\_REP\_TOTAL, que demonstra a taxa de repetência total do município, também apresenta alto coeficiente em comparação com as outras variáveis, sendo $0,0528$, e estatisticamente significativo com $p<0,0001$.
+
+Os resultados também sugerem que, com $N=6915$ observações, as variáveis de infraestrutura coletadas não se mostram, em sua maioria, como estatisticamente significadas, e aquela que apresentam p-valor menor que 5\% (IN\_INTERNET) exibe coeficiente $\beta_i<0,0178$, o que caracteriza uma ínfima variação de pontos percentuais na taxa de evasão total. Taxas do índice de esforço do docente (TX\_IED\_N5 e TX\_IED\_N5) de forma análoga não se mostram estatisticamente significativos, com $p>0,05$.
+
+Em resumo, as variáveis Grupo 2, TX\_DI\_TOTAL, TX\_REP\_TOTAL, são evidenciadas como as mais relevantes no presente estudo. 
+
+com base, em particular, na taxa de repetência, decidiu-se utilizar a base do Sistema de Avaliação do Educação básica (SAEB) do INEP, para investigar quais variáveis mais impactam na taxa de repetência e, de forma implícita, na taxa de defasagem idade-série, dado que a repetência leva à defasagem em relação à série cursada.
+
+Com base na tabela 2, que resume os resultados da regressão linear múltipla da base de dados do SAEB:
+
 \begin{table}[htbp]
 \centering
-\label{tab:metricas}
-\begin{tabular}{lcccc}
+\caption{Resultados da regressão linear MQO para a variável dependente \texttt{TX\_RESP\_Q041}}
+\label{tab:regressao_tx_resp_q041}
+\small
+\begin{tabular}{lrrrrr}
 \hline
-Classe        & Precisão & Revocação & F1-Score & Suporte \\ \hline
-Não-evasão           & 0,87     & 0,73      & 0,79     & 2802    \\
-Evasão           & 0,35     & 0,57      & 0,43     & 708     \\ \hline
-Acurácia      &          &           & 0,70     & 3510    \\
-Média Macro   & 0,61     & 0,65      & 0,61     & 3510    \\
-Média Ponderada & 0,76   & 0,70      & 0,72     & 3510    \\ \hline
+\textbf{Variável} & \textbf{Coeficiente} & \textbf{Erro padrão} & \textbf{t} & \textbf{p$>$|t|} & \textbf{[0,025 ; 0,975]} \\
+\hline
+const & 0,6980 & 0,039 & 17,716 & 0,000 & [0,621 ; 0,775] \\
+PROFICIENCIA\_MT & -0,1567 & 0,003 & -61,733 & 0,000 & [-0,162 ; -0,152] \\
+TX\_RESP\_Q001 & 0,0841 & 0,010 & 8,203 & 0,000 & [0,064 ; 0,104] \\
+TX\_RESP\_Q002\_Indígena & 0,1083 & 0,018 & 5,879 & 0,000 & [0,072 ; 0,144] \\
+TX\_RESP\_Q002\_Parda & 0,0474 & 0,007 & 6,716 & 0,000 & [0,034 ; 0,061] \\
+TX\_RESP\_Q002\_Preta & 0,1422 & 0,012 & 11,985 & 0,000 & [0,119 ; 0,165] \\
+TX\_RESP\_Q027 & -0,4332 & 0,039 & -11,121 & 0,000 & [-0,510 ; -0,357] \\
+TX\_RESP\_Q038 & 0,0595 & 0,007 & 8,035 & 0,000 & [0,045 ; 0,074] \\
+TX\_RESP\_Q044 & -0,1006 & 0,010 & -10,433 & 0,000 & [-0,120 ; -0,082] \\
+TX\_RESP\_Q052 & 0,0965 & 0,009 & 11,240 & 0,000 & [0,080 ; 0,113] \\
+\hline
+\multicolumn{6}{l}{\footnotesize $R^2 = 0,272$, Estatística F = 782,4, Prob(F) = 0,00, $E_{qm}=0,0299$} \\
+\multicolumn{6}{l}{\footnotesize Número de observações = 18846} \\
 \end{tabular}
-\caption{Métricas de desempenho do classificador Regressão Logística}
 \end{table}
-\vspace{0.5cm}
 
-O algoritmo de Floresta Aleatória se mostrou semelhante em relação aos outros modelos, com a ressalva de que apresentou desempenho ligeiramente pior em ambas as classes.
+O modelo se mostra estatisticamente significativo dada $Prob(F)=0$, e explica 27,2\% da variação dos dados coletados.
 
-\vspace{0.5cm}
+Pode-se observar que das variáveis coletadas todas são significativas com $p<0,001$, e se destacam as variáveis TX\_RESP\_Q027, taxa de alunos incentivados pelos pais aos estudos, com um alto coeficiente de $\beta_i=-0,4332$, PROFICIENCIA\_MT ($\beta_i=-0,1567$), que mede a proficiência de matemática média da instituição; TX\_RESP\_Q002\_Preta ($\beta_i=0,1422$), que refere-se à taxa de alunos autodeclarados pretos na instituição de ensino; TX\_RESP\_Q002\_Indígena ($\beta_i=0,1083$), que faz jus à taxa de alunos autodeclarados indígenas. Tais variáveis possuem os maiores coeficientes do conjunto de regressores. 
+
+De acordo com os resultados, o aumento de 1 ponto percentual na taxa de alunos incentivados ao estudo está associado à diminuição de 0,4332 pontos percentuais na taxa de repetência. De modo semelhante, o aumento de 1 ponto percentual na proficiência em matemática tem associação com a diminuição em 0,1567 pontos percentuais da variável dependente.
+
+Por outro lado, o aumento de 1 ponto percentual no grupo de alunos autodeclarados pretos nas instituições tende a elevar a taxa de repetência em 0,1422. E o mesmo pode ser observado para o grupo de alunos indígenas, cujo aumento de 1 ponto percentual implica em $+0.1083$ pontos percentuais na taxa de repetência. Ademais, o aumento de 1 ponto percentual na taxa de alunos que trabalham (TX\_RESP\_Q038) está associado a $+0,0595$ pontos percentuais na taxa de repetência.
+
+A variável TX\_RESP\_Q044, que faz referência à taxa de alunos que gostam de estudar língua portuguesa, também mostra que com o aumento de 1 ponto percentual, a taxa de repetência tende a $-0,1006$ pontos percentuais. E curiosamente, o aumento de 1 ponto percentual na taxa de alunos que demonstram interesse por matemática (TX\_RESP\_Q052) está associado a um aumento de aproximandamente 0,09 pontos percentuais na taxa de repetência.
+
+A correlação entre evasão, repetência e defasagem idade-série é corroborada pela cenário do ensino médio brasileiro. De acordo com dados da PNAD, pesquisa nacional realizada pelo IBGE, coletados nesta pesquisa para análise complementar, a taxa de evasão entre pretos em idade escolar adequada ao ensino secundário é de 22,87\%, entre pardos 22,26\%, e entre indígenas equivalente a 25,64\% (com base na lógica de cálculo de evasão deste trabalho). Brancos apresentam o menor número com cerca de 16,16\%. 
+
+No índice de repetência, o grupo de pretos e pardos é cerca de 2 a 4 pontos percentuais acima do percentual de brancos que se mantêm na mesma série em todo o Brasil, de acordo com dados do INEP. Ainda segundo a plataforma inepdata, a taxa de jovens pretos e pardos que estão defasados no quesito idade-série, chega a ser de 10 pontos percentuais em comparação com jovens brancos.
+
+A evasão e dificuldade escolar de tais grupos fragilizados também são refletidos em suas condições socioeconômicas e o inverso também é verdadeiro. Jovens pretos em idade escolar que já estão fora do ensino médio devido à conclusão ou evasão apresentam renda média mensal de 790 reais, jovens pardos 780 reais, jovens indígenas 727 reais, e jovens brancos 1230 reais em média, segundo dados da PNAD no contexto desta pesquisa.
+
+Ante o exposto, os resultados parciais reforçam que, em alguma medida, fatores de infraestutura e institucionais não são signficativos para explicar a evasão e o índice de repetência tal como fatores acadêmicos e sociais, como a raça e o incentivo doméstico aos estudos e manutenção de presença na instituição de ensino.
+
+\subsection{Descrição de Variáveis Selecionadas}
+Para analisar estatisticamente a evasão e a repetência, foram selecionadas as seguintes variáveis descritas nas tabelas 3 (regressão da taxa de evasão como variável dependente) e 4 (regressão com taxa de repetência como variável dependente):
+
 \begin{table}[htbp]
 \centering
-\label{tab:metricas2}
-\begin{tabular}{lcccc}
+\caption{Variáveis explicativas do modelo de regressão da taxa de evasão total (\texttt{TX\_EV\_TOTAL})}
+\label{tab:variaveis_tx_ev}
+\small
+\begin{tabular}{lp{9cm}}
 \hline
-Classe        & Precisão & Revocação & F1-Score & Suporte \\ \hline
-Não-evasão           & 0,84     & 0,65      & 0,73     & 2802    \\
-Evasão           & 0,27     & 0,53      & 0,36     & 708     \\ \hline
-Acurácia      &          &           & 0,62     & 3510    \\
-Média Macro   & 0,56     & 0,59      & 0,55     & 3510    \\
-Média Ponderada & 0,73   & 0,62      & 0,66     & 3510    \\ \hline
+\textbf{Variável} & \textbf{Descrição} \\
+\hline
+DEP\_ADMINISTRATIVA\_Pública & Escola pública (1 = sim, 0 = não) \\
+Grupo 2 & Docentes com bacharelado na mesma área (Grupo 2) \\
+Grupo 3 & Docentes com licenciatura ou bacharelado em área diferente (Grupo 3) \\
+Grupo 4 & Docentes com formação superior não enquadrada (Grupo 4) \\
+Grupo 5 & Docentes sem formação superior (Grupo 5) \\
+IN\_BIBLIOTECA & Percentual de escolas do município com biblioteca \\
+IN\_COZINHA & Percentual de escolas do município com cozinha \\
+IN\_INTERNET & Percentual de escolas do município com acesso à Internet \\
+IN\_LABORATORIO\_CIENCIAS & Percentual de escolas do município com laboratório de ciências \\
+IN\_LABORATORIO\_INFORMATICA & Percentual de escolas do município com laboratório de informática \\
+IN\_QUADRA\_ESPORTES & Percentual de escolas do município com quadra de esportes \\
+NUM\_ALUNO\_TURMA\_TOTAL & Número médio de alunos por turma \\
+TX\_DI\_TOTAL & Taxa de distorção idade-série \\
+TX\_IED\_N5 & Percentual de docentes nível 5 do Índice de Esforço Docente \\
+TX\_IED\_N6 & Percentual de docentes nível 6 do Índice de Esforço Docente \\
+TX\_REP\_TOTAL & Taxa total de reprovação \\
+\hline
 \end{tabular}
-\caption{Métricas de desempenho do classificador Floresta Aleatória}
+\\[2mm]
+\footnotesize Fonte: Elaborado pelo autor a partir do Censo Escolar e do INEP.
 \end{table}
-\vspace{0.5cm}
 
-Baseado nas tabelas de métricas dos diferentes modelos, apesar de evidenciado um baixo desempenho na classe de evasão, o algoritmo de Redes Neurais apresentou a maior acurácia global, contudo o modelo de Floresta Aleatória se mostrou o melhor na predição da classe evasão, com uma revocação e um índice-F1 superiores aos provenientes do modelo de Redes Neurais.
-
-A natureza desbalanceada da base de dados bruta também pode ser um fator que interfere na capacidade do modelo de generalizar para ambas as classes, uma vez que para a classe de Evasão foi utilizado o método de sobreamostragem com a criação de registros sintéticos a partir de semelhança com k-vizinhos ($k=2$ neste trabalho)
-
-\vspace{0.5cm}
 \begin{table}[htbp]
 \centering
-\label{tab:proporcao}
-\begin{tabular}{lc}
+\caption{Variáveis da regressão da taxa de repetência (\texttt{TX\_RESP\_Q041})}
+\label{tab:vars_tx_resp_q041}
+\small
+\begin{tabular}{lp{10cm}}
 \hline
-Classe & Proporção \\ \hline
-Não-evasão  & 0,798 \\ 
-Evasão      & 0,202 \\ \hline
-\end{tabular}
-\caption{Proporção das classes na base de dados}
-\end{table}
-\vspace{0.5cm}
-
-Deste modo, pelo fato de aprender a partir de dados sintéticos, os diferentes modelos podem ter dificuldade de generalizar com dados reais, o que é verificado nos testes.
-
-
-\pagebreak
-\section{Cronograma}
-O cronograma do projeto foi organizado de forma a contemplar as fases de pesquisa e os marcos de entrega definidos pela disciplina.
-\begin{table}[h]
-\centering
-\begin{tabular}{p{3cm} p{7cm} p{5cm}}
+\textbf{Variável} & \textbf{Descrição} \\
 \hline
-\textbf{Período} & \textbf{Atividades principais} & \textbf{Marcos oficiais} \\
-\hline
-Agosto (até 20) & Revisão bibliográfica, definição do tema, objetivos e trabalhos relacionados & Entrega do plano de pesquisa (20/08) \\
-Setembro        & Coleta de dados e pré-processamento & -- \\
-Outubro (até 08) & Implementação inicial e testes dos modelos & Relatório parcial + vídeo (06--08/10) \\
-Outubro (após 08) & Ajustes dos modelos, análises comparativas & -- \\
-Novembro (até 19) & Consolidação dos resultados e redação final & Relatório final + apresentação parcial (17--19/11) \\
-Novembro (após 19) & Revisão final e preparação da apresentação & Apresentação oficial (24--26/11) \\
+PROFICIENCIA\_MT & Proficiência média em Matemática da escola \\
+TX\_RESP\_Q001 & Percentual de alunos do sexo masculino \\
+TX\_RESP\_Q027 & Percentual de alunos que são incentivados pelos pais ao estudo \\
+TX\_RESP\_Q002\_Indígena & Percentual de alunos autodeclarados indígenas \\
+TX\_RESP\_Q002\_Parda & Percentual de alunos autodeclarados pardos \\
+TX\_RESP\_Q002\_Preta & Percentual de alunos autodeclarados pretos \\
+TX\_RESP\_Q038 & Percentual de alunos que trabalham fora de casa atualmente \\
+TX\_RESP\_Q044 & Percentual de alunos que gostam de estudar Língua Portuguesa \\
+TX\_RESP\_Q052 & Percentual de alunos que gostam de estudar Matemática \\
 \hline
 \end{tabular}
-\caption{Cronograma híbrido das atividades e entregas do projeto.}
-\label{tab:cronograma}
+\\[2mm]
+\footnotesize\centering Fonte: Elaborado pelo autor a partir da base SAEB do INEP.
 \end{table}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 %====================================================================
@@ -426,6 +575,7 @@ Novembro (após 19) & Revisão final e preparação da apresentação & Apresent
 %https://sol.sbc.org.br/journals/index.php/rbie/libraryFiles/downloadPublic/71
 %====================================================================
 
+\pagebreak
 \pagebreak
 \nocite{*}
 \printbibliography
