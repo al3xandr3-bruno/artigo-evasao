@@ -179,17 +179,152 @@ No campo educacional, a PNAD se destaca por permitir a investigação de variáv
 Dessa forma, os fundamentos apresentados evidenciam a relevância de associar teorias sobre evasão escolar com métodos de mineração de dados e aprendizado de máquina, bem como o uso de bases de dados socioeconômicas amplas como a PNAD. Essa integração permite analisar grandes quantidades de dados e construir modelos preditivos capazes de apoiar políticas públicas e institucionais na área da Educação, contribuindo para a redução da evasão escolar e para a promoção da equidade educacional.
 
 \section{Trabalhos Relacionados}
-Diversos estudos buscaram modelar de forma probabilística ou com técnicas de aprendizado de máquina o fenômeno da evasão escolar no Brasil. Como exemplo, destacam dois trabalhos acerca da evasão no âmbito acadêmico.
+Diversos estudos buscaram modelar de forma probabilística ou com técnicas de aprendizado de
+máquina o fenômeno da evasão escolar no Brasil. Como exemplo, destacam dois trabalhos acerca
+da evasão no âmbito acadêmico.
 
-Em Mello et al. (2023) foram realizadas análises exploratórias acerca das características consideradas (variáveis independentes) como coeficiente de rendimento, tipo de escola de origem, percentual de frequência, nível de ensino, cor ou raça, modalidade de curso, sexo, renda familiar bruta, situação acadêmica, dentre outros aspectos, de alunos do Instituto Federal do Pernambuco (IFPE). Com a análise constatou-se que, como alguns exemplos, alguns cursos e períodos apresentam evasão maior que outros; o percentual de evasão do sexo masculino era maior em comparação ao feminino. Contudo, não houve análise acerca da renda per capita dos indivíduos, que é reiterada por autores que exploraram o tema de forma qualitativa, como Silva (2013) e Ferreira \& Oliveira (2020). Os autores utilizaram como técnica de aprendizado de máquina para a previsão de evasão XGBoost, Florestas Aleatórias e Árvores de decisão, para predizer a situação de matrícula do estudante conforme a base de dados disponível, e obtiveram, respectivamente, 82\%, 83\% e 80\% de acurácia. Esses resultados sugerem que tais modelos apresentam ótimo desempenho preditivo para estimar as probabilidades de evasão escolar, em concordância com o objetivo deste trabalho.
+Em Mello et al. (2023) foram realizadas análises exploratórias acerca das características
+consideradas (variáveis independentes) como coeficiente de rendimento, tipo de escola de origem,
+percentual de frequência, nível de ensino, cor ou raça, modalidade de curso, sexo, renda familiar
+bruta, situação acadêmica, dentre outros aspectos, de alunos do Instituto Federal do Pernambuco
+(IFPE). Com a análise constatou-se que, como alguns exemplos, alguns cursos e períodos apresentam
+evasão maior que outros; o percentual de evasão do sexo masculino era maior em comparação ao
+feminino. Contudo, não houve análise acerca da renda per capita dos indivíduos, que é reiterada
+por autores que exploraram o tema de forma qualitativa, como Silva (2013) e Ferreira \& Oliveira
+(2020). Os autores utilizaram como técnica de aprendizado de máquina para a previsão de evasão
+XGBoost, Florestas Aleatórias e Árvores de decisão, para predizer a situação de matrícula do
+estudante conforme a base de dados disponível, e obtiveram, respectivamente, 82\%, 83\% e 80\%
+de acurácia. Esses resultados sugerem que tais modelos apresentam ótimo desempenho preditivo
+para estimar as probabilidades de evasão escolar, em concordância com o objetivo deste trabalho.
 
-Por outro lado, o trabalho de Teodoro e Kappel (2020) também segue a mesma lógica do trabalho supracitado, com a ressalva de que tem ênfase em atributos diferentes e apresenta uma análise exploratória mais robusta acerca das características correlacionadas à evasão. Teodoro e Kappel optaram por desenvolver modelos preditivos baseados em Naive Bayes, KNN, Árvores de Decisão, Florestas Aleatórias de Classificação e Redes Neurais, com acurácias de 60\%, 75\%, 77\%, 79\% e 78\%, respectivamente, no geral. A apuração mostra que, em termos de acurácia, Florestas Aleatórias e Redes Neurais são as técnicas mais adequadas para estimação de evasão. Porém, assim como o estudo anterior, tem como principal objeto de estudo a evasão no ensino superior.  
+Por outro lado, o trabalho de Teodoro e Kappel (2020) também segue a mesma lógica do
+trabalho supracitado, com a ressalva de que tem ênfase em atributos diferentes e apresenta uma
+análise exploratória mais robusta acerca das características correlacionadas à evasão. Teodoro e
+Kappel optaram por desenvolver modelos preditivos baseados em Naive Bayes, KNN, Árvores de
+Decisão, Florestas Aleatórias de Classificação e Redes Neurais, com acurácias de 60\%, 75\%,
+77\%, 79\% e 78\%, respectivamente, no geral. A apuração mostra que, em termos de acurácia,
+Florestas Aleatórias e Redes Neurais são as técnicas mais adequadas para estimação de evasão.
+Porém, assim como o estudo anterior, tem como principal objeto de estudo a evasão no ensino
+superior.
 
-Nota-se que os estudos revisados não abordam a evasão do ensino médio nas escolas públicas. Há escassez de análise e implementação de variáveis acerca dos fatores socioeconômicos como o trabalho, a renda e a fome. Nesse sentido, o presente artigo pretende examinar e preencher estas lacunas, ao analisar e implementar atributos variados e propor modelos que expliquem de modo probabilístico o tópico.
+Apesar de trabalhos aplicados ao ensino médio/técnico (por exemplo, Barbosa et al., 2023),
+observa-se que a literatura nacional permanece concentrada em bases institucionais e recortes
+locais. Em âmbito brasileiro, ainda há escassez de investigações que integrem variáveis
+socioeconômicas de abrangência nacional — como renda per capita, trabalho precoce e insegurança
+alimentar — a modelos preditivos para o ensino médio nas redes pública e privada. Este artigo
+procura preencher essa lacuna ao combinar PNAD e aprendizado de máquina para estimar
+probabilidades de risco de evasão.
+
+Além das características individuais e domiciliares capturadas pela PNAD, a literatura indica que
+fatores estruturais ao nível da escola também se associam ao risco de evasão no ensino médio.
+Evidências reportam relações entre escolas de maior porte, turmas numerosas e razões aluno-
+professor elevadas com maior probabilidade de abandono, sugerindo que variáveis de contexto
+educacional podem complementar os atributos socioeconômicos no modelo preditivo. Em um
+desenho nacional, tais elementos podem ser operacionalizados por indicadores derivados de bases
+administrativas educacionais, agregados por unidade da federação ou município e vinculados aos
+registros individuais via chaves geográficas.
+
+Outro conjunto de determinantes envolve práticas e fluxos escolares. A literatura brasileira
+relaciona a repetência/atraso escolar, a disponibilidade de vagas/turnos e a qualificação docente a
+maiores taxas de abandono, o que respalda a inclusão de medidas como a taxa de reprovação no
+ensino médio e a proporção de docentes com formação adequada como variáveis de contexto. Esses
+indicadores, agregados por recortes territoriais, permitem capturar diferenças institucionais
+relevantes sem exigir a identificação da escola no nível do indivíduo, preservando a modelagem em
+escala nacional.
+
+Condições de infraestrutura educacional — como conectividade, laboratórios e manutenção
+predial — também são associadas a níveis de engajamento estudantil e, por consequência, à evasão.
+Uma estratégia pragmática consiste em sintetizar um índice de infraestrutura (via combinação
+simples de itens ou redução de dimensionalidade) por município ou unidade da federação e
+integrá-lo como variável de contexto ao lado dos determinantes socioeconômicos da PNAD. Esse
+acoplamento amplia a cobertura explicativa do modelo ao articular condições de vida e ambiente
+escolar.
+
+Em termos de interpretação e uso, trabalhos aplicados destacam o papel de técnicas de *ensemble*
+e análises de *feature importance* para orientar intervenções pedagógicas e de gestão, ao mesmo
+tempo em que estudos qualitativos em ensino médio ajudam a elucidar por que variáveis como renda
+per capita, trabalho precoce e insegurança alimentar emergem como relevantes. Essa combinação de
+previsibilidade e interpretabilidade é coerente com o objetivo de apoiar decisões em escala
+nacional, mantendo atenção às diferenças regionais e às especificidades das redes.
+
+Em linha com a ênfase em determinantes contextuais, evidências regionais analisando o ensino
+médio público do Ceará, com modelos logísticos multiníveis, exploram simultaneamente
+características dos estudantes e das escolas. Os resultados destacam a contribuição de fatores como
+desinteresse declarado, histórico de repetência e defasagem idade-série para o aumento do risco de
+abandono, enquanto a participação em programas de transferência de renda apresenta associação
+negativa com a evasão. Esse tipo de achado complementa o enfoque nacional ao indicar que
+variáveis de fluxo escolar e proteção social ajudam a explicar variações do risco para além das
+condições domiciliares.
+
+Já em aplicações baseadas em dados administrativos, há estudo recente com a rede estadual
+paulista que estrutura um sistema de alerta precoce com classificadores de aprendizado de máquina
+(por exemplo, florestas, *gradient boosting* e regressão logística) a partir de histórico escolar e
+registros de frequência. Além de reforçar o bom desempenho de métodos de *ensemble*, o trabalho
+relata ganhos práticos ao combinar importância de atributos com regras de priorização de
+atendimento, o que dialoga com a proposta deste artigo de aliar previsibilidade e utilidade para a
+gestão em escala nacional.
+
+Questões metodológicas recorrentes. A literatura destaca desafios que também norteiam nossa
+abordagem: (i) desbalanceamento de classes — a evasão costuma ser minoria; (ii) métricas
+alinhadas ao objetivo de intervenção — acurácia isolada pode mascarar falsos negativos; (iii)
+explicabilidade — necessária para a adoção por equipes pedagógicas; e (iv) transferência temporal
+— modelos treinados em um período podem degradar com mudanças de coorte/currículo. Em linha
+com essas recomendações, adotamos métricas como F1-score, AUC-ROC e, quando pertinente,
+AUC-PR, priorizando sensibilidade/*recall* na classe de risco; e técnicas de reamostragem
+(subamostragem, conforme nossa Metodologia) quando cabível. A análise de *feature importance*
+é tratada como insumo interpretável para orientar ações, em consonância com práticas relatadas em
+estudos aplicados (Barbosa et al., 2023; Teodoro \& Kappel, 2020).
+
+Implicações para variáveis e desenho de intervenções. Estudos qualitativos ajudam a explicar por
+que determinadas variáveis aparecem entre as mais relevantes nos modelos. Fatores como renda,
+trabalho e alimentação são recorrentemente associados à decisão de abandonar a escola no ensino
+médio brasileiro. Ao incorporar essas dimensões — operacionalizadas aqui via PNAD — produz-se
+um modelo que não apenas prediz, mas também dialoga com mecanismos plausíveis de evasão
+descritos na literatura (Silva, 2013; Ferreira \& Oliveira, 2020), o que favorece o desenho de
+intervenções focalizadas (auxílio financeiro, merenda/reforço de programas de alimentação,
+mediação de estágio/trabalho protegido, acompanhamento social).
+
+Considerações de adoção e equidade. A transferência dos resultados para a prática escolar exige
+atenção à calibração de probabilidades (para que o limiar de alerta reflita custos/benefícios de
+intervenção) e à equidade (evitar que o modelo reforce desigualdades ao superidentificar grupos
+específicos). O uso de métricas sensíveis à classe minoritária (Strauss; Villas Bôas Júnior;
+Ferreira, 2022) e a verificação de viés por subgrupos (sexo, raça/cor) ajudam a balizar decisões
+responsáveis. Tais cuidados metodológicos aumentam a aceitabilidade do sistema por gestores e
+docentes e estão alinhados às melhores práticas de *Learning Analytics* aplicadas à educação
+básica.
+
+Nota de escopo. Embora a revisão sintetize achados nacionais e internacionais, o objetivo empírico
+deste trabalho permanece delimitado ao ensino médio brasileiro, abrangendo as redes pública e
+privada, em escala nacional. As referências mais amplas servem para contextualizar o estado da
+arte e não implicam generalização automática para períodos futuros ou outros contextos;
+discutimos validade externa e possíveis diferenças regionais nas seções de Resultados e
+Conclusões.
+
+Em complemento, estudos qualitativos voltados especificamente ao ensino médio contribuem para
+fundamentar a seleção de variáveis e o enquadramento do problema. Batista, Souza e Oliveira
+(2009) apresentam um estudo de caso que discute fatores estruturais, familiares e socioeconômicos
+associados ao abandono na etapa final da educação básica. Embora não empregue técnicas de
+aprendizado de máquina, o trabalho oferece evidências sobre a relevância de indicadores como
+renda per capita, trabalho precoce e insegurança alimentar, que dialogam diretamente com as
+variáveis extraídas da PNAD neste estudo. Assim, a literatura qualitativa auxilia a interpretabilidade
+dos modelos, ao delinear mecanismos plausíveis pelos quais o contexto social do discente
+influencia a probabilidade de evasão.
+
+Do ponto de vista metodológico, a literatura também enfatiza a necessidade de métricas adequadas
+para avaliar modelos preditivos em cenários com classes desbalanceadas, como a evasão (menos
+frequente do que a permanência). Strauss, Villas Bôas Júnior e Ferreira (2022) discutem as
+limitações da acurácia como métrica isolada e recomendam o uso de F1-score, AUC-ROC e, quando
+pertinente, AUC-PR para capturar de forma mais fiel o desempenho sobre a classe minoritária.
+Essas diretrizes sustentam as escolhas de avaliação adotadas neste trabalho e reforçam a importância
+de reportar métricas sensíveis a falsos negativos, dada a natureza de risco e intervenção associada ao
+problema.
+
+
 
 \section{Metodologia}
 O Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira (INEP) dispõe uma vasta base de microdados e dados abertos baseados em variáveis institucionais, acadêmicas e socioeconômicas do sistema de ensino brasileiro no decorrer das últimas 2 décadas. Como complemento, a Pesquisa Nacional por Amostra de Domicílios (PNAD), realizada pelo Instituto Brasileiro de Geografia e Estatística (IBGE), é um conjunto de informações detalhadas sobre o cenário socioeconômico da sociedade brasileira. A partir dela, é possível extrair dados e informações das características gerais da população.  
 
+<<<<<<< HEAD
 Apoiado em tais conjuntos de dados, a metodologia deste artigo consiste no processamento desses dados e a utilização de técnicas estatísticas que possibilitem uma análise quantitativa acerca da evasão de alunos do ensino médio brasileiro, e quais fatores explicam tal fenômeno, dadas as suas características de cunho social, econômico, acadêmico e institucional. Para tal, foram utilizadas as linguagens R, Python e a biblioteca Statsmodels.  
 
 Conjuntos de dados provenientes do INEP foram extraídos do site de dados abertos do instituto na aba de "Indicadores Educacionais" e "Microdados". Bases de dados como a taxa de repetência e de evasão, taxa de distorção idade-série, índice do esforço docente, número médio de alunos por turma, nível de adequação do docente e microdados da educação básica (todos a nível municipal e do ano de 2017) foram coletados, extraindo apenas ocorrências do ensino médio, em formato de planilhas xlsx ou arquivo com valores separados por vírgula (\textit{CSV}) e lidos posteriormente em Python com a biblioteca de manipulação de dados Pandas.
@@ -199,9 +334,12 @@ Em sequência, foi realizada a junção das bases supracitadas por meio das colu
 Para modelagem estatística ulterior isolada também foi coletada uma amostra a nível escolar do Sistema de Avaliação da Educação Básica (SAEB), com variáveis sociais e acadêmicas no ano de 2017, também oriunda dos microdados do INEP.
 
 A base de dados da PNAD foi obtida diretamente a partir do website do IBGE na seção PNAD Contínua e lida preliminarmente em R para interpretação dos dados de largura fixa a largura variável com o auxílio da biblioteca PNADcIBGE. Foram filtrados apenas os resultados pertinentes, a partir do de ano de 2016 até 2024, à analise de ocorrência de pessoas que não frequentam mais a escola, frequentaram escola alguma vez, cursaram como grau mais elevado o ensino médio regular ou 2º grau, e com idade até 18 anos. Com base nesses dados é possível rotular ocorrência de evasão ou conclusão do ensino médio como variável binária exclusiva dependente baseada na conclusão do curso.
+=======
+A base de dados foi obtida diretamente a partir do website do IBGE na seção PNAD Contínua e lida preliminarmente em R para interpretação dos dados de largura fixa a largura variável com o auxílio da biblioteca PNADcIBGE. Foram filtradas apenas os resultados pertinentes, a partir do de ano de 2016 até 2024, à analise de ocorrência de pessoas que são de São Paulo, não frequentam mais a escola, frequentaram escola alguma vez, cursaram como grau mais elevado o ensino médio regular ou 2º grau, e com idade até 18 anos. Com base nesses dados é possível rotular ocorrência de evasão ou conclusão do ensino médio como variável binária exclusiva dependente baseada no conclusão do curso.
+>>>>>>> master
 
-Após o procedimento de filtragem, foi feita uma seleção das características, ou colunas, mais relevantes para explicar o fenômeno da evasão escolar. Características como sexo, cor ou raça, se já trabalhou ou estagiou por pelo menos 1 hora em alguma atividade remunerada em dinheiro, remunerada em mercadorias e bens, não remunerada ou atividade ocasional ("bico"), número de componentes do domicílio (exclusive as pessoas cuja condição no domicílio era pensionista, empregado doméstico ou parente do empregado doméstico), se recebe bolsa família ou outro auxílio governamental, rendimento domiciliar per capita
-(habitual de todos os trabalhos e efetivo de outras fontes), situação do domicílio, tipo de área (do domicílio), horas trabalhadas por semana em atividade principal, secundária e ocasional, se houve procura de emprego pelo entrevistado nos últimos 30 dias, por quanto tempo procura emprego e o tipo de abastecimento de água do domicílio, as quais são algumas das características que mais se correlacionam qualitativamente ao abandono e à evasão escolar no ensino médio (FERREIRA; OLIVEIRA, 2020).
+Após o procedimento de filtragem, foi feita uma seleção das características, ou colunas, mais relevantes para explicar o fenômeno da evasão escolar. Características como sexo, cor ou raça, se já trabalhou ou estagiou por pelo menos 1 hora em alguma atividade remunerada em dinheiro, remunerada em mercadorias e bens, não remunerada ou atividade ocasional ("bico"), número de componentes do domicílio (exclusive as pessoas cuja condição no domicílio era pensionista, empregado doméstico ou parente do empregado doméstico), se recebe bolsa família ou outro auxílio governamental e rendimento domiciliar per capita
+(habitual de todos os trabalhos e efetivo de outras fontes), as quais são algumas das características que mais se correlacionam qualitativamente ao abandono e à evasão escolar no ensino médio (FERREIRA; OLIVEIRA, 2020).
 
 Foi gerado um arquivo CSV com os dados já filtrados e características selecionadas, e posteriormente este foi lido em Python para limpeza de dados faltantes, e verificação dos tipos de variáveis com o objetivo de utilizá-lo como base de dados complementar à análise de evasão. Foi também criada a coluna "evasao" codificada de forma binária para classificar o aluno como evasão (1) e conclusão (0).
 
@@ -255,7 +393,17 @@ Com o modelo, e o auxílio da técnica dos mínimos quadrados para quantificar o
 
 
 \subsection{Métricas de Desempenho}
+<<<<<<< HEAD
 Com o objetivo de extrair resultados acerca do desempenho do modelo deste trabalho, foram utilizadas as técnicas $R^2$ e a média dos quadrados dos resíduos (\textit{MSE}). Por meio destas é possível ter ciência do quanto o modelo explica a variação da variável dependente que varia de 0 a 1 (sendo 1 o ajuste perfeito dos dados pelo modelo) e a média da magnitude de erros do modelo, respectivamente:
+=======
+Com o objetivo de extrair resultados acerca do desempenho dos modelos deste trabalho, foram utilizadas as fórmulas de precisão, revogação, acurácia e o índice F1 calculados com base na matriz de confusão proveniente do conjunto de testes com os modelos já treinados e selecionados os melhores via busca em grade de hiperparâmetros com validação cruzada em k-partições.
+
+
+\subsubsection{Matriz de Confusão}
+A matriz de confusão, assim como ressalta Franceschi (2019), é uma maneira de apresentar os valores reais e preditos pelo modelo com o intuito de mensurar os erros e acertos em cada classe de um determinado problema para se ter percepção dos seus desempenhos individuais.
+
+Para este trabalho, dado que o problema segue a forma de classes binárias (evasão ou não-evasão), a matriz de confusão, seguindo o modelo de Franceschi (2019) é dada por:
+>>>>>>> master
 
 \vspace{0.5cm}
 \begin{equation}
@@ -275,6 +423,58 @@ De forma que $y_i$ é o valor real, $\hat{y_i}$ é valor predito pelo modelo e $
 
 Com base nos dados coletados a partir dos dados abertos do INEP e na regressão linear múltipla resumida na tabela 1:
 
+<<<<<<< HEAD
+=======
+Tal fato levanta a hipótese de que fatores socioeconômicos devem estar atrelados a fatores acadêmicos, como a presença ou notas, e fatores psicológicos, como a falta de interesse na escola, para uma real percepção e modelagem preditiva da evasão escolar. Por outro lado, também há a hipótese de que os fatores socioeconômicos que se correlacionam com a evasão não foram levados em consideração para a filtragem e modelagem deste trabalho.
+
+A Pesquisa Nacional por Amostra de Domicílios (PNAD) apresenta um vasta base de dados acerca de aspectos socioeconômicos da população brasileira, contudo carece de determinantes acadêmicos específicos e questões que revelem a consideração do entrevistado acerca de sua vida no contexto acadêmico. 
+
+Ao longo deste trabalho, as seguintes variáveis foram filtradas e tratadas para modelagem da evasão e treinamento posterior com os algoritmos de aprendizado de máquina:
+
+\begin{table}
+\caption{Descrição de Variáveis da Base de Dados}
+\centering
+\label{tab:variables}
+\begin{tabular}{lp{8cm}}
+\hline
+Variável & Descrição \\ \hline
+UF & Unidade da Federação do estudante \\
+sexo & Sexo do estudante \\
+raça & Raça/cor do estudante \\
+idade & Idade em anos \\
+frequenta\_escola & Indica se atualmente frequenta escola \\
+frequentou\_escola & Indica se já frequentou escola em algum momento \\
+curso\_frequentado & Tipo de curso frequentado (fundamental, médio, etc.) \\
+terminou\_curso & Indica se concluiu o curso frequentado \\
+V4001--V4004 & Variáveis da PNAD relacionadas ao trabalho e ocupação \\
+condicao\_domicilio & Condição de ocupação do domicílio (próprio, alugado, cedido, etc.) \\
+num\_pessoas\_domicilio & Número de pessoas no domicílio \\
+bolsa\_familia & Recebimento de Bolsa Família \\
+aux\_governo & Recebimento de outros auxílios governamentais \\
+renda\_per\_capita & Renda domiciliar per capita \\
+situacao\_domicilio & Situação do domicílio (urbano/rural) \\
+tipo\_area\_dom & Tipo de área do domicílio \\
+tipo\_domicilio & Tipo de construção do domicílio \\
+tipo\_abastecimento\_de\_agua & Forma de abastecimento de água do domicílio \\
+horas\_trabalhadas\_emp\_princ\_sem & Horas semanais trabalhadas no emprego principal \\
+horas\_trabalhadas\_emp\_sec\_sem & Horas semanais trabalhadas no emprego secundário \\
+horas\_trabalhadas\_outros\_emp\_sem & Horas semanais trabalhadas em outros empregos \\
+procurou\_emprego\_ult\_30\_dias & Indica se procurou emprego nos últimos 30 dias \\
+deseja\_trabalhar & Indica se deseja trabalhar atualmente \\
+tempo\_procura\_emprego\_at1a & Tempo de procura por emprego: até 1 ano \\
+tempo\_procura\_emprego\_1a2a & Tempo de procura por emprego: entre 1 e 2 anos \\
+tempo\_procura\_emprego\_m2a & Tempo de procura por emprego: mais de 2 anos \\
+num\_serie & Série escolar em que o estudante está matriculado \\
+evasao & Indicador de evasão escolar (variável-alvo) \\ \hline
+\end{tabular}
+\end{table}
+
+
+\subsubsection{Resultado do Desempenho dos Modelos}
+A hipótese de que variáveis socioeconômicas não determinam de forma exclusiva o fenômeno da evasão no ensino médio pode ser constatada a partir do desempenho de cada classe com base nas métricas derivadas:
+
+\vspace{0.5cm}
+>>>>>>> master
 \begin{table}[htbp]
 \centering
 \caption{Resultados da regressão linear MQO para a variável dependente \texttt{TX\_EV\_TOTAL}}
