@@ -287,56 +287,145 @@ De forma que $y_i$ é o valor real, $\hat{y_i}$ é valor predito pelo modelo e $
 
 \section{Resultados Parciais}
 
-Com base nos dados coletados a partir dos dados abertos do INEP e na regressão linear múltipla resumida na tabela 1:
 
-\begin{table}[htbp]
+\subsection{Análise Descritiva}
+
+Com o intuito de compreender as propriedades estatísticas e o comportamento das variáveis com importância significativa neste trabalho, de acordo com a literatura, foram aplicados métodos de análise descritiva e tais resultados servirão de base para refinar os modelos estatísticos e suas interpretações. 
+
+Na distribuição da variável TX\_EV\_TOTAL, representada pela figura 1, pode-se perceber que:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{dist_boxp_TX_EV.png}
+    \caption{Distribuição da taxa de evasão total com \textit{boxplot}}
+    \label{fig:placeholder}
+\end{figure}
+
+25\% dos muncípios, levando em consideração instituições públicas e privadas, apresentam taxa de evasão inferior a 4,4\% do contingente de alunos matriculados no ensino médio regular, pelo primeiro quartil. O segundo quartil, ou mediana, mostra que a medida central de distribuição está posicionada em torno de 7,8\%. Por outro lado, no terceiro quartil, ponto em que se encontram os 25\% maiores valores do conjunto, obteve-se uma evasão superior a 10,9\%.
+
+Pelo intervalo interquartil foi calculado um limite superior de 20,65\%, ponto a partir do qual se posicionam os valores atípicos (\textit{outliers}) da distribuição da variável de taxa de evasão total. Deste modo, foram identificadas 96 ocorrências valores acima do limite superior evidenciado pelo \textit{boxplot}, ainda na figura 1.
+
+Com base na distribuição a base de dados foi separada em dois subconjuntos de dados: um conjunto de dados sem a presença de observações atípicas e um conjunto de dados contendo apenas os valores acima do limite superior. Nesse sentido, busca-se uma interpretação consistente dos impactos das diferentes variáveis para cada subconjunto de dados, a fim de que não haja distorções em seus resultados.
+
+Gusmão (2023) ressalta com base em outros autores que o percentual de repetência está intimamente ligado à distorção idade-série e, principalmente, à evasão escolar no ensino médio brasileiro. Diante desse contexto foi feita uma análise das distribuições histogramas das variáveis TX\_REP\_TOTAL e TX\_DI\_TOTAL, que representam as taxas de repetência e distorção-idade respectivamente, nas figuras 2 e 3.
+
+\vspace{0.5cm}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{hist_tx_rep.png}
+    \caption{Histograma da variável do percentual de repetência}
+    \label{fig:placeholder}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{hist_tx_di.png}
+    \caption{Histograma da variável do percentual de distorção idade-série}
+    \label{fig:placeholder}
+\end{figure}
+
+Na figura 2, pode-se observar um padrão de unimodalidade esperado no percentual de repetência, com um pico entre 0 e 0,1. Contudo, é possível identificar um comportamento bimodal na variável de taxa distorção-idade (figura 3), o que sugere a presença de dois subgrupos dentro da amostra de tal percentual neste trabalho. Para tanto, a fim de analisar estatisticamente a diferença entre os subgrupos, a variável TX\_DI\_TOTAL foi transformada em variável binária de tal modo que valores maiores ou iguais a 0,2 foram rotulados como 1, e, por conseguinte, valores abaixo de 0,2 foram rotulados como 0. Diante desse cenário, a variável foi renomeada como TX\_DI\_GRUPO\_1, fazendo referência a sua forma binária.
+
+\subsection{Modelos Estatísticos}
+
+Com base nos dados coletados a partir dos dados abertos do INEP e na regressão linear múltipla de ocorrências típicas resumida na tabela 1:
+
+\begin{table}[H]
 \centering
-\caption{Resultados da regressão linear MQO para a variável dependente \texttt{TX\_EV\_TOTAL}}
-\label{tab:regressao_tx_ev_sem_ic}
-\begin{tabular}{lrrrr}
+\caption{Resultados da Regressão Linear para Valores Típicos para TX\_EV\_TOTAL}
+\begin{tabular}{lcccc}
 \hline
-\textbf{Variável} & \textbf{Coef.} & \textbf{Erro Padrão} & \textbf{t} & \textbf{P$>$|t|} \\
+\textbf{Variável} & \textbf{Coef.} & \textbf{Erro-padrão} & \textbf{t} & \textbf{p-valor} \\
 \hline
-const & -0,0029 & 0,003 & -0,898 & 0,369 \\
-DEP\_ADMINISTRATIVA\_Pública & 0,0273 & 0,002 & 16,393 & 0,000 \\
-Grupo 2 & 0,0572 & 0,009 & 6,338 & 0,000 \\
-Grupo 3 & -0,0115 & 0,004 & -3,189 & 0,001 \\
-Grupo 4 & -0,0168 & 0,006 & -2,989 & 0,003 \\
-Grupo 5 & 0,0049 & 0,005 & 1,079 & 0,281 \\
-IN\_BIBLIOTECA & 0,0016 & 0,002 & 0,694 & 0,488 \\
-IN\_COZINHA & -0,0031 & 0,003 & -1,143 & 0,253 \\
-IN\_INTERNET & 0,0178 & 0,003 & 6,740 & 0,000 \\
-IN\_LABORATORIO\_CIENCIAS & -0,0052 & 0,004 & -1,253 & 0,210 \\
-IN\_LABORATORIO\_INFORMATICA & 0,0011 & 0,003 & 0,413 & 0,680 \\
-IN\_QUADRA\_ESPORTES & 0,0025 & 0,003 & 0,881 & 0,378 \\
-NUM\_ALUNO\_TURMA\_TOTAL & 0,0000 & 0,000 & 0,642 & 0,521 \\
-TX\_DI\_TOTAL & 0,1853 & 0,004 & 41,654 & 0,000 \\
-TX\_IED\_N5 & 0,0070 & 0,004 & 1,767 & 0,077 \\
-TX\_IED\_N6 & -0,0112 & 0,006 & -1,939 & 0,053 \\
-TX\_REP\_TOTAL & 0,0528 & 0,009 & 5,622 & 0,000 \\
+const & -0,0003 & 0,005 & -0,071 & 0,944 \\
+DEP\_ADMINISTRATIVA\_Pública & 0,0400 & 0,002 & 24,773 & 0,000 \\
+Grupo 2 & 0,0308 & 0,008 & 3,760 & 0,000 \\
+Grupo 3 & 0,0003 & 0,003 & 0,085 & 0,932 \\
+Grupo 4 & 0,0094 & 0,005 & 1,854 & 0,064 \\
+Grupo 5 & 0,0159 & 0,004 & 3,867 & 0,000 \\
+IN\_BIBLIOTECA & 0,00007014 & 0,002 & 0,032 & 0,974 \\
+IN\_COZINHA & 0,0070 & 0,002 & 2,838 & 0,005 \\
+IN\_INTERNET & 0,0014 & 0,002 & 0,581 & 0,561 \\
+IN\_LABORATORIO\_CIENCIAS & -0,00004531 & 0,004 & -0,012 & 0,990 \\
+IN\_LABORATORIO\_INFORMATICA & -0,0046 & 0,003 & -1,823 & 0,068 \\
+IN\_QUADRA\_ESPORTES & -0,0019 & 0,003 & -0,747 & 0,455 \\
+NUM\_ALUNO\_TURMA\_TOTAL & 0,0002 & 0,0000631 & 3,623 & 0,000 \\
+TX\_DI\_GRUPO\_1 & 0,0294 & 0,001 & 25,130 & 0,000 \\
+TX\_IED\_N3 & -0,0018 & 0,005 & -0,350 & 0,726 \\
+TX\_IED\_N4 & 0,0022 & 0,005 & 0,491 & 0,624 \\
+TX\_IED\_N5 & 0,0077 & 0,005 & 1,510 & 0,131 \\
+TX\_IED\_N6 & 0,0240 & 0,006 & 3,813 & 0,000 \\
+TX\_REP\_TOTAL & 0,1442 & 0,008 & 17,835 & 0,000 \\
 \hline
-\multicolumn{5}{l}{\footnotesize $R^2 = 0,514$, Estatística-F = 455,7, Prob(F) = 0,00, $E_{qm}=0,0026$} \\
-\multicolumn{5}{l}{\footnotesize Observações = 6915} \\
+\multicolumn{5}{l}{\textbf{R\textsuperscript{2}} = 0,511} \\
+\multicolumn{5}{l}{\textbf{R\textsuperscript{2} ajustado} = 0,509} \\
+\multicolumn{5}{l}{\textbf{Estatística F} = 394,4} \\
+\multicolumn{5}{l}{\textbf{Número de observações} = 6819} \\
+\hline
 \end{tabular}
 \end{table}
 
-O modelo tem erro quadrático médio $E_{qm}=0,0026$ o que indica que erra cerca de 5 pontos percentuais para fins de predição. Ao mesmo tempo, apresenta um $R^2=0,514$, explicando $51\%$ da variação dos dados, e uma $Prob(F)=0$, que indica que o modelo é significativo para explicar a variável dependente.
 
-Os resultados mostram que, ao manter as outras variáveis constantes, quando TX\_DI\_TOTAL, a taxa de defasagem idade-série, aumenta em 1 ponto percentual, a taxa de evasão total tende a aumentar em 0,1853 pontos percentuais. O coeficiente é estatisticamente significativo com $p<0.001$ e se mostra como o coeficiente mais alto que se relaciona com a variável dependente TX\_EV\_TOTAL.
+O modelo da tabela 1 apresenta um $R^2=0,511$, explicando $51\%$ da variação dos dados, e uma $Prob(F)=0$, que indica que o modelo é significativo para explicar a variável dependente.
 
-De maneira semelhante, TX\_REP\_TOTAL, que demonstra a taxa de repetência total do município, também apresenta alto coeficiente em comparação com as outras variáveis, sendo $0,0528$, e estatisticamente significativo com $p<0,0001$.
+\subsubsection{Interpretação de Variáveis Significativas com Valores Típicos}
 
-Os resultados também sugerem que, com $N=6915$ observações, as variáveis de infraestrutura coletadas não se mostram, em sua maioria, como estatisticamente significadas, e aquela que apresentam p-valor menor que 5\% (IN\_INTERNET) exibe coeficiente $\beta_i<0,0178$, o que caracteriza uma ínfima variação de pontos percentuais na taxa de evasão total. Taxas do índice de esforço do docente (TX\_IED\_N5 e TX\_IED\_N5) de forma análoga não se mostram estatisticamente significativos, com $p>0,05$.
+Os resultados mostram que instituições públicas apresentam um aumento de 4 pontos percentuais em comparação à rede privada de ensino no abandono contínuo das atividades escolares.
+O percentual de grupo de docentes com formação na mesma área em que atuam (Grupo 2) e o percentual de grupo de docentes sem formação superior (Grupo 5), estão associados a um aumento de 0,030 e 0,015 pontos percentuais, respectivamente, na evasão, considerando um aumento de 1 ponto percentual em cada variável exclusivamente e mantendo outras variáveis constantes.
 
-Em resumo, as variáveis Grupo 2, TX\_DI\_TOTAL, TX\_REP\_TOTAL, são evidenciadas como as mais relevantes no presente estudo. 
+A taxa da presença de cozinhas em escolas (IN\_COZINHA) se mostra signficativa, mas sua variação representa um modesto aumento de 0,007 pontos percentuais na evasão. O número médio de alunos por turma (NUM\_ALUNO\_TURMA\_TOTAL) apresenta um baixo coeficiente de +0,0002 pontos percentuais. 
 
-com base, em particular, na taxa de repetência, decidiu-se utilizar a base do Sistema de Avaliação do Educação básica (SAEB) do INEP, para investigar quais variáveis mais impactam na taxa de repetência e, de forma implícita, na taxa de defasagem idade-série, dado que a repetência leva à defasagem em relação à série cursada.
+Ademais os resultados apontam que municípios com percentual de distorção idade-série superior a 20\% apresentam um aumento de 2,94 pontos percentuais em comparação àqueles com taxa menor que o limiar dos subgrupos.
+
+A taxa de docentes que têm mais de 400 alunos e atua nos três turnos, em duas ou três escolas e em duas ou três etapas (TX\_IED\_N6) tem variação associada a um aumento de 0,02 pontos percentuais na evasão.
+
+Por fim, a regressão aponta que uma variação de 1 ponto percentual na taxa de repetência está associada a um aumento de 0,1442 pontos percentuais na taxa de evasão, o maior impacto na evasão neste trabalho.
+
+Tais resultados corroboram o trabalho de Gusmão (2023) que salienta a taxa de repetência, principalmente nas escolas públicas, como principal determinante da evasão e da distorção idade-série no ensino secundário brasileiro. 
+
+demais variáveis não citadas, como a maioria de infraestrutura, grupos de adequação e taxas de esforço do docente, no contexto desta pesquisa, não se mostraram signifcativas.
+
+Para os valores atípicos (\textit{outliers}) foi aplicado o seguinte modelo presente na tabela 2:
+
+\begin{table}[H]
+\centering
+\caption{Resultados da Regressão Linear para Valores Atípicos \textit{outliers} para TX\_EV\_TOTAL}
+\begin{tabular}{lcccc}
+\hline
+\textbf{Variável} & \textbf{Coef.} & \textbf{Erro-padrão} & \textbf{t} & \textbf{p-valor} \\
+\hline
+const & 0,3079 & 0,037 & 8,248 & 0,000 \\
+DEP\_ADMINISTRATIVA\_Pública & -0,1781 & 0,027 & -6,690 & 0,000 \\
+IN\_LABORATORIO\_INFORMATICA & 0,0569 & 0,027 & 2,086 & 0,040 \\
+TX\_DI\_GRUPO\_1 & 0,1282 & 0,044 & 2,941 & 0,004 \\
+TX\_REP\_TOTAL & -0,2338 & 0,084 & -2,790 & 0,006 \\
+\hline
+\multicolumn{5}{l}{\textbf{R\textsuperscript{2}} = 0,445} \\
+\multicolumn{5}{l}{\textbf{R\textsuperscript{2} ajustado} = 0,420} \\
+\multicolumn{5}{l}{\textbf{Estatística F} = 18,21} \\
+\multicolumn{5}{l}{\textbf{Número de observações} = 96} \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection{Interpretação de Variáveis Significativas com Valores Atípicos (outliers)}
+
+Diferente do modelo dos valores típicos da tabela 1, instituições públicas têm uma diminuição de 17,81 pontos percentuais na evasão em comparação a instituições privadas que oferecem o ensino médio regular. 
+A presença de laboratório de informática está associada ao aumento da evasão.
+
+Nos valores atípicos, os municípios com percentual de distorção idade-série superior a 20\% estão associados a um aumento de 12,82 pontos percentuais na evasão em comparação com aqueles que pertencem ao subgrupo de municípios com percentual inferior a 20\%.
+
+Por último, a variação na taxa de repetência está associada a uma diminuição da evasão em 0,23 pontos percentuais.
+
+Tais valores negativos, antes positivos e associados a um aumento da evasão, não puderam ser devidamente explicados no escopo desta pesquisa. Contudo é possível levantar a hipótese de que nos municípios que apresentam taxas de evasão atípicas a repetência não seja um fator determinante, e esta pode estar, inclusive, relacionada a fatores de vulnerabilidade alimentar, como exemplo, que não é abordada neste trabalho.
+
+Diante desse cenário, decidiu-se utilizar a base do Sistema de Avaliação do Educação básica (SAEB) do INEP, para investigar quais variáveis são determinantes da taxa de repetência e, de forma implícita, da taxa de defasagem idade-série, dado que a repetência leva à defasagem em relação à série cursada.
 
 Com base na tabela 2, que resume os resultados da regressão linear múltipla da base de dados do SAEB:
 
 \begin{table}[htbp]
 \centering
-\caption{Resultados da regressão linear MQO para a variável dependente \texttt{TX\_RESP\_Q041}}
+\caption{Resultados da regressão linear para a variável dependente \texttt{TX\_RESP\_Q041}}
 \label{tab:regressao_tx_resp_q041}
 \small
 \begin{tabular}{lrrrrr}
@@ -354,8 +443,11 @@ TX\_RESP\_Q038 & 0,0595 & 0,007 & 8,035 & 0,000 & [0,045 ; 0,074] \\
 TX\_RESP\_Q044 & -0,1006 & 0,010 & -10,433 & 0,000 & [-0,120 ; -0,082] \\
 TX\_RESP\_Q052 & 0,0965 & 0,009 & 11,240 & 0,000 & [0,080 ; 0,113] \\
 \hline
-\multicolumn{6}{l}{\footnotesize $R^2 = 0,272$, Estatística F = 782,4, Prob(F) = 0,00, $E_{qm}=0,0299$} \\
-\multicolumn{6}{l}{\footnotesize Número de observações = 18846} \\
+\multicolumn{5}{l}{\textbf{R\textsuperscript{2}} = 0,272} \\
+\multicolumn{5}{l}{\textbf{R\textsuperscript{2} ajustado} = 0,272} \\
+\multicolumn{5}{l}{\textbf{Estatística F} = 782,4} \\
+\multicolumn{5}{l}{\textbf{Número de observações} = 18846} \\
+\hline
 \end{tabular}
 \end{table}
 
@@ -401,7 +493,7 @@ IN\_LABORATORIO\_CIENCIAS & Percentual de escolas do município com laboratório
 IN\_LABORATORIO\_INFORMATICA & Percentual de escolas do município com laboratório de informática \\
 IN\_QUADRA\_ESPORTES & Percentual de escolas do município com quadra de esportes \\
 NUM\_ALUNO\_TURMA\_TOTAL & Número médio de alunos por turma \\
-TX\_DI\_TOTAL & Taxa de distorção idade-série \\
+TX\_DI\_GRUPO\_1 & Subgrupo distorção idade-série (taxa $\geq$ 0,2 = 1, taxa < 0,2 = 0) \\
 TX\_IED\_N5 & Percentual de docentes nível 5 do Índice de Esforço Docente \\
 TX\_IED\_N6 & Percentual de docentes nível 6 do Índice de Esforço Docente \\
 TX\_REP\_TOTAL & Taxa total de reprovação \\
