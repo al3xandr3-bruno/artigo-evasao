@@ -15,6 +15,7 @@
 %usepackage[alf]{abntex2cite} % citações autor-data
 %\usepackage[num]{abntex2cite} % citações numéricas
 \usepackage{amsmath}
+\usepackage{float}
 
 % The next two statements are needed for the example table in this document
 % (i.e. you don't necessarily need them in your own paper)
@@ -376,7 +377,7 @@ Células vazias ou nulas tiveram suas linhas removidas por completo da base de m
 
 Foi realizada uma análise exploratória da taxa de evasão total por município para verificar se existem valores atípicos (\textit{outliers}).  Considerando essa análise (ver seção 5.1), a base de Evasão por Municípios foi divida em duas: (1) Base de dados de Evasão por Municipios típica com 6819 observações e (2) Base de dados de Evasão por Municípios atípica com 96 observações. 
 
-Também foi realizada uma análise de multicolinearidade com base no conceito de Fator de Inflação de Variância (\textit{VIF}) (vide seção 5.1) com o objetivo de refinar a interpretação estatística dos dados e, por consequência, realizar a seleção de variáveis.
+Também foi realizada uma análise de multicolinearidade com base no conceito de Fator de Inflação de Variância (\textit{VIF}) com o objetivo de refinar a interpretação estatística dos dados e, por consequência, realizar a seleção de variáveis.
 
 \subsection{Aplicação da Regressão Linear Múltipla na Base de Dados de Evasão por Município e da Base de Taxa de Repetencia por Instituição}
 
@@ -405,7 +406,7 @@ observações. Nesse sentido, busca-se uma interpretação consistente dos impac
 \subsection{Análise de Multicolinearidade na Base de Evasão por Município}
 
 
-As Tabelas 1, 2, 3 e 4 apresentam os resultados das análises de multicolinearidade do conjunto dos dados de evasão total por município.
+As Tabelas \ref{tab:vif_ind_inep_pos}, \ref{tab:vif_ind_censo_pre} e \ref{tab:vif_rep_pre} apresentam os resultados das análises de multicolinearidade do conjunto dos dados de evasão total por município.
 
 
 
