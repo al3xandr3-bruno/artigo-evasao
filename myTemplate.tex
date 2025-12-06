@@ -140,24 +140,26 @@ Para tanto, foram integradas bases de dados do Instituto Nacional de Estudos e P
 
 
 \section{Fundamentos Teóricos}
+A seção descreve a PNAD, INEP, o Censo Escolar, e SAEB. Além disso, descreve as técnicas estatísticas e computacionais empregadas na pesquisa.
 
-O presente capítulo tem como objetivo apresentar a base conceitual que sustenta esta pesquisa, fornecendo o embasamento necessário para compreender as principais variáveis que influenciam a evasão escolar no Brasil em nível municipal. A fundamentação teórica busca situar o estudo no contexto das pesquisas já existentes, permitindo identificar os fatores socioeconômicos, educacionais e estruturais que impactam a permanência dos estudantes, bem como os modelos e abordagens utilizados para analisar tais fenômenos. Além disso, o capítulo descreve os fundamentos teóricos, as bases de dados e as técnicas estatísticas e computacionais empregadas na pesquisa, estabelecendo o alicerce metodológico para as análises realizadas nos capítulos seguintes.
-\subsection{Evasão Escolar e Fatores Socioeconômicos}
-A evasão escolar é um fenômeno amplamente estudado nas áreas da Educação e das Ciências Sociais, podendo ser associado a fatores de ordem social, econômica e cultural. Segundo Araque, Roldán e Salguero (2009), as principais razões que influenciam o abandono da escola estão relacionadas a variáveis socioeconômicas, familiares, institucionais e psicológicas. Nesse sentido, compreender esse fenômeno requer considerar tanto o contexto social do aluno quanto as condições oferecidas pelo sistema educacional.
 
-\subsection{Mineração de Dados Educacionais e Aprendizado de Máquina}
-No campo da análise de dados, o termo Mineração de Dados Educacionais (\textit{Educational Data Mining — EDM}) refere-se ao uso de métodos computacionais para explorar grandes volumes de dados gerados em ambientes educacionais, buscando padrões relevantes (BAKER; ISOTANI; CARVALHO, 2011). O objetivo disso é apoiar a tomada de decisão em políticas públicas e institucionais, fornecendo evidências que permitam compreender e reduzir problemas como a própria evasão escolar.
 
-Associado à EDM, o Aprendizado de Máquina (\textit{Machine Learning}) é um subcampo da Inteligência Artificial que possibilita a criação de modelos preditivos a partir de dados. Esses modelos são capazes de identificar relações complexas entre variáveis e gerar previsões com base em informações históricas (MITCHELL, 1997). No contexto da evasão escolar, técnicas de aprendizado supervisionado permitem estimar a probabilidade de um estudante abandonar ou concluir seus estudos, dadas suas características socioeconômicas, acadêmicas e pessoais (TEODORO; KAPPEL, 2020).
 
-\subsection{Principais Técnicas Utilizadas}
+\subsection{Regressão Linear Múltipla}
 Entre as abordagens utilizadas para a análise de fatores que influenciam fenômenos complexos, destaca-se a Regressão Linear Múltipla, que permite investigar a relação entre uma variável dependente contínua e múltiplas variáveis independentes. Esse método possibilita compreender de forma quantitativa o impacto de diferentes fatores sobre o resultado observado, identificando quais variáveis apresentam maior influência e em que magnitude (MONTGOMERY; PECK; VINING, 2012).
-No contexto da evasão escolar, a Regressão Linear Múltipla é aplicada para estimar como aspectos socioeconômicos, educacionais e estruturais contribuem para a variação das taxas de evasão entre municípios, permitindo uma análise explicativa e comparativa das desigualdades regionais.
 
-\subsection{Técnicas Computacionais Complementares}
-Embora este trabalho foque exclusivamente na aplicação da Regressão Linear Múltipla, outras técnicas computacionais também têm sido amplamente empregadas em estudos voltados à predição e análise de dados educacionais. Entre essas abordagens, destacam-se métodos como Regressão Logística, Redes Neurais Artificiais e Florestas Aleatórias de Classificação, amplamente utilizados em pesquisas que buscam estimar a probabilidade de evasão escolar e identificar padrões complexos de comportamento estudantil (HOSMER; LEMESHOW, 2000; GARDNER; DORLING, 1998; BREIMAN, 2001).
+O modelo de regressão linear múltipla, expresso por:
 
-Apesar da diversidade de métodos existentes, a escolha da Regressão Linear Múltipla neste estudo se justifica por sua capacidade de quantificar o impacto individual de múltiplas variáveis explicativas sobre a taxa de evasão escolar, permitindo identificar quais fatores exercem maior influência sobre o fenômeno. Essa abordagem fornece não apenas um modelo preditivo, mas também uma interpretação direta dos coeficientes, facilitando a compreensão e a aplicação dos resultados em políticas públicas e estratégias educacionais.
+\vspace{0.5cm}
+\begin{equation}
+\large Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + \beta_3X_3 + \cdots + \beta_iX_i + \epsilon 
+\end{equation}
+\vspace{0.5cm}
+
+Em que $Y$ é a variável dependente a ser modelada, $X_i$ são as variáveis independentes, ou regressores, $\beta_i$ representa os coeficientes atrelados a cada variável independente e $\epsilon$ representa o erro aleatório. 
+
+Com o modelo, e o auxílio da técnica dos mínimos quadrados para quantificar os coeficientes, é possível mensurar a significância das diferentes variáveis independentes, e o quanto sua variação impacta na variável dependente, de acordo com o contexto das amostras e das variáveis coletadas.
+
 
 \subsection{A Pesquisa Nacional por Amostra de Domicílios (PNAD)}
 A Pesquisa Nacional por Amostra de Domicílios (PNAD), realizada pelo Instituto Brasileiro de Geografia e Estatística (IBGE), constitui uma das principais fontes de dados socioeconômicos no Brasil. Seu objetivo é coletar informações abrangentes sobre características demográficas, educacionais, ocupacionais e de rendimento da população brasileira, por meio de entrevistas domiciliares aplicadas em amostras representativas em nível nacional, regional e estadual (IBGE, 2022).
@@ -169,18 +171,65 @@ O Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira (INEP)
 
 O Instituto realiza levantamentos censitários anuais em todas as etapas da educação básica e superior, além de coordenar avaliações de larga escala, como o Sistema de Avaliação da Educação Básica (SAEB) e o Exame Nacional do Ensino Médio (ENEM). Os dados produzidos pelo INEP constituem a principal fonte oficial de informações sobre matrícula, rendimento escolar, infraestrutura, profissionais da educação e fluxo escolar no país, sendo essenciais para a análise de fenômenos como evasão, repetência e distorção idade-série.
 
-\subsection{Microdados do Censo Escolar}
+\subsubsection{Microdados do Censo Escolar}
 O Censo Escolar, realizado anualmente pelo INEP em regime de colaboração com as secretarias estaduais e municipais de educação, constitui o principal instrumento de coleta de informações sobre a educação básica brasileira. Seu objetivo é reunir dados detalhados sobre estudantes, turmas, escolas e profissionais da educação em todas as redes de ensino – públicas e privadas –, abrangendo as etapas de educação infantil, ensino fundamental e ensino médio (INEP, 2023).
 
 Os microdados do Censo Escolar são disponibilizados publicamente pelo INEP e permitem análises granulares sobre características individuais dos estudantes, como idade, sexo, raça/cor, situação de matrícula, modalidade de ensino e deficiências, além de informações sobre infraestrutura escolar, localização, dependência administrativa e recursos disponíveis. Esses dados são fundamentais para estudos sobre evasão escolar, pois possibilitam acompanhar longitudinalmente a trajetória estudantil, identificar fatores associados ao abandono e à reprovação, bem como analisar disparidades regionais e socioeconômicas que impactam o acesso e a permanência na escola.
 
-\subsection{Sistema de Avaliação da Educação Básica (SAEB)}
+\subsubsection{Sistema de Avaliação da Educação Básica (SAEB)}
 O Sistema de Avaliação da Educação Básica (SAEB), também coordenado pelo INEP, constitui uma das principais avaliações externas e padronizadas da qualidade da educação no Brasil. Instituído em 1990, o SAEB tem como objetivo diagnosticar a educação básica brasileira e produzir indicadores sobre o desempenho dos estudantes em Língua Portuguesa e Matemática, além de coletar informações contextuais sobre condições de aprendizagem, perfil docente e clima escolar (INEP, 2023).
 
 A partir de 2019, o SAEB passou a ser censitário para estudantes dos anos finais do ensino fundamental e do ensino médio, permitindo avaliações em nível de escola, município e estado. Os microdados do SAEB, disponibilizados junto aos do Censo Escolar, incluem resultados de proficiência, questionários contextuais aplicados a estudantes, professores e diretores, além de indicadores socioeconômicos e de infraestrutura. Tais informações são relevantes para estudos sobre evasão escolar, pois possibilitam relacionar desempenho acadêmico, contexto familiar e escolar com a permanência ou abandono dos estudantes, oferecendo subsídios para políticas educacionais mais direcionadas e eficazes.
 
-\subsection{Síntese}
-Dessa forma, os fundamentos apresentados evidenciam a relevância de associar teorias sobre evasão escolar com métodos de mineração de dados e aprendizado de máquina, bem como o uso de bases de dados socioeconômicas e educacionais amplas como a PNAD, Censo Escolar e SAEB. Essa integração permite analisar grandes quantidades de dados e construir modelos preditivos capazes de apoiar políticas públicas e institucionais na área da Educação, contribuindo para a redução da evasão escolar e para a promoção da equidade educacional.
+\subsection{Multicolinearidade}
+
+Multicolinearidade pode ser compreendida como uma relação linear entre duas ou mais variáveis dependentes. Conforme Paul (2006), quando há importância na investigação dos impactos dos regressores na variável dependente, a multicolinearidade pode ser um problema, visto que p-valores podem se mostrar equivocadamente elevados e em alguns casos pode interferir na interpretação dos coeficientes. Uma das maneiras de analisar se há multicolinearidade no conjunto de dados é calcular o fator de inflação de variância (\textit{VIF}), baseado em $R^2$, que indica o quanto uma variável independente é explicada pelos demais regressores para cada umas das $i$ variáveis independentes (MILOCA \& CONEJO, 2008).
+
+O fator de inflação de variância do i-ésimo regressor ($F_i$)  é calculado por:
+
+\vspace{0.5cm}
+\begin{equation}
+\large F_i = \frac{1}{1-R_i^2}
+\end{equation}
+\vspace{0.5cm}
+
+
+Em que $R_i^2$ se refere ao $R^2$ da i-ésima variável independente.
+
+Um \textit{VIF} maior que 10 indica que a multicolinearidade influencia fortemente o valor dos coeficientes do modelo, como proposto por Johnson e Wichern (1988; apud MILOCA \& CONEJO, 2008), e algumas medidas em relação ao conjunto de dados ou ao modelo devem ser tomadas com o objetivo de preservar a interpretação dos dados na modelagem estatística.
+
+\subsection{Métricas de Desempenho}
+\subsubsection{Coeficiente de Determinação ($R^2$)}
+$R^2$ e $R^2$ ajustado permitem identificar quanto o modelo explica a variação da variável dependente que varia de 0 a 1 (sendo 1 o ajuste perfeito dos dados pelo modelo) e são calculados, respectivamente, por:
+
+\vspace{0.5cm}
+\begin{equation}
+\large R^2 = 1 - \frac{\sum_i(y_i-\hat{y}_i)^2}{\sum_i(y_i-\bar{y})^2}
+\end{equation}
+\vspace{0.5cm}
+
+\vspace{0.5cm}
+\begin{equation}
+\large R^2_{\text{aj}} = 1 - \left(1 - R^2\right)\frac{n - 1}{n - k - 1}
+\end{equation}
+\vspace{0.5cm}
+
+
+Em que $y_i$ é o valor real, $\hat{y_i}$ é valor predito pelo modelo e $\bar{y}$ é a média dos valores da variável dependente. $n$ é o número de observações da amostra de dados e $k$ o número de variáveis excluindo o intercepto.
+
+Diferente do $R^2$, o $R^2$ ajustado leva em consideração o número de amostras de um conjunto de dados e a quantidade de variáveis independentes, penalizando modelos com muitos regressores ou poucas amostras. 
+
+\subsubsection{Estatística F}
+A estatística F, conforme Sureiman et al (2020), avallia se o modelo concede uma explicação dos dados acima da explicação fornecida por um modelo de regressão sem variáveis de fato explicativas, indicando se o conjunto de variáveis contribui de forma significativa para explicar a variação da variável dependente. Quanto maior o valor de $F$, mais significativo se mostra o modelo, sendo este calculado por:
+
+\vspace{0.5cm}
+\begin{equation}
+\large F = \frac{R^2(n-k-1)}{k(1 - R^2)}
+\end{equation}
+\vspace{0.5cm}
+
+Onde $n$ é o número de observações da amostra de dados e $k$ o número de variáveis excluindo o intercepto.
+
 
 \section{Trabalhos Relacionados}
 
@@ -244,52 +293,15 @@ Variáveis ordinais numéricas foram transformadas em variáveis categóricas te
 Células vazias ou nulas tiveram suas linhas removidas por completo da base de modelagem para integridade da análise estatística.
 
 \subsection{Análise de Multicolinearidade}
-Multicolinearidade pode ser compreendida como uma relação linear entre duas ou mais variáveis dependentes. Conforme Paul (2006), quando há importância na investigação dos impactos dos regressores na variável dependente, a multicolinearidade pode ser um problema, visto que p-valores podem se mostrar equivocadamente elevados e em alguns casos pode interferir na interpretação dos coeficientes. Uma das maneiras de analisar se há multicolinearidade no conjunto de dados é calcular o fator de inflação de variância (\textit{VIF}), baseado em $R^2$, que indica o quanto uma variável independente é explicada pelos demais regressores para cada umas das $i$ variáveis independentes (MILOCA \& CONEJO, 2008).
 
-No presente trabalho será aplicado o \textit{VIF} para verificar a multicolinearidade entre as variáveis advindas das bases do INEP:
-
-\vspace{0.5cm}
-\begin{equation}
-\large F_i = \frac{1}{1-R_i^2}
-\end{equation}
-\vspace{0.5cm}
-
-
-$F_i$ se refere ao fator de inflação de variância do i-ésimo regressor; $R_i^2$ se refere ao $R^2$ da i-ésima variável independente.
-
-Um \textit{VIF} maior que 10 indica que a multicolinearidade influencia fortemente o valor dos coeficientes do modelo, como proposto por Johnson e Wichern (1988; apud MILOCA \& CONEJO, 2008), e algumas medidas em relação ao conjunto de dados ou ao modelo devem ser tomadas com o objetivo de preservar a interpretação dos dados na modelagem estatística.
 
 \subsection{Modelo Estatístico}
-Este artigo visa aplicar métodos estatísticos com o intuito de investigar o impacto das variáveis socioeconômicas e institucionais na evasão escolar e em variáveis que corroboram tal fenômeno. Para tanto, conforme Green et al (2011), que salientam a regressão linear como ferramenta amplamente usada para examinar as relações estatísticas entre variáveis, nesta pesquisa será utilizado, primordialmente, o modelo de regressão linear múltipla, expresso por:
 
-\vspace{0.5cm}
-\begin{equation}
-\large Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + \beta_3X_3 + \cdots + \beta_iX_i + \epsilon 
-\end{equation}
-\vspace{0.5cm}
-
-Em que $Y$ é a variável dependente a ser modelada, $X_i$ são as variáveis independentes, ou regressores, $\beta_i$ representa os coeficientes atrelados a cada variável independente e $\epsilon$ representa o erro aleatório. 
-
-Com o modelo, e o auxílio da técnica dos mínimos quadrados para quantificar os coeficientes, é possível mensurar a significância das diferentes variáveis independentes, e o quanto sua variação impacta na variável dependente, de acordo com o contexto das amostras e das variáveis coletadas.
 
 
 
 \subsection{Métricas de Desempenho}
-Com o objetivo de extrair resultados acerca do desempenho do modelo deste trabalho, foram utilizadas as técnicas $R^2$ e a média dos quadrados dos resíduos (\textit{MSE}). Por meio destas é possível ter ciência do quanto o modelo explica a variação da variável dependente que varia de 0 a 1 (sendo 1 o ajuste perfeito dos dados pelo modelo) e a média da magnitude de erros do modelo, respectivamente:
 
-\vspace{0.5cm}
-\begin{equation}
-\large R^2 = 1 - \frac{\sum_i(y_i-\hat{y}_i)^2}{\sum_i(y_i-\bar{y})^2}
-\end{equation}
-\vspace{0.5cm}
-
-\vspace{0.5cm}
-\begin{equation}
-\large E_{qm} = \frac{1}{n} \sum_i(y_i-\hat{y_i})^2
-\end{equation}
-\vspace{0.5cm}
-
-De forma que $y_i$ é o valor real, $\hat{y_i}$ é valor predito pelo modelo e $\bar{y}$ é a média dos valores da variável dependente.
 
 \section{Resultados Parciais}
 
@@ -569,8 +581,8 @@ Em síntese, este estudo evidencia que fatores pessoais, sociais e acadêmicos d
 
 \pagebreak
 \pagebreak
-\nocite{*}
-\printbibliography
+%\nocite{*}
+%\printbibliography
 
 
 \end{document}
